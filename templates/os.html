@@ -1,0 +1,1245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>{{ os_name }} v{{ os_version }}</title>
+<link rel="stylesheet" href="/static/css/quantum-os.css">
+<link rel="stylesheet" href="/static/css/qbp-runtime.css">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='14' fill='%230a0e1a' stroke='%2300d4ff' stroke-width='2'/><circle cx='16' cy='16' r='4' fill='%2300d4ff'/><ellipse cx='16' cy='16' rx='12' ry='6' fill='none' stroke='%2300d4ff' stroke-width='1' opacity='.5'/><ellipse cx='16' cy='16' rx='6' ry='12' fill='none' stroke='%2300d4ff' stroke-width='1' opacity='.5'/></svg>">
+</head>
+<body>
+
+<!-- ═══ Boot Screen ═══ -->
+<div id="boot-screen">
+  <div class="boot-logo">
+    <svg viewBox="0 0 120 120" class="boot-atom">
+      <circle cx="60" cy="60" r="8" fill="#00d4ff"/>
+      <ellipse cx="60" cy="60" rx="50" ry="20" fill="none" stroke="#00d4ff" stroke-width="1.5" class="orbit o1"/>
+      <ellipse cx="60" cy="60" rx="50" ry="20" fill="none" stroke="#00ffaa" stroke-width="1.5" class="orbit o2"/>
+      <ellipse cx="60" cy="60" rx="50" ry="20" fill="none" stroke="#a855f7" stroke-width="1.5" class="orbit o3"/>
+    </svg>
+  </div>
+  <h1 class="boot-title">QubitPage®</h1>
+  <p class="boot-sub">Quantum OS v{{ os_version }} — {{ os_codename }}</p>
+  <div class="boot-progress"><div class="boot-bar" id="boot-bar"></div></div>
+  <div class="boot-log" id="boot-log"></div>
+</div>
+
+<!-- ═══ Login Screen ═══ -->
+<div id="login-screen" class="hidden">
+  <div class="login-container">
+    <div class="login-logo">
+      <svg viewBox="0 0 120 120" width="80" height="80">
+        <circle cx="60" cy="60" r="8" fill="#00d4ff"/>
+        <ellipse cx="60" cy="60" rx="50" ry="20" fill="none" stroke="#00d4ff" stroke-width="1.5" class="orbit o1"/>
+        <ellipse cx="60" cy="60" rx="50" ry="20" fill="none" stroke="#00ffaa" stroke-width="1.5" class="orbit o2"/>
+        <ellipse cx="60" cy="60" rx="50" ry="20" fill="none" stroke="#a855f7" stroke-width="1.5" class="orbit o3"/>
+      </svg>
+      <h1>QubitPage®</h1>
+      <p>Quantum OS v{{ os_version }}</p>
+    </div>
+
+    <!-- Login Form -->
+    <div id="login-form" class="auth-form">
+      <div class="auth-field">
+        <label>Username or Email</label>
+        <input type="text" id="login-username" autocomplete="username" placeholder="admin">
+      </div>
+      <div class="auth-field">
+        <label>Password</label>
+        <input type="password" id="login-password" autocomplete="current-password" placeholder="••••••••">
+      </div>
+      <div class="auth-error hidden" id="login-error"></div>
+      <button class="btn-quantum auth-btn" id="login-btn">Sign In</button>
+      <div class="auth-switch">
+        Don't have an account? <a href="#" id="show-register">Register</a>
+      </div>
+      <div class="auth-guest">
+        <a href="#" id="guest-login">Continue as Guest (limited)</a>
+      </div>
+    </div>
+
+    <!-- Register Form -->
+    <div id="register-form" class="auth-form hidden">
+      <div class="auth-field">
+        <label>Username</label>
+        <input type="text" id="reg-username" autocomplete="username" placeholder="quantum_user">
+      </div>
+      <div class="auth-field">
+        <label>Email</label>
+        <input type="email" id="reg-email" autocomplete="email" placeholder="user@example.com">
+      </div>
+      <div class="auth-field">
+        <label>Display Name</label>
+        <input type="text" id="reg-display" placeholder="Your Name (optional)">
+      </div>
+      <div class="auth-field">
+        <label>Password</label>
+        <input type="password" id="reg-password" autocomplete="new-password" placeholder="Min 6 characters">
+      </div>
+      <div class="auth-field">
+        <label>Confirm Password</label>
+        <input type="password" id="reg-password2" placeholder="Repeat password">
+      </div>
+      <div class="auth-error hidden" id="reg-error"></div>
+      <button class="btn-quantum auth-btn" id="register-btn">Create Account</button>
+      <div class="auth-switch">
+        Already have an account? <a href="#" id="show-login">Sign In</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ Desktop ═══ -->
+<div id="desktop" class="hidden">
+
+  <!-- Wallpaper particles -->
+  <canvas id="particles-canvas"></canvas>
+
+  <!-- Desktop Icons (filtered by user permissions) -->
+  <div id="desktop-icons">
+    <div class="desktop-icon" data-app="terminal">
+      <div class="icon-img">⌨</div>
+      <span>Terminal</span>
+    </div>
+    <div class="desktop-icon" data-app="circuit-lab">
+      <div class="icon-img">⚛</div>
+      <span>Circuit Lab</span>
+    </div>
+    <div class="desktop-icon" data-app="quantum-game">
+      <div class="icon-img">🎮</div>
+      <span>Quantum Oracle</span>
+    </div>
+    <div class="desktop-icon" data-app="crypto-tools">
+      <div class="icon-img">🔐</div>
+      <span>Crypto Tools</span>
+    </div>
+    <div class="desktop-icon" data-app="aria">
+      <div class="icon-img">🤖</div>
+      <span>ARIA AI</span>
+    </div>
+    <div class="desktop-icon" data-app="docs">
+      <div class="icon-img">📚</div>
+      <span>Documentation</span>
+    </div>
+    <div class="desktop-icon" data-app="settings">
+      <div class="icon-img">⚙</div>
+      <span>Settings</span>
+    </div>
+    <div class="desktop-icon" data-app="quantum-drug">
+      <div class="icon-img">🧬</div>
+      <span>QuantumDrug</span>
+    </div>
+    <span>Quantum Luck</span>
+    </div>
+    <div class="desktop-icon" data-app="quantum-search">
+      <div class="icon-img">🔍</div>
+      <span>Quantum Search</span>
+    </div>
+    <div class="desktop-icon" onclick="window.open('/qubilogic','_blank')" style="cursor:pointer">
+      <div class="icon-img">🧠</div>
+      <span>QubiLogic</span>
+    </div>
+    <div class="desktop-icon" data-app="quantumneuro">
+      <div class="icon-img">🧠</div>
+      <span>QuantumNeuro</span>
+    </div>
+    <div class="desktop-icon" data-app="quantumtb">
+      <div class="icon-img">🫁</div>
+      <span>QuantumTB</span>
+    </div>
+    <div class="desktop-icon" data-app="diseases">
+      <div class="icon-img">🏥</div>
+      <span>Disease Hub</span>
+    </div>
+    <div class="desktop-icon" data-app="training">
+      <div class="icon-img">🎯</div>
+      <span>Training</span>
+    </div>
+    <span>Competition</span>
+    </div>
+    <div class="desktop-icon" data-app="notepad">
+      <div class="icon-img">📝</div>
+      <span>Notepad</span>
+    </div>
+    <div class="desktop-icon" data-app="docs-app">
+      <div class="icon-img">📚</div>
+      <span>Docs</span>
+    </div>
+    <div class="desktop-icon" data-app="medlab" style="position:relative">
+      <div class="icon-img">🗂</div>
+      <span>MedLab</span>
+      <div style="position:absolute;top:-4px;right:-4px;background:#ff3366;color:#fff;font-size:8px;padding:1px 4px;border-radius:6px;font-weight:700">NEW</div>
+    </div>
+    <div class="desktop-icon" data-app="reports" style="position:relative">
+      <div class="icon-img">📊</div>
+      <span>Reports</span>
+      <div style="position:absolute;top:-4px;right:-4px;background:#00ff88;color:#000;font-size:8px;padding:1px 4px;border-radius:6px;font-weight:700">NEW</div>
+    </div>
+    <div class="desktop-icon" data-app="medfiles" style="position:relative">
+      <div class="icon-img">🏥</div>
+      <span>Med Files</span>
+      <div style="position:absolute;top:-4px;right:-4px;background:#00aaff;color:#fff;font-size:8px;padding:1px 4px;border-radius:6px;font-weight:700">🔬</div>
+    </div>
+  </div>
+
+  <!-- Windows Container -->
+  <div id="windows-container"></div>
+
+  <!-- Taskbar -->
+  <div id="taskbar">
+    <div id="start-button" title="QubitPage Menu">
+      <svg viewBox="0 0 24 24" width="20" height="20">
+        <circle cx="12" cy="12" r="4" fill="#00d4ff"/>
+        <ellipse cx="12" cy="12" rx="10" ry="4" fill="none" stroke="#00d4ff" stroke-width="1"/>
+        <ellipse cx="12" cy="12" rx="4" ry="10" fill="none" stroke="#00d4ff" stroke-width="1"/>
+      </svg>
+    </div>
+    <div id="taskbar-apps"></div>
+    <div id="taskbar-right">
+      <span id="user-badge" title="User" style="cursor:pointer;display:none">
+        <span id="user-avatar">👤</span>
+        <span id="user-name">Guest</span>
+      </span>
+      <span id="quantum-status" title="Quantum Status">
+        <span class="status-dot"></span> Q:Ready
+      </span>
+      <span id="clock"></span>
+    </div>
+  </div>
+
+  <!-- Start Menu -->
+  <div id="start-menu" class="hidden">
+    <div class="start-header">
+      <h3>QubitPage® Quantum OS</h3>
+      <small>v{{ os_version }} — {{ os_codename }}</small>
+    </div>
+    <div class="start-apps">
+      <div class="start-app" data-app="terminal"><span class="sa-icon">⌨</span> Quantum Terminal</div>
+      <div class="start-app" data-app="circuit-lab"><span class="sa-icon">⚛</span> Circuit Lab</div>
+      <div class="start-app" data-app="quantum-game"><span class="sa-icon">🎮</span> Quantum Oracle Game</div>
+      <div class="start-app" data-app="crypto-tools"><span class="sa-icon">🔐</span> Crypto Tools</div>
+      <div class="start-app" data-app="aria"><span class="sa-icon">🤖</span> ARIA AI Assistant</div>
+      <div class="start-app" data-app="docs"><span class="sa-icon">📚</span> Documentation</div>
+      <div class="start-app" onclick="window.open('/docs/wiki','_blank')"><span class="sa-icon">📖</span> Documentation Wiki</div>
+      <div class="start-app" data-app="settings"><span class="sa-icon">⚙</span> System Settings</div>
+      <div class="start-app" data-app="quantum-drug"><span class="sa-icon">🧬</span> QuantumDrug Explorer</div>
+      <div class="start-app" data-app="quantum-search"><span class="sa-icon">🔍</span> Quantum Search</div>
+      <div class="start-app" data-app="quantumneuro"><span class="sa-icon">🧠</span> QuantumNeuro GBM</div>
+      <div class="start-app" data-app="quantumtb"><span class="sa-icon">🫁</span> QuantumTB</div>
+      <div class="start-app" data-app="diseases"><span class="sa-icon">🏥</span> Disease Hub</div>
+      <div class="start-app" data-app="training"><span class="sa-icon">🎯</span> Training Results</div>
+      <div class="start-app" data-app="notepad"><span class="sa-icon">📝</span> Notepad</div>
+      <div class="start-app" data-app="docs-app"><span class="sa-icon">📚</span> QuantumMed Docs</div>
+      <div class="start-app" data-app="medlab"><span class="sa-icon">🗂</span> MedLab — Medical Cases</div>
+      <div class="start-app" data-app="reports"><span class="sa-icon">📊</span> Discovery Reports</div>
+      <div class="start-app" data-app="medgemma-ai"><span class="sa-icon">🏥</span> MedGemma AI</div>
+      <div class="start-app" onclick="window.open('/qubilogic','_blank')"><span class="sa-icon">🧠</span> QubiLogic Memory</div>
+    </div>
+    <div class="start-footer">
+      <div class="start-user-info" id="start-user-info" style="display:none;margin-bottom:8px;padding:6px 0;border-bottom:1px solid rgba(0,212,255,.1)">
+        <span id="start-username" style="color:var(--accent);font-weight:bold;font-size:.85em"></span>
+        <span id="start-usergroup" style="color:var(--text-dim);font-size:.72em;margin-left:6px"></span>
+      </div>
+      <button id="logout-btn" class="btn-secondary" style="display:none;width:100%;margin-bottom:6px;font-size:.8em">🚪 Sign Out</button>
+      <small>Powered by QPlang • Stim • IBM Quantum <span class="real-quantum-badge">Very Soon</span></small>
+    </div>
+  </div>
+
+</div>
+
+<!-- ═══ Window Templates ═══ -->
+
+<!-- Terminal -->
+<template id="tpl-terminal">
+<div class="app-terminal">
+  <div class="term-output" id="term-output">
+    <div class="term-line cyan">QubitPage® Quantum OS v{{ os_version }}</div>
+    <div class="term-line dim">Type 'help' for available commands.</div>
+    <div class="term-line"></div>
+  </div>
+  <div class="term-input-row">
+    <span class="term-prompt">qubit@os:~$</span>
+    <input type="text" class="term-input" id="term-input" autofocus spellcheck="false" autocomplete="off">
+  </div>
+</div>
+</template>
+
+<!-- Circuit Lab -->
+<template id="tpl-circuit-lab">
+<div class="app-circuit-lab">
+  <div class="cl-toolbar">
+    <select class="cl-preset" id="cl-preset">
+      <option value="">— Select Circuit —</option>
+      <option value="bell">Bell State (2q)</option>
+      <option value="ghz">GHZ State (3q)</option>
+      <option value="superposition">Superposition (4q)</option>
+      <option value="grover">Grover Search (2q)</option>
+    </select>
+    <select class="cl-backend-select" id="cl-backend-select">
+      <option value="local_stim">Stim Simulator (Local/Free)</option>
+    </select>
+    <button class="btn-quantum" id="cl-run">▶ Run</button>
+    <button class="btn-secondary" id="cl-compile">Compile QPlang</button>
+    <button class="btn-secondary" id="cl-backends-btn">🌐 Backends</button>
+    <span class="cl-status" id="cl-status">Ready</span>
+  </div>
+  <div class="cl-main" id="cl-main-content">
+    <div class="cl-editor-wrap">
+      <div class="cl-label">QPlang Source</div>
+      <textarea class="cl-editor" id="cl-editor" spellcheck="false" placeholder="# Write QPlang code here
+qreg q[2]
+creg c[2]
+H q[0]
+CNOT q[0], q[1]
+measure q -> c"></textarea>
+    </div>
+    <div class="cl-results-wrap">
+      <div class="cl-label">Results</div>
+      <div class="cl-results" id="cl-results">
+        <div class="cl-placeholder">Run a circuit to see results here</div>
+      </div>
+      <canvas id="cl-chart" class="cl-chart hidden"></canvas>
+    </div>
+  </div>
+  <!-- Backends Panel (hidden by default) -->
+  <div class="cl-backends-panel hidden" id="cl-backends-panel">
+    <div class="cl-backends-header">
+      <h3 style="margin:0;color:var(--accent)">🌐 Quantum Backends</h3>
+      <div style="display:flex;gap:6px">
+        <button class="btn-secondary" id="cl-test-all" style="font-size:.75em">🔍 Test All</button>
+        <button class="btn-secondary" id="cl-report" style="font-size:.75em">📊 Report</button>
+        <button class="btn-secondary" id="cl-backends-close" style="font-size:.75em">✕ Close</button>
+      </div>
+    </div>
+    <div class="cl-backends-filters" style="display:flex;gap:6px;margin:8px 0">
+      <button class="cl-filter-btn active" data-filter="all">All</button>
+      <button class="cl-filter-btn" data-filter="simulator">Simulators</button>
+      <button class="cl-filter-btn" data-filter="qpu">QPU Hardware</button>
+      <button class="cl-filter-btn" data-filter="free">Free</button>
+      <button class="cl-filter-btn" data-filter="amazon_braket">Amazon Braket</button>
+      <button class="cl-filter-btn" data-filter="ibm_quantum">IBM Quantum</button>
+    </div>
+    <div class="cl-backends-list" id="cl-backends-list">Loading backends...</div>
+    <div class="cl-backends-report hidden" id="cl-backends-report"></div>
+  </div>
+</div>
+</template>
+
+<!-- Quantum Game -->
+<template id="tpl-quantum-game">
+<div class="app-quantum-game">
+  <div class="qg-header">
+    <h2>⚛ Quantum Oracle</h2>
+    <div class="qg-score">Score: <span id="qg-score">0</span> | Level: <span id="qg-level">1</span> | 🔥 Streak: <span id="qg-streak">0</span></div>
+  </div>
+  <div class="qg-tabs" style="display:flex;gap:4px;margin-bottom:8px;border-bottom:1px solid rgba(0,212,255,.15);padding-bottom:6px">
+    <button class="qg-tab active" data-tab="play" style="padding:5px 14px;border:1px solid var(--accent);border-radius:6px 6px 0 0;background:var(--accent);color:#000;font-weight:bold;cursor:pointer;font-size:.78em">🎮 Play</button>
+    <button class="qg-tab" data-tab="learn" style="padding:5px 14px;border:1px solid rgba(0,212,255,.2);border-radius:6px 6px 0 0;background:transparent;color:var(--text-dim);cursor:pointer;font-size:.78em">📖 Learn Gates</button>
+    <button class="qg-tab" data-tab="stats" style="padding:5px 14px;border:1px solid rgba(0,212,255,.2);border-radius:6px 6px 0 0;background:transparent;color:var(--text-dim);cursor:pointer;font-size:.78em">📊 Stats</button>
+  </div>
+  <div id="qg-panel-play" class="qg-tab-panel">
+    <div class="qg-arena" id="qg-arena">
+      <div class="qg-intro">
+        <p>The Oracle prepares a quantum state. Your mission: <strong>predict the measurement outcome</strong> using hints about the quantum state.</p>
+        <p style="margin-top:8px;color:var(--text-dim);font-size:.85em">Each level introduces harder quantum circuits. Learn the gates in the "Learn Gates" tab!</p>
+        <button class="btn-quantum btn-lg" id="qg-start">Start Challenge</button>
+      </div>
+    </div>
+    <div class="qg-controls hidden" id="qg-controls">
+      <div class="qg-hint" id="qg-hint"></div>
+      <div class="qg-options" id="qg-options"></div>
+      <div class="qg-feedback hidden" id="qg-feedback"></div>
+    </div>
+  </div>
+  <div id="qg-panel-learn" class="qg-tab-panel hidden" style="padding:10px;overflow-y:auto;max-height:400px">
+    <h3 style="color:var(--accent);margin-bottom:12px">Quantum Gates Reference</h3>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px">
+      <div class="qg-gate-card"><div class="qg-gate-name">I (Identity)</div><div class="qg-gate-desc">Does nothing. |0⟩→|0⟩, |1⟩→|1⟩</div><div class="qg-gate-matrix">[[1,0],[0,1]]</div></div>
+      <div class="qg-gate-card"><div class="qg-gate-name">X (NOT / Pauli-X)</div><div class="qg-gate-desc">Bit flip. |0⟩→|1⟩, |1⟩→|0⟩</div><div class="qg-gate-matrix">[[0,1],[1,0]]</div></div>
+      <div class="qg-gate-card"><div class="qg-gate-name">H (Hadamard)</div><div class="qg-gate-desc">Creates superposition. |0⟩→|+⟩, |1⟩→|−⟩</div><div class="qg-gate-matrix">1/√2·[[1,1],[1,-1]]</div></div>
+      <div class="qg-gate-card"><div class="qg-gate-name">Z (Pauli-Z)</div><div class="qg-gate-desc">Phase flip. |0⟩→|0⟩, |1⟩→-|1⟩</div><div class="qg-gate-matrix">[[1,0],[0,-1]]</div></div>
+      <div class="qg-gate-card"><div class="qg-gate-name">S (Phase)</div><div class="qg-gate-desc">90° phase rotation. |1⟩→i|1⟩</div><div class="qg-gate-matrix">[[1,0],[0,i]]</div></div>
+      <div class="qg-gate-card"><div class="qg-gate-name">S† (S-dagger)</div><div class="qg-gate-desc">-90° phase rotation. |1⟩→-i|1⟩</div><div class="qg-gate-matrix">[[1,0],[0,-i]]</div></div>
+      <div class="qg-gate-card"><div class="qg-gate-name">CNOT (CX)</div><div class="qg-gate-desc">Controlled-NOT. Flips target if control is |1⟩. Creates entanglement.</div><div class="qg-gate-matrix">Control→Target</div></div>
+    </div>
+    <h3 style="color:var(--accent);margin:16px 0 12px">Quantum States to Know</h3>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px">
+      <div class="qg-gate-card"><div class="qg-gate-name">|+⟩ State</div><div class="qg-gate-desc">Equal superposition: (|0⟩+|1⟩)/√2. Created by H|0⟩. 50/50 measurement.</div></div>
+      <div class="qg-gate-card"><div class="qg-gate-name">|−⟩ State</div><div class="qg-gate-desc">Phase superposition: (|0⟩-|1⟩)/√2. Created by HX|0⟩. Still 50/50 but different phase.</div></div>
+      <div class="qg-gate-card"><div class="qg-gate-name">Bell State |Φ+⟩</div><div class="qg-gate-desc">Maximally entangled: (|00⟩+|11⟩)/√2. Qubits always agree.</div></div>
+      <div class="qg-gate-card"><div class="qg-gate-name">Bell State |Ψ+⟩</div><div class="qg-gate-desc">Anti-correlated: (|01⟩+|10⟩)/√2. Qubits always disagree.</div></div>
+      <div class="qg-gate-card"><div class="qg-gate-name">GHZ State</div><div class="qg-gate-desc">3-qubit entanglement: (|000⟩+|111⟩)/√2. All or nothing.</div></div>
+      <div class="qg-gate-card"><div class="qg-gate-name">W State</div><div class="qg-gate-desc">Democratic entanglement: exactly one qubit is |1⟩, shared across all.</div></div>
+    </div>
+    <h3 style="color:var(--accent);margin:16px 0 12px">Strategy Tips</h3>
+    <ul style="color:var(--text-dim);line-height:1.8;padding-left:1.5rem;font-size:.85em">
+      <li><strong>Level 1:</strong> Just one qubit. X means |1⟩, H means 50/50, no gate means |0⟩.</li>
+      <li><strong>Level 2:</strong> H+CNOT = Bell state (entangled). Look for correlations.</li>
+      <li><strong>Level 3:</strong> GHZ = all same, W = exactly one |1⟩. Multiple H = all outcomes equal.</li>
+      <li><strong>Level 4-5:</strong> Trace through gates one at a time. CNOT flips target if control=1.</li>
+    </ul>
+  </div>
+  <div id="qg-panel-stats" class="qg-tab-panel hidden" style="padding:10px">
+    <h3 style="color:var(--accent);margin-bottom:12px">📊 Your Performance</h3>
+    <div id="qg-stats-content" style="color:var(--text-dim)">
+      <p>Play some rounds to see your stats!</p>
+    </div>
+  </div>
+</div>
+</template>
+
+<!-- Crypto Tools -->
+<template id="tpl-crypto-tools">
+<div class="app-crypto-tools">
+  <div class="ct-tabs">
+    <button class="ct-tab active" data-tab="encrypt">🔒 Encrypt</button>
+    <button class="ct-tab" data-tab="decrypt">🔓 Decrypt</button>
+    <button class="ct-tab" data-tab="hash">🔑 Hash</button>
+    <button class="ct-tab" data-tab="qrng">#️⃣ QRNG</button>
+    <button class="ct-tab" data-tab="bb84">📡 BB84</button>
+  </div>
+    <div class="ct-backend-bar" style="display:flex;align-items:center;gap:8px;padding:6px 10px;background:rgba(0,212,255,.06);border:1px solid rgba(0,212,255,.15);border-radius:8px;margin-bottom:8px;font-size:.78em">
+    <span style="color:var(--accent);font-weight:600">⚛ Backend:</span>
+    <select id="ct-backend-select" style="flex:1;background:var(--surface2);color:var(--text);border:1px solid rgba(0,212,255,.2);border-radius:4px;padding:3px 6px;font-size:inherit;font-family:inherit">
+      <option value="simulator">Loading backends...</option>
+    </select>
+  </div>
+<div class="ct-panel" id="ct-panel-encrypt">
+    <h3>Quantum Encryption (OTP)</h3>
+    <textarea class="ct-input" id="ct-enc-input" placeholder="Enter text to encrypt..."></textarea>
+    <button class="btn-quantum" id="ct-enc-btn">Encrypt</button>
+    <div class="ct-result" id="ct-enc-result"></div>
+  </div>
+  <div class="ct-panel hidden" id="ct-panel-decrypt">
+    <h3>Quantum Decryption</h3>
+    <input class="ct-field" id="ct-dec-cipher" placeholder="Ciphertext (hex)">
+    <input class="ct-field" id="ct-dec-key" placeholder="Key (hex)">
+    <button class="btn-quantum" id="ct-dec-btn">Decrypt</button>
+    <div class="ct-result" id="ct-dec-result"></div>
+  </div>
+  <div class="ct-panel hidden" id="ct-panel-hash">
+    <h3>Post-Quantum Hash (SHA3-256)</h3>
+    <textarea class="ct-input" id="ct-hash-input" placeholder="Enter text to hash..."></textarea>
+    <button class="btn-quantum" id="ct-hash-btn">Hash</button>
+    <div class="ct-result" id="ct-hash-result"></div>
+  </div>
+  <div class="ct-panel hidden" id="ct-panel-qrng">
+    <h3>Quantum Random Number Generator</h3>
+    <div class="ct-row">
+      <label>Bits:</label>
+      <input type="number" class="ct-field-sm" id="ct-qrng-bits" value="256" min="8" max="4096">
+      <button class="btn-quantum" id="ct-qrng-btn">Generate</button>
+    </div>
+    <div class="ct-result" id="ct-qrng-result"></div>
+  </div>
+  <div class="ct-panel hidden" id="ct-panel-bb84">
+    <h3>BB84 Quantum Key Distribution</h3>
+    <div class="ct-row">
+      <label>Key length:</label>
+      <input type="number" class="ct-field-sm" id="ct-bb84-len" value="16" min="4" max="64">
+      <button class="btn-quantum" id="ct-bb84-btn">Run Protocol</button>
+    </div>
+    <div class="ct-result" id="ct-bb84-result"></div>
+  </div>
+
+        <!-- Crack Panel -->
+        <div id="ct-panel-crack" class="ct-panel hidden">
+          <div class="ct-group">
+            <label class="ct-label">Enter text to crack (1-4 chars)</label>
+            <input id="ct-crack-input" type="text" class="ct-input" maxlength="4" placeholder="e.g. AB">
+            <button id="ct-crack-btn" class="ct-btn">⚡ Quantum Crack</button>
+          </div>
+          <div id="ct-crack-result" class="ct-result"></div>
+          <hr style="border-color:var(--border);margin:1rem 0">
+          <div class="ct-group">
+            <label class="ct-label">Time-to-Crack Calculator</label>
+            <select id="ct-calc-algo" class="ct-input" style="padding:.5rem">
+              <option value="sha256">SHA-256</option>
+              <option value="sha3_256">SHA3-256</option>
+              <option value="aes128">AES-128</option>
+              <option value="aes256">AES-256</option>
+              <option value="rsa2048">RSA-2048</option>
+              <option value="rsa4096">RSA-4096</option>
+            </select>
+            <button id="ct-calc-btn" class="ct-btn" style="margin-top:.5rem">Calculate</button>
+          </div>
+          <div id="ct-calc-result" class="ct-result"></div>
+        </div>
+
+</div>
+</template>
+
+<!-- ARIA AI -->
+<template id="tpl-aria">
+<div class="app-aria">
+  <div class="aria-messages" id="aria-messages">
+    <div class="aria-msg bot">
+      <div class="aria-avatar">⚛</div>
+      <div class="aria-bubble">
+        <strong>ARIA</strong> — Artificial Research & Intelligence Agent<br>
+        Hello! I'm your quantum AI assistant. Ask me anything about quantum computing, QPlang programming, or how to use the OS. I'm powered by Groq & Gemini for lightning-fast responses.
+      </div>
+    </div>
+  </div>
+  <div class="aria-input-row">
+    <input type="text" class="aria-input" id="aria-input" placeholder="Ask ARIA anything..." autocomplete="off">
+    <button class="btn-quantum" id="aria-send">Send</button>
+  </div>
+</div>
+</template>
+
+<!-- Settings -->
+<template id="tpl-settings">
+<div class="app-settings">
+  <h2>⚙ System Settings</h2>
+
+  <!-- Settings Tabs -->
+  <div class="settings-tabs" style="display:flex;gap:4px;margin-bottom:12px;border-bottom:1px solid rgba(0,212,255,.15);padding-bottom:8px">
+    <button class="settings-tab active" data-stab="system" style="padding:6px 14px;border:1px solid var(--accent);border-radius:6px 6px 0 0;background:var(--accent);color:#000;font-weight:bold;cursor:pointer;font-size:.78em">🖥 System</button>
+    <button class="settings-tab" data-stab="apikeys" style="padding:6px 14px;border:1px solid rgba(0,212,255,.2);border-radius:6px 6px 0 0;background:transparent;color:var(--text-dim);cursor:pointer;font-size:.78em">🔑 API Keys</button>
+    <button class="settings-tab" data-stab="profile" style="padding:6px 14px;border:1px solid rgba(0,212,255,.2);border-radius:6px 6px 0 0;background:transparent;color:var(--text-dim);cursor:pointer;font-size:.78em">👤 Profile</button>
+    <button class="settings-tab hidden" data-stab="admin" id="admin-tab-btn" style="padding:6px 14px;border:1px solid rgba(255,100,100,.3);border-radius:6px 6px 0 0;background:transparent;color:#ff6464;cursor:pointer;font-size:.78em">👑 Admin</button>
+  </div>
+
+  <!-- System Tab -->
+  <div class="settings-panel" id="stab-system">
+    <div class="settings-section">
+      <h3>System Information</h3>
+      <div class="settings-info" id="settings-info">Loading...</div>
+    </div>
+    <div class="settings-section">
+      <h3>Theme</h3>
+      <div class="settings-themes">
+        <button class="theme-btn active" data-theme="quantum-dark">Quantum Dark</button>
+        <button class="theme-btn" data-theme="quantum-blue">Deep Blue</button>
+        <button class="theme-btn" data-theme="quantum-purple">Nebula Purple</button>
+      </div>
+    </div>
+    <div class="settings-section">
+      <h3>Quantum Backends</h3>
+      <p style="font-size:.72em;color:var(--text-dim);margin:0 0 8px">Open Circuit Lab → Backends to browse all available quantum computers.</p>
+      <div class="settings-backends" id="settings-backends">Loading...</div>
+    </div>
+  </div>
+
+  <!-- API Keys Tab -->
+  <div class="settings-panel hidden" id="stab-apikeys">
+    <div class="settings-section">
+      <h3>🔑 Your API Keys</h3>
+      <p style="font-size:.78em;color:var(--text-dim);margin:0 0 12px">
+        Add your own API keys to get unlimited usage. Without your keys, you get <strong>10 requests/day</strong> using the platform keys.
+      </p>
+
+      <!-- Gemini Key -->
+      <div class="api-key-card" style="border:1px solid rgba(0,212,255,.15);border-radius:8px;padding:12px;margin-bottom:10px;background:rgba(0,212,255,.03)">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+          <strong style="color:var(--accent);font-size:.85em">🧠 Google Gemini</strong>
+          <span class="key-status" id="gemini-key-status" style="font-size:.72em;padding:2px 8px;border-radius:10px;background:rgba(255,100,100,.15);color:#ff6464">Not Set</span>
+        </div>
+        <div style="display:flex;gap:6px">
+          <input type="password" id="gemini-key-input" placeholder="AIzaSy..." style="flex:1;padding:6px;background:var(--surface);color:var(--text);border:1px solid rgba(0,212,255,.2);border-radius:6px;font-size:.8em;font-family:monospace">
+          <button class="btn-quantum" id="save-gemini-key" style="white-space:nowrap;font-size:.78em">Save</button>
+          <button class="btn-secondary" id="test-gemini-key" style="white-space:nowrap;font-size:.78em">Test</button>
+        </div>
+        <div class="key-masked" id="gemini-key-masked" style="font-size:.72em;color:var(--text-dim);margin-top:4px;font-family:monospace"></div>
+        <div style="font-size:.68em;color:var(--text-dim);margin-top:4px">
+          Get key: <a href="https://aistudio.google.com/apikey" target="_blank" style="color:var(--accent)">Google AI Studio</a>
+        </div>
+      </div>
+
+      <!-- Groq Key -->
+      <div class="api-key-card" style="border:1px solid rgba(0,212,255,.15);border-radius:8px;padding:12px;margin-bottom:10px;background:rgba(0,212,255,.03)">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+          <strong style="color:var(--accent);font-size:.85em">⚡ Groq</strong>
+          <span class="key-status" id="groq-key-status" style="font-size:.72em;padding:2px 8px;border-radius:10px;background:rgba(255,100,100,.15);color:#ff6464">Not Set</span>
+        </div>
+        <div style="display:flex;gap:6px">
+          <input type="password" id="groq-key-input" placeholder="gsk_..." style="flex:1;padding:6px;background:var(--surface);color:var(--text);border:1px solid rgba(0,212,255,.2);border-radius:6px;font-size:.8em;font-family:monospace">
+          <button class="btn-quantum" id="save-groq-key" style="white-space:nowrap;font-size:.78em">Save</button>
+          <button class="btn-secondary" id="test-groq-key" style="white-space:nowrap;font-size:.78em">Test</button>
+        </div>
+        <div class="key-masked" id="groq-key-masked" style="font-size:.72em;color:var(--text-dim);margin-top:4px;font-family:monospace"></div>
+        <div style="font-size:.68em;color:var(--text-dim);margin-top:4px">
+          Get key: <a href="https://console.groq.com/keys" target="_blank" style="color:var(--accent)">Groq Console</a>
+        </div>
+      </div>
+
+      <!-- IBM Token -->
+      <div class="api-key-card" style="border:1px solid rgba(0,212,255,.15);border-radius:8px;padding:12px;margin-bottom:10px;background:rgba(0,212,255,.03)">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+          <strong style="color:var(--accent);font-size:.85em">💠 IBM Quantum</strong>
+          <span class="key-status" id="ibm-key-status" style="font-size:.72em;padding:2px 8px;border-radius:10px;background:rgba(255,100,100,.15);color:#ff6464">Not Set</span>
+        </div>
+        <div style="display:flex;gap:6px">
+          <input type="password" id="ibm-key-input" placeholder="IBM Quantum token..." style="flex:1;padding:6px;background:var(--surface);color:var(--text);border:1px solid rgba(0,212,255,.2);border-radius:6px;font-size:.8em;font-family:monospace">
+          <button class="btn-quantum" id="save-ibm-key" style="white-space:nowrap;font-size:.78em">Save</button>
+          <button class="btn-secondary" id="test-ibm-key" style="white-space:nowrap;font-size:.78em">Test</button>
+        </div>
+        <div class="key-masked" id="ibm-key-masked" style="font-size:.72em;color:var(--text-dim);margin-top:4px;font-family:monospace"></div>
+      </div>
+
+      <!-- AWS Access Key -->
+      <div class="api-key-card" style="border:1px solid rgba(255,153,0,.15);border-radius:8px;padding:12px;margin-bottom:10px;background:rgba(255,153,0,.03)">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+          <strong style="color:#ff9900;font-size:.85em">☁ Amazon Braket (AWS Access Key)</strong>
+          <span class="key-status" id="aws-access-key-status" style="font-size:.72em;padding:2px 8px;border-radius:10px;background:rgba(255,100,100,.15);color:#ff6464">Not Set</span>
+        </div>
+        <div style="display:flex;gap:6px">
+          <input type="password" id="aws-access-key-input" placeholder="AKIA..." style="flex:1;padding:6px;background:var(--surface);color:var(--text);border:1px solid rgba(255,153,0,.2);border-radius:6px;font-size:.8em;font-family:monospace">
+          <button class="btn-quantum" id="save-aws-access-key" style="white-space:nowrap;font-size:.78em;background:#ff9900;border-color:#ff9900">Save</button>
+        </div>
+        <div class="key-masked" id="aws-access-key-masked" style="font-size:.72em;color:var(--text-dim);margin-top:4px;font-family:monospace"></div>
+        <div style="font-size:.68em;color:var(--text-dim);margin-top:4px">
+          Get key: <a href="https://console.aws.amazon.com/iam/home#/security_credentials" target="_blank" style="color:#ff9900">AWS IAM Console</a> — requires AmazonBraketFullAccess policy
+        </div>
+      </div>
+
+      <!-- AWS Secret Key -->
+      <div class="api-key-card" style="border:1px solid rgba(255,153,0,.15);border-radius:8px;padding:12px;margin-bottom:10px;background:rgba(255,153,0,.03)">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+          <strong style="color:#ff9900;font-size:.85em">🔐 Amazon Braket (AWS Secret Key)</strong>
+          <span class="key-status" id="aws-secret-key-status" style="font-size:.72em;padding:2px 8px;border-radius:10px;background:rgba(255,100,100,.15);color:#ff6464">Not Set</span>
+        </div>
+        <div style="display:flex;gap:6px">
+          <input type="password" id="aws-secret-key-input" placeholder="AWS Secret Access Key..." style="flex:1;padding:6px;background:var(--surface);color:var(--text);border:1px solid rgba(255,153,0,.2);border-radius:6px;font-size:.8em;font-family:monospace">
+          <button class="btn-quantum" id="save-aws-secret-key" style="white-space:nowrap;font-size:.78em;background:#ff9900;border-color:#ff9900">Save</button>
+        </div>
+        <div class="key-masked" id="aws-secret-key-masked" style="font-size:.72em;color:var(--text-dim);margin-top:4px;font-family:monospace"></div>
+      </div>
+
+      <!-- Usage Info -->
+      <div id="usage-info" style="border:1px solid rgba(0,255,136,.15);border-radius:8px;padding:12px;background:rgba(0,255,136,.03)">
+        <strong style="color:#00ff88;font-size:.85em">📊 Usage Today</strong>
+        <div style="margin-top:6px;display:flex;gap:16px;font-size:.78em">
+          <span>Requests: <strong id="usage-count">0</strong> / <strong id="usage-limit">10</strong></span>
+          <span>Total: <strong id="usage-total">0</strong></span>
+        </div>
+        <div class="usage-bar" style="margin-top:6px;height:4px;background:rgba(255,255,255,.1);border-radius:2px;overflow:hidden">
+          <div id="usage-bar-fill" style="height:100%;background:#00ff88;width:0%;transition:width .3s"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Profile Tab -->
+  <div class="settings-panel hidden" id="stab-profile">
+    <div class="settings-section">
+      <h3>👤 Your Profile</h3>
+      <div style="display:grid;gap:8px;max-width:400px">
+        <div>
+          <label style="font-size:.78em;color:var(--text-dim)">Username</label>
+          <div id="profile-username" style="color:var(--text);font-weight:bold;font-size:.9em"></div>
+        </div>
+        <div>
+          <label style="font-size:.78em;color:var(--text-dim)">Email</label>
+          <div id="profile-email" style="color:var(--text);font-size:.9em"></div>
+        </div>
+        <div>
+          <label style="font-size:.78em;color:var(--text-dim)">Group</label>
+          <div id="profile-group" style="font-size:.9em"></div>
+        </div>
+        <div>
+          <label style="font-size:.78em;color:var(--text-dim)">Allowed Apps</label>
+          <div id="profile-apps" style="font-size:.78em;color:var(--text-dim)"></div>
+        </div>
+        <div>
+          <label style="font-size:.78em;color:var(--text-dim)">Member Since</label>
+          <div id="profile-created" style="font-size:.85em;color:var(--text-dim)"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Admin Tab (hidden for non-admins) -->
+  <div class="settings-panel hidden" id="stab-admin">
+    <div class="settings-section">
+      <h3>👑 User Management</h3>
+      <p style="font-size:.78em;color:var(--text-dim);margin:0 0 12px">
+        Manage user accounts, permissions, and app access.
+      </p>
+      <button class="btn-quantum" id="admin-refresh-users" style="margin-bottom:12px;font-size:.8em">🔄 Refresh Users</button>
+      <div id="admin-users-list" style="display:grid;gap:8px"></div>
+    </div>
+
+    <div class="settings-section" style="margin-top:20px;border-top:1px solid rgba(0,212,255,.1);padding-top:16px">
+      <h3>🌐 Quantum Backend Access Control</h3>
+      <p style="font-size:.78em;color:var(--text-dim);margin:0 0 12px">
+        Control which quantum backends normal users can access. Admins always have full access.
+      </p>
+      <div style="display:flex;gap:6px;margin-bottom:12px">
+        <button class="btn-quantum" id="admin-enable-all-backends" style="font-size:.78em">✅ Enable All</button>
+        <button class="btn-secondary" id="admin-disable-all-backends" style="font-size:.78em">⛔ Disable All</button>
+        <button class="btn-secondary" id="admin-refresh-backends" style="font-size:.78em">🔄 Refresh</button>
+      </div>
+      <div id="admin-backends-list" style="display:grid;gap:6px"></div>
+    </div>
+  </div>
+
+</div>
+</template>
+
+<!-- Docs (embedded) -->
+<template id="tpl-docs">
+<div class="app-docs">
+  <div class="docs-sidebar">
+    <h3>Documentation</h3>
+    <div class="docs-nav">
+      <a class="docs-link active" data-doc="overview">Overview</a>
+      <a class="docs-link" data-doc="qplang">QPlang Language</a>
+      <a class="docs-link" data-doc="qbp">QBP Markup</a>
+      <a class="docs-link" data-doc="qec">Error Correction</a>
+      <a class="docs-link" data-doc="api">API Reference</a>
+      <a class="docs-link" data-doc="architecture">Architecture</a>
+      <a class="docs-link" data-doc="game">Quantum Game</a>
+      <a class="docs-link" data-doc="crypto">Crypto Tools</a>
+    </div>
+  </div>
+  <div class="docs-content" id="docs-content">
+    <!-- Docs load dynamically -->
+  </div>
+</div>
+</template>
+
+<!-- Notepad -->
+<template id="tpl-notepad">
+<div class="app-notepad" style="height:100%;display:flex;flex-direction:column;gap:8px;padding:10px;background:var(--surface)">
+  <div style="display:flex;align-items:center;justify-content:space-between;gap:8px">
+    <div style="font-size:.8em;color:var(--text-dim)">Quick Notes (autosaves locally)</div>
+    <button id="notepad-clear" class="btn-secondary" style="font-size:.75em;padding:4px 10px">Clear</button>
+  </div>
+  <textarea id="notepad-text" spellcheck="true" placeholder="Write your notes here..." style="flex:1;width:100%;resize:none;background:var(--surface2);color:var(--text);border:1px solid var(--border);border-radius:8px;padding:10px;font-family:var(--font-mono);font-size:.82em;line-height:1.4;box-sizing:border-box"></textarea>
+  <div id="notepad-status" style="font-size:.72em;color:var(--text-dim)">Ready</div>
+</div>
+</template>
+
+<!-- QuantumDrug Explorer -->
+<template id="tpl-quantum-drug">
+<div class="app-quantum-drug">
+  <div class="qd-header">
+    <h2>🧬 QuantumDrug Explorer</h2>
+    <div class="qd-subtitle">Quantum-Enhanced Medical Diagnostics & Drug Discovery Platform</div>
+  </div>
+
+  <!-- Mode Tabs -->
+  <div class="qd-mode-tabs" style="display:flex;gap:4px;margin-bottom:12px;border-bottom:1px solid rgba(0,212,255,.15);padding-bottom:8px">
+    <button class="qd-mode-tab active" data-mode="pipeline" style="padding:6px 14px;border:1px solid var(--accent);border-radius:6px 6px 0 0;background:var(--accent);color:#000;font-weight:bold;cursor:pointer;font-size:.78em">🔬 Drug Pipeline</button>
+    <button class="qd-mode-tab" data-mode="imaging" style="padding:6px 14px;border:1px solid rgba(0,212,255,.2);border-radius:6px 6px 0 0;background:transparent;color:var(--text-dim);cursor:pointer;font-size:.78em">📷 Medical Imaging</button>
+    <button class="qd-mode-tab" data-mode="research" style="padding:6px 14px;border:1px solid rgba(0,212,255,.2);border-radius:6px 6px 0 0;background:transparent;color:var(--text-dim);cursor:pointer;font-size:.78em">📚 Literature Search</button>
+    <button class="qd-mode-tab" data-mode="diagnostics" style="padding:6px 14px;border:1px solid rgba(0,212,255,.2);border-radius:6px 6px 0 0;background:transparent;color:var(--text-dim);cursor:pointer;font-size:.78em">🩺 Diagnostics</button>
+  </div>
+
+    <div class="qd-backend-bar" style="display:flex;align-items:center;gap:8px;padding:6px 10px;background:rgba(0,212,255,.06);border:1px solid rgba(0,212,255,.15);border-radius:8px;margin-bottom:8px;font-size:.78em">
+    <span style="color:var(--accent);font-weight:600">⚛ Backend:</span>
+    <select id="qd-backend-select" style="flex:1;background:var(--surface2);color:var(--text);border:1px solid rgba(0,212,255,.2);border-radius:4px;padding:3px 6px;font-size:inherit;font-family:inherit">
+      <option value="simulator">Loading backends...</option>
+    </select>
+  </div>
+
+  <!-- ═══ MODE: Drug Pipeline (original 4-step workflow) ═══ -->
+  <div class="qd-mode-panel" id="qd-mode-pipeline">
+  <div class="qd-steps">
+    <div class="qd-step active" data-step="1"><span class="qd-step-num">1</span> Disease</div>
+    <div class="qd-step-arrow">→</div>
+    <div class="qd-step" data-step="2"><span class="qd-step-num">2</span> Screening</div>
+    <div class="qd-step-arrow">→</div>
+    <div class="qd-step" data-step="3"><span class="qd-step-num">3</span> Quantum</div>
+    <div class="qd-step-arrow">→</div>
+    <div class="qd-step" data-step="4"><span class="qd-step-num">4</span> Report</div>
+  </div>
+
+  <!-- Step 1: Disease Selection -->
+  <div class="qd-panel" id="qd-step-1">
+    <h3>Select Disease Target</h3>
+    <div class="qd-disease-grid" id="qd-diseases">Loading diseases...</div>
+  </div>
+
+  <!-- Step 2: Drug Screening -->
+  <div class="qd-panel hidden" id="qd-step-2">
+    <h3>Drug Candidate Screening</h3>
+    <div class="qd-selected-disease" id="qd-selected-disease"></div>
+    <div class="qd-molecule-list" id="qd-molecules">Loading molecules...</div>
+    <div class="qd-screening-result hidden" id="qd-screening-result"></div>
+  </div>
+
+  <!-- Step 3: Quantum Analysis -->
+  <div class="qd-panel hidden" id="qd-step-3">
+    <h3>Quantum Analysis</h3>
+    <div class="qd-quantum-controls">
+      <button class="btn-quantum qd-run-btn" id="qd-run-qec">⚛ Run QEC Simulation</button>
+      <button class="btn-secondary qd-run-btn" id="qd-run-shadow">🔬 Classical Shadows</button>
+      <button class="btn-secondary qd-run-btn" id="qd-run-full">📊 Full Analysis</button>
+    </div>
+    <div class="qd-quantum-result" id="qd-quantum-result">
+      <div class="qd-placeholder">Select an analysis type to begin quantum simulation</div>
+    </div>
+  </div>
+
+  <!-- Step 4: Report & AI Analysis -->
+  <div class="qd-panel hidden" id="qd-step-4">
+    <h3>Research Report & AI Analysis</h3>
+    <div class="qd-report-actions" style="display:flex;gap:8px;flex-wrap:wrap">
+      <button class="btn-quantum" id="qd-generate-report">📋 Generate Full Report</button>
+    </div>
+    <div class="qd-report-content" id="qd-report-content">
+      <div class="qd-placeholder">Click above to generate a comprehensive research report</div>
+    </div>
+
+    <div class="qd-ai-section" style="margin-top:16px;border-top:1px solid rgba(0,255,136,0.15);padding-top:16px">
+      <h3 style="color:var(--accent);font-size:0.95em;margin:0 0 8px">🤖 AI Medical Text Analysis</h3>
+      <div style="font-size:0.72em;color:var(--text-dim);margin-bottom:8px">Paste medical research text, clinical trial data, or disease reports for AI analysis. Powered by Gemini 2.0 Flash (MedGemma-ready).</div>
+      <select id="qd-ai-type" style="width:100%;padding:6px;margin-bottom:6px;background:var(--surface);color:var(--text);border:1px solid rgba(0,255,136,0.2);border-radius:6px;font-size:0.8em">
+        <option value="general">General Medical Analysis</option>
+        <option value="drug_discovery">Drug Discovery Focus</option>
+        <option value="clinical_trial">Clinical Trial Analysis</option>
+      </select>
+      <textarea id="qd-ai-text" rows="5" placeholder="Paste medical text, research paper abstract, clinical trial results, disease case report..." style="width:100%;padding:8px;background:var(--surface);color:var(--text);border:1px solid rgba(0,255,136,0.2);border-radius:6px;font-size:0.8em;resize:vertical;font-family:inherit;box-sizing:border-box"></textarea>
+      <button class="btn-quantum" id="qd-ai-analyze" style="margin-top:6px;width:100%">🧠 Analyze with AI</button>
+      <div id="qd-ai-result" style="margin-top:8px"></div>
+    </div>
+  </div>
+
+  <div class="qd-nav">
+    <button class="btn-secondary qd-prev hidden" id="qd-prev">← Back</button>
+    <button class="btn-quantum qd-next hidden" id="qd-next">Next →</button>
+  </div>
+  </div><!-- /qd-mode-pipeline -->
+
+  <!-- ═══ MODE: Medical Imaging ═══ -->
+  <div class="qd-mode-panel hidden" id="qd-mode-imaging">
+    <h3 style="color:var(--accent);margin:0 0 12px">📷 Medical Image Analysis</h3>
+    <p style="font-size:.78em;color:var(--text-dim);margin:0 0 12px">Upload X-rays, CT scans, pathology slides, or clinical photos. AI analyzes the image, identifies conditions, and links to drug research.</p>
+
+    <div class="qd-img-upload" id="qd-img-dropzone" style="border:2px dashed rgba(0,212,255,.3);border-radius:10px;padding:30px;text-align:center;cursor:pointer;transition:all .3s;background:rgba(0,212,255,.03)">
+      <div style="font-size:2em;margin-bottom:8px">📤</div>
+      <div style="color:var(--text);font-size:.85em;font-weight:bold">Drop medical image here or click to upload</div>
+      <div style="color:var(--text-dim);font-size:.72em;margin-top:4px">Supports: JPEG, PNG, WebP (max 20 MB)</div>
+      <input type="file" id="qd-img-file" accept="image/jpeg,image/png,image/webp,image/gif" style="display:none">
+    </div>
+
+    <div id="qd-img-preview" style="display:none;margin-top:12px;text-align:center">
+      <img id="qd-img-preview-img" style="max-width:100%;max-height:300px;border-radius:8px;border:1px solid rgba(0,212,255,.2)">
+      <div style="margin-top:6px;font-size:.72em;color:var(--text-dim)" id="qd-img-info"></div>
+    </div>
+
+    <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap">
+      <select id="qd-img-type" style="flex:1;min-width:150px;padding:6px;background:var(--surface);color:var(--text);border:1px solid rgba(0,212,255,.2);border-radius:6px;font-size:.8em">
+        <option value="general_medical">🔍 Auto-detect (General)</option>
+        <option value="chest_xray">🫁 Chest X-ray</option>
+        <option value="ct_scan">🧠 CT Scan</option>
+        <option value="pathology">🔬 Pathology / Histology</option>
+        <option value="dermatology">🩹 Dermatology / Skin</option>
+      </select>
+      <button class="btn-quantum" id="qd-img-analyze" disabled style="white-space:nowrap">⚛ Analyze Image</button>
+    </div>
+
+    <div style="margin-top:8px">
+      <input type="text" id="qd-img-context" placeholder="Optional: clinical context (age, symptoms, history...)" style="width:100%;padding:6px;background:var(--surface);color:var(--text);border:1px solid rgba(0,212,255,.2);border-radius:6px;font-size:.8em;box-sizing:border-box">
+    </div>
+
+    <div id="qd-img-result" style="margin-top:12px"></div>
+  </div>
+
+  <!-- ═══ MODE: Literature Search ═══ -->
+  <div class="qd-mode-panel hidden" id="qd-mode-research">
+    <h3 style="color:var(--accent);margin:0 0 12px">📚 Medical Literature & Dataset Search</h3>
+    <p style="font-size:.78em;color:var(--text-dim);margin:0 0 12px">Search PubMed, ClinicalTrials.gov, OpenFDA, and PubChem for real-time medical data.</p>
+
+    <div class="qd-research-tabs" style="display:flex;gap:4px;margin-bottom:10px">
+      <button class="qd-rtab active" data-rtab="pubmed" style="padding:5px 12px;border:1px solid var(--accent);background:var(--accent);color:#000;border-radius:4px;cursor:pointer;font-size:.75em;font-weight:bold">PubMed</button>
+      <button class="qd-rtab" data-rtab="trials" style="padding:5px 12px;border:1px solid rgba(0,212,255,.2);background:transparent;color:var(--text-dim);border-radius:4px;cursor:pointer;font-size:.75em">ClinicalTrials</button>
+      <button class="qd-rtab" data-rtab="fda" style="padding:5px 12px;border:1px solid rgba(0,212,255,.2);background:transparent;color:var(--text-dim);border-radius:4px;cursor:pointer;font-size:.75em">OpenFDA</button>
+      <button class="qd-rtab" data-rtab="compound" style="padding:5px 12px;border:1px solid rgba(0,212,255,.2);background:transparent;color:var(--text-dim);border-radius:4px;cursor:pointer;font-size:.75em">PubChem</button>
+    </div>
+
+    <!-- PubMed search -->
+    <div class="qd-rpanel" id="qd-rpanel-pubmed">
+      <div style="display:flex;gap:6px">
+        <input type="text" id="qd-pubmed-query" placeholder="Search PubMed (e.g., 'EGFR inhibitor lung cancer')" style="flex:1;padding:6px;background:var(--surface);color:var(--text);border:1px solid rgba(0,212,255,.2);border-radius:6px;font-size:.8em">
+        <button class="btn-quantum" id="qd-pubmed-search" style="white-space:nowrap">🔍 Search</button>
+      </div>
+      <div id="qd-pubmed-results" style="margin-top:10px"></div>
+    </div>
+
+    <!-- ClinicalTrials search -->
+    <div class="qd-rpanel hidden" id="qd-rpanel-trials">
+      <div style="display:flex;gap:6px;flex-wrap:wrap">
+        <input type="text" id="qd-trials-query" placeholder="Condition (e.g., 'Non-small cell lung cancer')" style="flex:1;min-width:200px;padding:6px;background:var(--surface);color:var(--text);border:1px solid rgba(0,212,255,.2);border-radius:6px;font-size:.8em">
+        <select id="qd-trials-status" style="padding:6px;background:var(--surface);color:var(--text);border:1px solid rgba(0,212,255,.2);border-radius:6px;font-size:.8em">
+          <option value="RECRUITING">Recruiting</option>
+          <option value="NOT_YET_RECRUITING">Not Yet Recruiting</option>
+          <option value="ACTIVE_NOT_RECRUITING">Active, Not Recruiting</option>
+          <option value="COMPLETED">Completed</option>
+          <option value="ALL">All Statuses</option>
+        </select>
+        <button class="btn-quantum" id="qd-trials-search" style="white-space:nowrap">🔍 Search</button>
+      </div>
+      <div id="qd-trials-results" style="margin-top:10px"></div>
+    </div>
+
+    <!-- OpenFDA search -->
+    <div class="qd-rpanel hidden" id="qd-rpanel-fda">
+      <div style="display:flex;gap:6px">
+        <input type="text" id="qd-fda-query" placeholder="Drug name (e.g., 'Osimertinib')" style="flex:1;padding:6px;background:var(--surface);color:var(--text);border:1px solid rgba(0,212,255,.2);border-radius:6px;font-size:.8em">
+        <button class="btn-quantum" id="qd-fda-search" style="white-space:nowrap">🔍 Search</button>
+      </div>
+      <div id="qd-fda-results" style="margin-top:10px"></div>
+    </div>
+
+    <!-- PubChem Compound Lookup -->
+    <div class="qd-rpanel hidden" id="qd-rpanel-compound">
+      <div style="display:flex;gap:6px">
+        <input type="text" id="qd-compound-query" placeholder="Compound name (e.g., 'Aspirin', 'Ibuprofen')" style="flex:1;padding:6px;background:var(--surface);color:var(--text);border:1px solid rgba(0,212,255,.2);border-radius:6px;font-size:.8em">
+        <button class="btn-quantum" id="qd-compound-search" style="white-space:nowrap">🔍 Lookup</button>
+      </div>
+      <div id="qd-compound-results" style="margin-top:10px"></div>
+    </div>
+  </div>
+
+  <!-- ═══ MODE: Diagnostics ═══ -->
+  <div class="qd-mode-panel hidden" id="qd-mode-diagnostics">
+    <h3 style="color:var(--accent);margin:0 0 12px">🩺 Clinical Diagnostics Suite</h3>
+    <p style="font-size:.78em;color:var(--text-dim);margin:0 0 12px">Upload lab reports (blood, urine, hormonal), symptom checker, lab interpreter, drug interactions, genetic variants, WHO data.</p>
+
+    <div class="qd-research-tabs" style="display:flex;gap:4px;margin-bottom:10px;flex-wrap:wrap">
+      <button class="qd-dtab active" data-dtab="labreport" style="padding:5px 12px;border:1px solid var(--accent);background:var(--accent);color:#000;border-radius:4px;cursor:pointer;font-size:.75em;font-weight:bold">📄 Lab Report Upload</button>
+      <button class="qd-dtab" data-dtab="symptoms" style="padding:5px 12px;border:1px solid rgba(0,212,255,.2);background:transparent;color:var(--text-dim);border-radius:4px;cursor:pointer;font-size:.75em">🤒 Symptoms</button>
+      <button class="qd-dtab" data-dtab="lab" style="padding:5px 12px;border:1px solid rgba(0,212,255,.2);background:transparent;color:var(--text-dim);border-radius:4px;cursor:pointer;font-size:.75em">🧪 Lab Results</button>
+      <button class="qd-dtab" data-dtab="interactions" style="padding:5px 12px;border:1px solid rgba(0,212,255,.2);background:transparent;color:var(--text-dim);border-radius:4px;cursor:pointer;font-size:.75em">💊 Drug Interactions</button>
+      <button class="qd-dtab" data-dtab="genetics" style="padding:5px 12px;border:1px solid rgba(0,212,255,.2);background:transparent;color:var(--text-dim);border-radius:4px;cursor:pointer;font-size:.75em">🧬 Genetics</button>
+      <button class="qd-dtab" data-dtab="who" style="padding:5px 12px;border:1px solid rgba(0,212,255,.2);background:transparent;color:var(--text-dim);border-radius:4px;cursor:pointer;font-size:.75em">🌍 WHO Data</button>
+      <button class="qd-dtab" data-dtab="ontology" style="padding:5px 12px;border:1px solid rgba(0,212,255,.2);background:transparent;color:var(--text-dim);border-radius:4px;cursor:pointer;font-size:.75em">📖 Disease Ontology</button>
+    </div>
+
+    <!-- Lab Report Upload (OCR Analysis) -->
+    <div class="qd-dpanel" id="qd-dpanel-labreport">
+      <div style="font-size:.78em;color:var(--text-dim);margin-bottom:10px">
+        Upload blood analysis, urine analysis, hormonal panels, metabolic screens, or any medical lab report. Supports <strong>images (JPEG, PNG)</strong> and <strong>PDF</strong> files. AI will extract values using OCR, detect abnormalities, identify health problems, and provide diet/lifestyle recommendations.
+      </div>
+
+      <div style="border:2px dashed rgba(0,212,255,.3);border-radius:10px;padding:20px;text-align:center;margin-bottom:10px;background:rgba(0,212,255,.02);cursor:pointer;transition:all .3s" id="qd-report-dropzone">
+        <div style="font-size:2em;margin-bottom:6px">📄🩸🧪</div>
+        <div style="color:var(--accent);font-weight:bold;font-size:.85em">Drop lab report here or click to upload</div>
+        <div style="color:var(--text-dim);font-size:.72em;margin-top:4px">Blood work, urine analysis, hormonal panel, metabolic screen, cardiac markers, liver panel, tumor markers, vitamin levels</div>
+        <div style="color:var(--text-dim);font-size:.68em;margin-top:2px">Formats: JPEG, PNG, WebP, PDF — Max 20 MB</div>
+        <input type="file" id="qd-report-file" accept="image/jpeg,image/png,image/webp,application/pdf,.pdf,.jpg,.jpeg,.png,.webp" style="display:none">
+      </div>
+      <div id="qd-report-preview" style="display:none;margin-bottom:10px;text-align:center">
+        <img id="qd-report-preview-img" style="max-width:100%;max-height:200px;border-radius:6px;border:1px solid rgba(0,212,255,.2)" alt="Report preview">
+        <div id="qd-report-filename" style="font-size:.72em;color:var(--text-dim);margin-top:4px"></div>
+      </div>
+
+      <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px">
+        <select id="qd-report-type" style="flex:1;min-width:140px;padding:6px;background:var(--surface);color:var(--text);border:1px solid rgba(0,212,255,.2);border-radius:6px;font-size:.8em">
+          <option value="general">🔬 Auto-Detect Type</option>
+          <option value="blood">🩸 Blood Analysis (CBC, CMP)</option>
+          <option value="urine">🧪 Urine Analysis</option>
+          <option value="hormonal">⚡ Hormonal Panel</option>
+          <option value="metabolic">🔥 Metabolic Screen</option>
+          <option value="cardiac">❤️ Cardiac Markers</option>
+          <option value="liver">🫁 Liver Function</option>
+          <option value="tumor_markers">🎯 Tumor Markers</option>
+          <option value="autoimmune">🛡️ Autoimmune Panel</option>
+          <option value="vitamin">💊 Vitamin/Mineral Levels</option>
+        </select>
+      </div>
+
+      <details style="margin-bottom:8px">
+        <summary style="cursor:pointer;font-size:.78em;color:var(--accent)">👤 Patient Info (optional — improves accuracy)</summary>
+        <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:6px">
+          <input type="number" id="qd-report-age" placeholder="Age" min="0" max="120" style="width:65px;padding:5px;background:var(--surface);color:var(--text);border:1px solid rgba(0,212,255,.2);border-radius:6px;font-size:.8em">
+          <select id="qd-report-sex" style="padding:5px;background:var(--surface);color:var(--text);border:1px solid rgba(0,212,255,.2);border-radius:6px;font-size:.8em">
+            <option value="">Sex</option><option value="male">Male</option><option value="female">Female</option>
+          </select>
+          <input type="text" id="qd-report-weight" placeholder="Weight (kg)" style="width:85px;padding:5px;background:var(--surface);color:var(--text);border:1px solid rgba(0,212,255,.2);border-radius:6px;font-size:.8em">
+          <input type="text" id="qd-report-height" placeholder="Height (cm)" style="width:85px;padding:5px;background:var(--surface);color:var(--text);border:1px solid rgba(0,212,255,.2);border-radius:6px;font-size:.8em">
+          <input type="text" id="qd-report-conditions" placeholder="Known conditions (e.g. diabetes, hypertension)" style="flex:1;min-width:200px;padding:5px;background:var(--surface);color:var(--text);border:1px solid rgba(0,212,255,.2);border-radius:6px;font-size:.8em">
+        </div>
+      </details>
+
+      <button class="btn-quantum" id="qd-report-analyze" disabled style="width:100%;padding:10px;font-size:.85em">📊 Analyze Lab Report</button>
+      <div id="qd-report-results" style="margin-top:12px"></div>
+    </div>
+
+    <!-- Symptom Checker -->
+    <div class="qd-dpanel hidden" id="qd-dpanel-symptoms">
+      <div style="margin-bottom:8px">
+        <input type="text" id="qd-sym-input" placeholder="Symptoms (comma-separated: chest pain, shortness of breath, fatigue)" style="width:100%;padding:6px;background:var(--surface);color:var(--text);border:1px solid rgba(0,212,255,.2);border-radius:6px;font-size:.8em;box-sizing:border-box">
+      </div>
+      <div style="display:flex;gap:6px;margin-bottom:8px;flex-wrap:wrap">
+        <input type="number" id="qd-sym-age" placeholder="Age" value="40" min="0" max="120" style="width:70px;padding:6px;background:var(--surface);color:var(--text);border:1px solid rgba(0,212,255,.2);border-radius:6px;font-size:.8em">
+        <select id="qd-sym-sex" style="padding:6px;background:var(--surface);color:var(--text);border:1px solid rgba(0,212,255,.2);border-radius:6px;font-size:.8em">
+          <option value="unknown">Sex: Unknown</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+        </select>
+        <button class="btn-quantum" id="qd-sym-check" style="white-space:nowrap">🩺 Check Symptoms</button>
+      </div>
+      <div id="qd-sym-results" style="margin-top:10px"></div>
+    </div>
+
+    <!-- Lab Results Interpreter -->
+    <div class="qd-dpanel hidden" id="qd-dpanel-lab">
+      <div style="font-size:.75em;color:var(--text-dim);margin-bottom:8px">Add lab tests with values. Common tests: glucose, hemoglobin, wbc, creatinine, alt, ast, cholesterol_total, ldl, hdl, tsh, sodium, potassium, hba1c, crp</div>
+      <div id="qd-lab-inputs">
+        <div class="qd-lab-row" style="display:flex;gap:4px;margin-bottom:4px">
+          <input type="text" placeholder="Test name" class="qd-lab-name" style="flex:2;padding:5px;background:var(--surface);color:var(--text);border:1px solid rgba(0,212,255,.2);border-radius:6px;font-size:.8em">
+          <input type="number" step="any" placeholder="Value" class="qd-lab-value" style="flex:1;padding:5px;background:var(--surface);color:var(--text);border:1px solid rgba(0,212,255,.2);border-radius:6px;font-size:.8em">
+          <input type="text" placeholder="Unit" class="qd-lab-unit" style="width:70px;padding:5px;background:var(--surface);color:var(--text);border:1px solid rgba(0,212,255,.2);border-radius:6px;font-size:.8em">
+        </div>
+      </div>
+      <div style="display:flex;gap:6px;margin-top:6px">
+        <button class="btn-secondary" id="qd-lab-add" style="font-size:.75em">+ Add Test</button>
+        <button class="btn-quantum" id="qd-lab-interpret" style="white-space:nowrap">🧪 Interpret Results</button>
+      </div>
+      <div id="qd-lab-results" style="margin-top:10px"></div>
+    </div>
+
+    <!-- Drug Interactions -->
+    <div class="qd-dpanel hidden" id="qd-dpanel-interactions">
+      <div style="display:flex;gap:6px">
+        <input type="text" id="qd-interact-input" placeholder="Drug names, comma-separated (e.g., Warfarin, Aspirin, Metformin)" style="flex:1;padding:6px;background:var(--surface);color:var(--text);border:1px solid rgba(0,212,255,.2);border-radius:6px;font-size:.8em">
+        <button class="btn-quantum" id="qd-interact-check" style="white-space:nowrap">💊 Check</button>
+      </div>
+      <div id="qd-interact-results" style="margin-top:10px"></div>
+    </div>
+
+    <!-- Genetics -->
+    <div class="qd-dpanel hidden" id="qd-dpanel-genetics">
+      <div style="display:flex;gap:6px;flex-wrap:wrap">
+        <input type="text" id="qd-gen-gene" placeholder="Gene (e.g., BRCA1, TP53)" style="flex:1;min-width:120px;padding:6px;background:var(--surface);color:var(--text);border:1px solid rgba(0,212,255,.2);border-radius:6px;font-size:.8em">
+        <input type="text" id="qd-gen-condition" placeholder="Condition (optional)" style="flex:1;min-width:120px;padding:6px;background:var(--surface);color:var(--text);border:1px solid rgba(0,212,255,.2);border-radius:6px;font-size:.8em">
+        <button class="btn-quantum" id="qd-gen-search" style="white-space:nowrap">🧬 Search</button>
+      </div>
+      <div id="qd-gen-results" style="margin-top:10px"></div>
+    </div>
+
+    <!-- WHO Data -->
+    <div class="qd-dpanel hidden" id="qd-dpanel-who">
+      <div style="display:flex;gap:6px;flex-wrap:wrap">
+        <select id="qd-who-indicator" style="flex:1;min-width:160px;padding:6px;background:var(--surface);color:var(--text);border:1px solid rgba(0,212,255,.2);border-radius:6px;font-size:.8em">
+          <option value="life_expectancy">Life Expectancy</option>
+          <option value="ncd_mortality">NCD Mortality</option>
+          <option value="tb_incidence">TB Incidence</option>
+          <option value="hiv_prevalence">HIV Prevalence</option>
+          <option value="malaria_incidence">Malaria Incidence</option>
+          <option value="immunization_coverage">Immunization Coverage</option>
+          <option value="maternal_mortality">Maternal Mortality</option>
+          <option value="infant_mortality">Infant Mortality</option>
+          <option value="health_expenditure">Health Expenditure</option>
+          <option value="physicians_density">Physicians Density</option>
+        </select>
+        <input type="text" id="qd-who-country" placeholder="Country code (e.g., USA, GBR, ROU)" style="width:100px;padding:6px;background:var(--surface);color:var(--text);border:1px solid rgba(0,212,255,.2);border-radius:6px;font-size:.8em">
+        <button class="btn-quantum" id="qd-who-search" style="white-space:nowrap">🌍 Search</button>
+      </div>
+      <div id="qd-who-results" style="margin-top:10px"></div>
+    </div>
+
+    <!-- Disease Ontology -->
+    <div class="qd-dpanel hidden" id="qd-dpanel-ontology">
+      <div style="display:flex;gap:6px">
+        <input type="text" id="qd-onto-query" placeholder="Search disease (e.g., 'breast cancer', 'diabetes mellitus')" style="flex:1;padding:6px;background:var(--surface);color:var(--text);border:1px solid rgba(0,212,255,.2);border-radius:6px;font-size:.8em">
+        <button class="btn-quantum" id="qd-onto-search" style="white-space:nowrap">📖 Search</button>
+      </div>
+      <div id="qd-onto-results" style="margin-top:10px"></div>
+    </div>
+  </div>
+
+</div>
+</template>
+
+<script src="https://cdn.socket.io/4.7.4/socket.io.min.js"></script>
+<script src="/static/js/quantum-os.js"></script>
+<script src="/static/js/qbp-runtime.js"></script>
+
+
+
+<!-- ═══ Quantum Search ═══ -->
+<template id="tpl-quantum-search">
+<div class="app-quantum-search">
+  <div class="qs-tabs">
+    <div class="qs-tab active" data-tab="demo">🔍 Search Demo</div>
+    <div class="qs-tab" data-tab="how">📖 How It Works</div>
+    <div class="qs-tab" data-tab="bench">📊 Benchmark</div>
+  </div>
+
+    <div class="qs-backend-bar" style="display:flex;align-items:center;gap:8px;padding:6px 10px;background:rgba(0,212,255,.06);border:1px solid rgba(0,212,255,.15);border-radius:8px;margin-bottom:8px;font-size:.78em">
+    <span style="color:var(--accent);font-weight:600">⚛ Backend:</span>
+    <select id="qs-backend-select" style="flex:1;background:var(--surface2);color:var(--text);border:1px solid rgba(0,212,255,.2);border-radius:4px;padding:3px 6px;font-size:inherit;font-family:inherit">
+      <option value="simulator">Loading backends...</option>
+    </select>
+  </div>
+
+  <div id="qs-panel-demo" class="qs-panel">
+    <div class="qs-group">
+      <label class="qs-label">Database size (items to search)</label>
+      <input id="qs-nitems" type="range" min="4" max="1048576" value="1024" class="qs-range">
+      <div id="qs-nitems-val" style="text-align:center;color:var(--accent);font-weight:700;font-size:1.2rem">1,024 items</div>
+      <button id="qs-search-btn" class="qs-btn">⚡ Run Classical vs Quantum</button>
+    </div>
+    <div id="qs-search-result" class="qs-result"></div>
+  </div>
+
+  <div id="qs-panel-how" class="qs-panel hidden">
+    <div style="padding:1rem;line-height:1.8;color:var(--text)">
+      <h3 style="color:var(--accent);margin-bottom:1rem">Grover's Algorithm Explained</h3>
+      <p><strong>Classical search</strong> checks items one by one → O(N) steps on average.</p>
+      <p style="margin-top:.5rem"><strong>Grover's quantum search</strong> uses superposition + amplitude amplification → O(√N) steps.</p>
+      <div style="background:var(--surface2);border-radius:8px;padding:1rem;margin:1rem 0">
+        <p style="color:var(--accent2);font-weight:700">The Oracle + Diffusion Trick:</p>
+        <ol style="padding-left:1.5rem;margin-top:.5rem">
+          <li>Put all N items in superposition (equal probability)</li>
+          <li><strong>Oracle</strong>: flip the phase of the target item</li>
+          <li><strong>Diffusion</strong>: amplify the flipped amplitude</li>
+          <li>Repeat √N times → target has ~100% probability</li>
+        </ol>
+      </div>
+      <p><strong>Example:</strong> Searching 1,000,000 items: classical needs ~500,000 checks, Grover needs only ~785 iterations.</p>
+      <p style="margin-top:.5rem;color:var(--text-dim);font-size:.85rem"><em>Limitation: Stim only supports 2-qubit Grover demo (Clifford gates). Full N-qubit requires IBM QPU.</em></p>
+    </div>
+  </div>
+
+  <div id="qs-panel-bench" class="qs-panel hidden">
+    <div class="qs-group">
+      <button id="qs-bench-btn" class="qs-btn">Run Full Benchmark</button>
+    </div>
+    <div id="qs-bench-result" class="qs-result"></div>
+  </div>
+</div>
+</template>
+
+<template id="tpl-medgemma-ai">
+<div class="app-medgemma-ai" style="font-size:.85rem">
+  <div style="text-align:center;padding:8px 0 12px;border-bottom:1px solid rgba(0,212,255,.15);margin-bottom:12px">
+    <h2 style="margin:0;color:var(--accent)">🏥 MedGemma AI — Medical Intelligence</h2>
+    <div style="font-size:.75em;color:var(--text-dim);margin-top:4px">GPU-Accelerated Medical AI • google/medgemma-4b-it • RTX 3090 Ti</div>
+    <div id="mg-gpu-status" style="font-size:.7em;margin-top:4px;color:var(--text-dim)">Checking GPU...</div>
+  </div>
+
+  <!-- Mode Tabs -->
+  <div style="display:flex;gap:4px;margin-bottom:12px;border-bottom:1px solid rgba(0,212,255,.15);padding-bottom:8px;flex-wrap:wrap">
+    <button class="mg-tab active" data-mode="diagnose" style="padding:6px 12px;border:1px solid var(--accent);border-radius:6px 6px 0 0;background:var(--accent);color:#000;font-weight:bold;cursor:pointer;font-size:.78em">🩺 Diagnose</button>
+    <button class="mg-tab" data-mode="imaging" style="padding:6px 12px;border:1px solid rgba(0,212,255,.2);border-radius:6px 6px 0 0;background:transparent;color:var(--text-dim);cursor:pointer;font-size:.78em">📷 Image Analysis</button>
+    <button class="mg-tab" data-mode="agent" style="padding:6px 12px;border:1px solid rgba(0,212,255,.2);border-radius:6px 6px 0 0;background:transparent;color:var(--text-dim);cursor:pointer;font-size:.78em">🤖 Agent Workflow</button>
+    <button class="mg-tab" data-mode="quantum-med" style="padding:6px 12px;border:1px solid rgba(0,212,255,.2);border-radius:6px 6px 0 0;background:transparent;color:var(--text-dim);cursor:pointer;font-size:.78em">⚛ Quantum+Med</button>
+  </div>
+
+  <!-- Tab: Diagnose -->
+  <div class="mg-panel" id="mg-mode-diagnose">
+    <h3 style="color:var(--accent);margin:0 0 8px;font-size:.95em">🩺 Clinical Text Analysis</h3>
+    <p style="font-size:.72em;color:var(--text-dim);margin:0 0 8px">Enter patient symptoms, lab results, or clinical notes. MedGemma will provide differential diagnosis, severity assessment, and recommended actions.</p>
+    <select id="mg-analyze-type" style="width:100%;padding:6px;margin-bottom:6px;background:var(--surface);color:var(--text);border:1px solid rgba(0,212,255,.2);border-radius:6px;font-size:.8em">
+      <option value="diagnosis">Differential Diagnosis</option>
+      <option value="treatment_plan">Treatment Plan</option>
+      <option value="risk_assessment">Risk Assessment</option>
+      <option value="lab_interpretation">Lab Result Interpretation</option>
+      <option value="drug_interaction">Drug Interaction Check</option>
+    </select>
+    <textarea id="mg-analyze-text" rows="6" placeholder="Patient presents with persistent cough for 3 weeks, low-grade fever, night sweats, and unintentional weight loss of 5kg..." style="width:100%;padding:8px;background:var(--surface);color:var(--text);border:1px solid rgba(0,212,255,.2);border-radius:6px;font-size:.8em;resize:vertical;font-family:inherit;box-sizing:border-box"></textarea>
+    <div style="display:flex;gap:8px;margin-top:6px;align-items:center">
+      <button class="btn-quantum" id="mg-analyze-btn" style="flex:1">🧠 Analyze with MedGemma</button>
+      <label style="font-size:.72em;color:var(--text-dim)">Tokens: <input type="number" id="mg-max-tokens" value="1024" min="128" max="2048" step="128" style="width:60px;background:var(--surface);color:var(--text);border:1px solid rgba(0,212,255,.2);border-radius:4px;padding:2px 4px;font-size:inherit"></label>
+    </div>
+    <div id="mg-analyze-result" style="margin-top:10px"></div>
+  </div>
+
+  <!-- Tab: Image Analysis -->
+  <div class="mg-panel hidden" id="mg-mode-imaging">
+    <h3 style="color:var(--accent);margin:0 0 8px;font-size:.95em">📷 Medical Image Analysis</h3>
+    <p style="font-size:.72em;color:var(--text-dim);margin:0 0 8px">Upload X-rays, CT scans, pathology slides, dermatology photos. MedGemma's multimodal vision analyzes the image directly.</p>
+    <div id="mg-img-dropzone" style="border:2px dashed rgba(0,212,255,.3);border-radius:10px;padding:24px;text-align:center;cursor:pointer;background:rgba(0,212,255,.03)">
+      <div style="font-size:2em;margin-bottom:6px">📤</div>
+      <div style="font-size:.85em;font-weight:bold;color:var(--text)">Drop medical image or click to upload</div>
+      <div style="font-size:.72em;color:var(--text-dim);margin-top:4px">JPEG, PNG, WebP (max 20 MB)</div>
+      <input type="file" id="mg-img-file" accept="image/jpeg,image/png,image/webp" style="display:none">
+    </div>
+    <div id="mg-img-preview" style="margin-top:8px;text-align:center;display:none">
+      <img id="mg-img-thumb" style="max-height:200px;border-radius:8px;border:1px solid rgba(0,212,255,.2)">
+    </div>
+    <select id="mg-img-type" style="width:100%;padding:6px;margin-top:8px;background:var(--surface);color:var(--text);border:1px solid rgba(0,212,255,.2);border-radius:6px;font-size:.8em">
+      <option value="radiology">Radiology (X-ray/CT/MRI)</option>
+      <option value="pathology">Pathology / Histology</option>
+      <option value="dermatology">Dermatology</option>
+      <option value="ophthalmology">Ophthalmology</option>
+      <option value="general">General Medical Image</option>
+    </select>
+    <textarea id="mg-img-prompt" rows="2" placeholder="Additional context: patient age, symptoms, suspected condition..." style="width:100%;padding:8px;margin-top:6px;background:var(--surface);color:var(--text);border:1px solid rgba(0,212,255,.2);border-radius:6px;font-size:.8em;resize:vertical;font-family:inherit;box-sizing:border-box"></textarea>
+    <button class="btn-quantum" id="mg-img-analyze-btn" style="width:100%;margin-top:6px" disabled>📷 Analyze Image with MedGemma</button>
+    <div id="mg-img-result" style="margin-top:10px"></div>
+  </div>
+
+  <!-- Tab: Agent Workflow -->
+  <div class="mg-panel hidden" id="mg-mode-agent">
+    <h3 style="color:var(--accent);margin:0 0 8px;font-size:.95em">🤖 Agentic Clinical Workflow</h3>
+    <p style="font-size:.72em;color:var(--text-dim);margin:0 0 8px">Describe a complete patient case. MedGemma acts as an AI medical agent — ordering labs, imaging, consultations, and creating a comprehensive management plan.</p>
+    <textarea id="mg-agent-case" rows="8" placeholder="60-year-old male presents to the ER with acute onset crushing substernal chest pain radiating to the left arm for the past 2 hours. Associated with diaphoresis and nausea. PMH: HTN, DM2, hyperlipidemia. Current meds: metformin, lisinopril, atorvastatin. Vitals: BP 160/95, HR 110, SpO2 94%..." style="width:100%;padding:8px;background:var(--surface);color:var(--text);border:1px solid rgba(0,212,255,.2);border-radius:6px;font-size:.8em;resize:vertical;font-family:inherit;box-sizing:border-box"></textarea>
+    <button class="btn-quantum" id="mg-agent-btn" style="width:100%;margin-top:6px">🤖 Run Agentic Medical Workflow</button>
+    <div id="mg-agent-result" style="margin-top:10px"></div>
+  </div>
+
+  <!-- Tab: Quantum+Med -->
+  <div class="mg-panel hidden" id="mg-mode-quantum-med">
+    <h3 style="color:var(--accent);margin:0 0 8px;font-size:.95em">⚛ Quantum Drug Simulation + MedGemma</h3>
+    <p style="font-size:.72em;color:var(--text-dim);margin:0 0 8px">Run a quantum circuit simulation of a molecule's binding to a disease target, then have MedGemma interpret the quantum results for clinical relevance.</p>
+    <div style="display:flex;gap:8px;margin-bottom:6px">
+      <div style="flex:1">
+        <label style="font-size:.72em;color:var(--text-dim)">Molecule / Drug</label>
+        <input type="text" id="mg-qm-molecule" placeholder="e.g., Aspirin, Ibuprofen, Remdesivir" style="width:100%;padding:6px;background:var(--surface);color:var(--text);border:1px solid rgba(0,212,255,.2);border-radius:6px;font-size:.8em;box-sizing:border-box">
+      </div>
+      <div style="flex:1">
+        <label style="font-size:.72em;color:var(--text-dim)">Disease Target</label>
+        <input type="text" id="mg-qm-disease" placeholder="e.g., COVID-19, Cancer, Alzheimer's" style="width:100%;padding:6px;background:var(--surface);color:var(--text);border:1px solid rgba(0,212,255,.2);border-radius:6px;font-size:.8em;box-sizing:border-box">
+      </div>
+    </div>
+    <textarea id="mg-qm-context" rows="3" placeholder="Additional clinical context (optional): patient population, contraindications, existing treatments..." style="width:100%;padding:8px;background:var(--surface);color:var(--text);border:1px solid rgba(0,212,255,.2);border-radius:6px;font-size:.8em;resize:vertical;font-family:inherit;box-sizing:border-box"></textarea>
+    <button class="btn-quantum" id="mg-qm-btn" style="width:100%;margin-top:6px">⚛ Quantum Simulate + MedGemma Interpret</button>
+    <div id="mg-qm-result" style="margin-top:10px"></div>
+  </div>
+</div>
+</template>
+
+<template id="tpl-quantumneuro">
+<div class="quantumneuro-app" style="height:100%;overflow-y:auto;background:linear-gradient(135deg,#0a0e1a,#0d1525);padding:0"></div>
+</template>
+
+<template id="tpl-quantumtb">
+<div class="quantumtb-app" style="height:100%;overflow-y:auto;background:linear-gradient(135deg,#1a0e0a,#251510);padding:0"></div>
+</template>
+
+<template id="tpl-diseases">
+<div class="disease-dashboard-app" style="height:100%;overflow-y:auto"></div>
+</template>
+
+<template id="tpl-training">
+<div class="training-viewer-app" style="height:100%;overflow-y:auto"></div>
+</template>
+
+<template id="tpl-medlab">
+<div class="medlab-app" style="height:100%;overflow:hidden;background:linear-gradient(135deg,#050d15,#0a1820)"></div>
+</template>
+
+<template id="tpl-reports">
+<div class="reports-app" style="height:100%;overflow:hidden;background:linear-gradient(135deg,#050d15,#0a1820)"></div>
+</template>
+
+<template id="tpl-docs-app">
+<div class="docs-app" style="height:100%;overflow:hidden;background:#0d1117"></div>
+</template>
+
+<script src="/static/js/quantumneuro.js"></script>
+
+    <script src="/static/js/disease-dashboard.js"></script>
+    <script src="/static/js/training-viewer.js"></script>
+<script src="/static/js/quantumtb.js"></script>
+<script src="/static/js/docs-app.js"></script>
+<script src="/static/js/real_case_loader.js"></script>
+<script src="/static/js/medlab.js"></script>
+<script src="/static/js/reports.js"></script>
+<script src="/static/js/medfiles.js"></script>
+
+<template id="tpl-medfiles">
+<div class="medfiles-app" style="height:100%;overflow:hidden;background:linear-gradient(135deg,#050d15,#0a1820);display:flex;flex-direction:column"></div>
+</template>
+</body>
+</html>

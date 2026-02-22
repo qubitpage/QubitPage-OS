@@ -1,0 +1,91 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+venv/
+.venv/
+env/
+.env/
+
+# Environment Variables — NEVER commit secrets
+.env
+.env.*
+*.env
+keys.env
+/etc/qubitpage/
+
+# API Keys & Secrets
+config_secrets.py
+*_secret*
+*_token*
+*_credentials*
+
+# OS-level
+*.DS_Store
+Thumbs.db
+*.log
+*.bak
+*.bak2
+*.bak3
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+
+# Deployment scripts (internal)
+setup_txgemma_tunnel.py
+debug_loto*.py
+fix_*.py
+*_patch.py
+mega_patch*.py
+master_patch*.py
+phase2_patch*.py
+inject_routes.py
+comprehensive_update.py
+add_reports_docs.py
+add_test_google.py
+backend_dropdown_patch.py
+quantum_upgrade.py
+update_docs*.py
+update_os_html.py
+update_quantum_os_js.py
+game_enhance.py
+google_backends_patch.py
+qplang_expansion.py
+qplang_inject.py
+fix_qplang*.py
+check_deps.py
+chk.py
+cleanup_test.py
+list_backends.py
+scrape_540*.py
+showcase_runner.py
+
+# Backup templates
+templates/*.bak
+templates/*.bak2
+templates/*.bak3
+templates/*.bak_*
+
+# Build artifacts
+*.min.js.map
+
+# Training scripts (production only)
+disease_research_pipeline.py

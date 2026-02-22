@@ -1,0 +1,278 @@
+{
+  "Temozolomide": {
+    "smiles": "O=c1ncn2c(=O)n(C)nc2n1",
+    "predictions": {
+      "BBB_Martins": "808",
+      "hERG": "A",
+      "AMES": "B1([O-])OO1.O.O.O.O.[Na+].C(=O)([O-])[O-].[K+].[K+]",
+      "DILI": "1A",
+      "ClinTox": "A",
+      "Lipophilicity": "366",
+      "Solubility": "808"
+    }
+  },
+  "Lomustine": {
+    "smiles": "O=NN(C(=O)NCCCl)C1CCCCC1",
+    "predictions": {
+      "BBB_Martins": "811",
+      "hERG": "293",
+      "AMES": "463",
+      "DILI": "122",
+      "ClinTox": "296",
+      "Lipophilicity": "416",
+      "Solubility": "700"
+    }
+  },
+  "Carmustine": {
+    "smiles": "O=NN(CCCl)C(=O)NCCCl",
+    "predictions": {
+      "BBB_Martins": "619",
+      "hERG": "411",
+      "AMES": "560",
+      "DILI": "0",
+      "ClinTox": "415",
+      "Lipophilicity": "400",
+      "Solubility": "700"
+    }
+  },
+  "Erlotinib": {
+    "smiles": "COCCOc1cc2ncnc(Nc3cccc(C#C)c3)c2cc1OCCOC",
+    "predictions": {
+      "BBB_Martins": "811",
+      "hERG": "582",
+      "AMES": "435",
+      "DILI": "124",
+      "ClinTox": "632",
+      "Lipophilicity": "666",
+      "Solubility": "692"
+    }
+  },
+  "Bedaquiline": {
+    "smiles": "COc1ccc2c(c1)[C@@H](c1ccccc1)[C@@H](CC1CC1)N(Cc1ccccc1)CCc1cc(Br)c(OC)cc1C2",
+    "predictions": {
+      "BBB_Martins": "666",
+      "hERG": "391",
+      "AMES": "600",
+      "DILI": "166",
+      "ClinTox": "558",
+      "Lipophilicity": "883",
+      "Solubility": "369"
+    }
+  },
+  "Pretomanid": {
+    "smiles": "O=[N+]([O-])c1cn2c(n1)OC[C@@H](OCc1ccc(OC(F)(F)F)cc1)C2",
+    "predictions": {
+      "BBB_Martins": "892",
+      "hERG": "A",
+      "AMES": "600",
+      "DILI": "180",
+      "ClinTox": "605",
+      "Lipophilicity": "666",
+      "Solubility": "570"
+    }
+  },
+  "Linezolid": {
+    "smiles": "O=C1O[C@@H](CNC(=O)c2ccc(N3CCOCC3)c(F)c2)CN1",
+    "predictions": {
+      "BBB_Martins": "702",
+      "hERG": "A1A=CN2A3CN(C[C@@H]12)CCCC3",
+      "AMES": "560",
+      "DILI": "189",
+      "ClinTox": "415",
+      "Lipophilicity": "416",
+      "Solubility": "808"
+    }
+  },
+  "Isoniazid": {
+    "smiles": "NNC(=O)c1ccncc1",
+    "predictions": {
+      "BBB_Martins": "488",
+      "hERG": "298",
+      "AMES": "307",
+      "DILI": "189",
+      "ClinTox": "287",
+      "Lipophilicity": "283",
+      "Solubility": "848"
+    }
+  },
+  "Clofazimine": {
+    "smiles": "CC(C)=Nc1ccc(Cl)cc1Nc1cc2c(cc1Cl)nc1ccccc1[nH]2",
+    "predictions": {
+      "BBB_Martins": "166",
+      "hERG": "410",
+      "AMES": "600",
+      "DILI": "166",
+      "ClinTox": "410",
+      "Lipophilicity": "666",
+      "Solubility": "374"
+    }
+  },
+  "Moxifloxacin": {
+    "smiles": "OC(=O)c1cn(C2CC2)c2cc(N3C[C@@H]4CCCN[C@@H]4C3)c(F)cc2c1=O",
+    "predictions": {
+      "BBB_Martins": "692",
+      "hERG": "604",
+      "AMES": "579",
+      "DILI": "690",
+      "ClinTox": "605",
+      "Lipophilicity": "533",
+      "Solubility": "604"
+    }
+  },
+  "Gemcitabine": {
+    "smiles": "NC1=NC(=O)N(C=C1)[C@@H]1OC(CO)[C@@H](O)C1(F)F",
+    "predictions": {
+      "BBB_Martins": "489",
+      "hERG": "489",
+      "AMES": "439",
+      "DILI": "180",
+      "ClinTox": "349",
+      "Lipophilicity": "33",
+      "Solubility": "808"
+    }
+  },
+  "Fluorouracil": {
+    "smiles": "O=c1[nH]c(=O)[nH]cc1F",
+    "predictions": {
+      "BBB_Martins": "808",
+      "hERG": "A",
+      "AMES": "A",
+      "DILI": "189",
+      "ClinTox": "297",
+      "Lipophilicity": "410",
+      "Solubility": "829"
+    }
+  },
+  "Riluzole": {
+    "smiles": "Nc1nc2ccc(OC(F)(F)F)cc2s1",
+    "predictions": {
+      "BBB_Martins": "811",
+      "hERG": "416",
+      "AMES": "600",
+      "DILI": "184",
+      "ClinTox": "485",
+      "Lipophilicity": "666",
+      "Solubility": "641"
+    }
+  },
+  "Edaravone": {
+    "smiles": "CC1=NN(c2ccccc2)C(=O)C1",
+    "predictions": {
+      "BBB_Martins": "819",
+      "hERG": "299",
+      "AMES": "565",
+      "DILI": "14",
+      "ClinTox": "348",
+      "Lipophilicity": "416",
+      "Solubility": "744"
+    }
+  },
+  "Pirfenidone": {
+    "smiles": "Cc1ccc(=O)n(C)c1",
+    "predictions": {
+      "BBB_Martins": "829",
+      "hERG": "9",
+      "AMES": "A",
+      "DILI": "966",
+      "ClinTox": "449",
+      "Lipophilicity": "383",
+      "Solubility": "888"
+    }
+  },
+  "Nintedanib": {
+    "smiles": "COC(=O)c1cc2c(cc1OC)/C(=C\\c1[nH]c3ccccc3c1C)C(=O)N2",
+    "predictions": {
+      "BBB_Martins": "693",
+      "hERG": "4A",
+      "AMES": "536",
+      "DILI": "166",
+      "ClinTox": "435",
+      "Lipophilicity": "633",
+      "Solubility": "392"
+    }
+  },
+  "Olaparib": {
+    "smiles": "O=C(c1cc2c(cc1F)C(=O)N(C1CCC(=O)NC1=O)C2=O)N1CCNCC1",
+    "predictions": {
+      "BBB_Martins": "845",
+      "hERG": "A",
+      "AMES": "475",
+      "DILI": "456",
+      "ClinTox": "544",
+      "Lipophilicity": "533",
+      "Solubility": "638"
+    }
+  },
+  "Donepezil": {
+    "smiles": "COc1cc2CC(CC(=O)c2c(OC)c1OC)c1cc(OC)c(OC)c(OC)c1",
+    "predictions": {
+      "BBB_Martins": "895",
+      "hERG": "624",
+      "AMES": "619",
+      "DILI": "180",
+      "ClinTox": "596",
+      "Lipophilicity": "700",
+      "Solubility": "578"
+    }
+  },
+  "Memantine": {
+    "smiles": "C1C2CC3CC1CC(N)(C3)C2",
+    "predictions": {
+      "BBB_Martins": "811",
+      "hERG": "45",
+      "AMES": "55",
+      "DILI": "16",
+      "ClinTox": "624",
+      "Lipophilicity": "533",
+      "Solubility": "704"
+    }
+  },
+  "Capecitabine": {
+    "smiles": "CCCCCOC(=O)Nc1nc(=O)n([C@@H]2O[C@H](C)[C@@H](O)[C@H]2O)cc1F",
+    "predictions": {
+      "BBB_Martins": "479",
+      "hERG": "404",
+      "AMES": "479",
+      "DILI": "1000",
+      "ClinTox": "600",
+      "Lipophilicity": "480",
+      "Solubility": "600"
+    }
+  },
+  "Cyclophosphamide": {
+    "smiles": "ClCCN(CCCl)P1(=O)NCCCO1",
+    "predictions": {
+      "BBB_Martins": "418",
+      "hERG": "124",
+      "AMES": "413",
+      "DILI": "189",
+      "ClinTox": "124",
+      "Lipophilicity": "34",
+      "Solubility": "808"
+    }
+  },
+  "Paclitaxel": {
+    "smiles": "CC1=C2[C@@H](OC(=O)c3ccccc3)[C@@]3(O)C[C@H](OC(=O)[C@H](O)[C@@H](NC(=O)c4ccccc4)c4ccccc4)C(C)(C)[C@H]3[C@H](OC(C)=O)[C@@]2(C)[C@@H](O)C[C@H]1OC(=O)c1cc(OC)c(OC)c(OC)c1",
+    "predictions": {
+      "BBB_Martins": "756",
+      "hERG": "619",
+      "AMES": "59",
+      "DILI": "166",
+      "ClinTox": "3",
+      "Lipophilicity": "733",
+      "Solubility": "329"
+    }
+  },
+  "Doxorubicin": {
+    "smiles": "COc1cccc2c1C(=O)c1c(O)c3c(c(O)c1C2=O)C[C@@](O)(C(=O)CO)C[C@H]3O[C@H]1C[C@@H](N)[C@@H](O)[C@H](C)O1",
+    "predictions": {
+      "BBB_Martins": "380",
+      "hERG": "695",
+      "AMES": "399",
+      "DILI": "189",
+      "ClinTox": "144",
+      "Lipophilicity": "533",
+      "Solubility": "693"
+    }
+  }
+}

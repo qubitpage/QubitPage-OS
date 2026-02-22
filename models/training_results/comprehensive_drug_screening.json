@@ -1,0 +1,1052 @@
+{
+  "gbm": {
+    "disease": "Glioblastoma Multiforme (GBM)",
+    "total_candidates": 10,
+    "small_molecules": 8,
+    "biologics": 2,
+    "ranked_candidates": [
+      {
+        "drug": "ONC201",
+        "smiles": "O=C1CN(CC(=O)N1CC2=CC=CC=C2)CC3=CC=CC=C3",
+        "type": "small_molecule",
+        "description": "DRD2/ClpP agonist, crosses BBB",
+        "properties": {
+          "molecular_weight": 294.35,
+          "logP": 2.06,
+          "tpsa": 40.62,
+          "hbd": 0,
+          "hba": 3,
+          "rotatable_bonds": 4,
+          "rings": 3,
+          "qed": 0.8105,
+          "lipinski_violations": 0,
+          "bbb_likelihood": "HIGH"
+        },
+        "predictions": {},
+        "druglikeness_score": 0.8105,
+        "bbb_penetration": "HIGH"
+      },
+      {
+        "drug": "Marizomib",
+        "smiles": "O=C1C(CC(Cl)Cl)C1C(=O)NC(CC2=CC=CC=C2)C(=O)O",
+        "type": "small_molecule",
+        "description": "Proteasome inhibitor, crosses BBB",
+        "properties": {
+          "molecular_weight": 344.19,
+          "logP": 1.81,
+          "tpsa": 83.47,
+          "hbd": 2,
+          "hba": 3,
+          "rotatable_bonds": 7,
+          "rings": 2,
+          "qed": 0.5837,
+          "lipinski_violations": 0,
+          "bbb_likelihood": "HIGH"
+        },
+        "predictions": {},
+        "druglikeness_score": 0.5837,
+        "bbb_penetration": "HIGH"
+      },
+      {
+        "drug": "Paxalisib",
+        "smiles": "CC(C1=CC=C(C=C1)C2=CC=NC3=C2C=NN3CC4=CC=C(C=C4)S(=O)(=O)C)O",
+        "type": "small_molecule",
+        "description": "PI3K/mTOR inhibitor, crosses BBB",
+        "properties": {
+          "molecular_weight": 407.5,
+          "logP": 3.6,
+          "tpsa": 85.08,
+          "hbd": 1,
+          "hba": 6,
+          "rotatable_bonds": 5,
+          "rings": 4,
+          "qed": 0.5463,
+          "lipinski_violations": 0,
+          "bbb_likelihood": "HIGH"
+        },
+        "predictions": {},
+        "druglikeness_score": 0.5463,
+        "bbb_penetration": "HIGH"
+      },
+      {
+        "drug": "Selinexor",
+        "smiles": "C(C1=CC=C(C=C1)C(F)(F)F)=N/NC(=O)/C=C/C2=CC=CN=C2",
+        "type": "small_molecule",
+        "description": "XPO1 inhibitor",
+        "properties": {
+          "molecular_weight": 319.29,
+          "logP": 3.26,
+          "tpsa": 54.35,
+          "hbd": 1,
+          "hba": 3,
+          "rotatable_bonds": 4,
+          "rings": 2,
+          "qed": 0.5341,
+          "lipinski_violations": 0,
+          "bbb_likelihood": "HIGH"
+        },
+        "predictions": {},
+        "druglikeness_score": 0.5341,
+        "bbb_penetration": "HIGH"
+      },
+      {
+        "drug": "Abemaciclib",
+        "smiles": "CCN1C2=NC(=NC=C2N(C1=O)C3=CC=C(C=C3)N4CCNCC4)NC5=CC=C(C=C5)F",
+        "type": "small_molecule",
+        "description": "CDK4/6 inhibitor, crosses BBB",
+        "properties": {
+          "molecular_weight": 433.49,
+          "logP": 2.89,
+          "tpsa": 80.01,
+          "hbd": 2,
+          "hba": 8,
+          "rotatable_bonds": 5,
+          "rings": 5,
+          "qed": 0.5039,
+          "lipinski_violations": 0,
+          "bbb_likelihood": "HIGH"
+        },
+        "predictions": {},
+        "druglikeness_score": 0.5039,
+        "bbb_penetration": "HIGH"
+      },
+      {
+        "drug": "Temozolomide",
+        "smiles": "CC1(C(=O)N2C(=NC1=O)N=NN2C)F",
+        "type": "small_molecule",
+        "description": "Standard of care alkylating agent",
+        "properties": {
+          "molecular_weight": 199.14,
+          "logP": -0.33,
+          "tpsa": 77.7,
+          "hbd": 0,
+          "hba": 5,
+          "rotatable_bonds": 0,
+          "rings": 2,
+          "qed": 0.5008,
+          "lipinski_violations": 0,
+          "bbb_likelihood": "LOW"
+        },
+        "predictions": {},
+        "druglikeness_score": 0.5008,
+        "bbb_penetration": "LOW"
+      },
+      {
+        "drug": "Lomustine",
+        "smiles": "ClCCN(N=O)C(=O)NC1CCCCC1",
+        "type": "small_molecule",
+        "description": "Nitrosourea alkylating agent",
+        "properties": {
+          "molecular_weight": 233.7,
+          "logP": 2.25,
+          "tpsa": 61.77,
+          "hbd": 1,
+          "hba": 3,
+          "rotatable_bonds": 4,
+          "rings": 1,
+          "qed": 0.46,
+          "lipinski_violations": 0,
+          "bbb_likelihood": "HIGH"
+        },
+        "predictions": {},
+        "druglikeness_score": 0.46,
+        "bbb_penetration": "HIGH"
+      },
+      {
+        "drug": "Regorafenib",
+        "smiles": "C1=CC(=C(C=C1NC(=O)C2=CC(=CC=C2)C(F)(F)F)Cl)OC3=CC=C(C=C3)NC(=O)OC",
+        "type": "small_molecule",
+        "description": "Multi-kinase inhibitor",
+        "properties": {
+          "molecular_weight": 464.83,
+          "logP": 6.58,
+          "tpsa": 76.66,
+          "hbd": 2,
+          "hba": 4,
+          "rotatable_bonds": 5,
+          "rings": 3,
+          "qed": 0.4468,
+          "lipinski_violations": 1,
+          "bbb_likelihood": "LOW"
+        },
+        "predictions": {},
+        "druglikeness_score": 0.4468,
+        "bbb_penetration": "LOW"
+      }
+    ],
+    "biologic_candidates": [
+      {
+        "drug": "Bevacizumab",
+        "type": "biologic",
+        "description": "Anti-VEGF monoclonal antibody",
+        "note": "Biologic/antibody - SMILES-based screening not applicable",
+        "properties": {},
+        "predictions": {}
+      },
+      {
+        "drug": "Depatuxizumab_mafodotin",
+        "type": "biologic",
+        "description": "Anti-EGFR ADC",
+        "note": "Biologic/antibody - SMILES-based screening not applicable",
+        "properties": {},
+        "predictions": {}
+      }
+    ],
+    "top_candidate": "ONC201",
+    "bbb_penetrant": [
+      "ONC201",
+      "Marizomib",
+      "Paxalisib",
+      "Selinexor",
+      "Abemaciclib",
+      "Lomustine"
+    ]
+  },
+  "mdr_tb": {
+    "disease": "Multi-Drug Resistant Tuberculosis (MDR-TB)",
+    "total_candidates": 10,
+    "small_molecules": 9,
+    "biologics": 1,
+    "ranked_candidates": [
+      {
+        "drug": "Sutezolid",
+        "smiles": "CC(=O)NCC1CN(C(=O)O1)C2=CC(=CC=C2)[S](=O)C",
+        "type": "small_molecule",
+        "description": "Next-gen oxazolidinone",
+        "properties": {
+          "molecular_weight": 296.35,
+          "logP": 0.89,
+          "tpsa": 75.71,
+          "hbd": 1,
+          "hba": 4,
+          "rotatable_bonds": 4,
+          "rings": 2,
+          "qed": 0.8949,
+          "lipinski_violations": 0,
+          "bbb_likelihood": "LOW"
+        },
+        "predictions": {},
+        "druglikeness_score": 0.8949,
+        "bbb_penetration": "LOW"
+      },
+      {
+        "drug": "Linezolid",
+        "smiles": "CC(=O)NCC1=CC(=CC=C1)N2CCOC(C2)CNC(=O)OC",
+        "type": "small_molecule",
+        "description": "Oxazolidinone",
+        "properties": {
+          "molecular_weight": 321.38,
+          "logP": 0.88,
+          "tpsa": 79.9,
+          "hbd": 2,
+          "hba": 5,
+          "rotatable_bonds": 5,
+          "rings": 2,
+          "qed": 0.8416,
+          "lipinski_violations": 0,
+          "bbb_likelihood": "LOW"
+        },
+        "predictions": {},
+        "druglikeness_score": 0.8416,
+        "bbb_penetration": "LOW"
+      },
+      {
+        "drug": "SQ109",
+        "smiles": "CCN(CC1CCC(CC1)C)CC2C3CC4CC(C3)CC2C4",
+        "type": "small_molecule",
+        "description": "MmpL3 inhibitor",
+        "properties": {
+          "molecular_weight": 303.53,
+          "logP": 5.21,
+          "tpsa": 3.24,
+          "hbd": 0,
+          "hba": 1,
+          "rotatable_bonds": 5,
+          "rings": 5,
+          "qed": 0.6739,
+          "lipinski_violations": 1,
+          "bbb_likelihood": "HIGH"
+        },
+        "predictions": {},
+        "druglikeness_score": 0.6739,
+        "bbb_penetration": "HIGH"
+      },
+      {
+        "drug": "Pretomanid",
+        "smiles": "O=[N+]([O-])C1=CN2CC(COC2=N1)OC3=CC=C(C=C3)OCF",
+        "type": "small_molecule",
+        "description": "Nitroimidazole, kills dormant TB",
+        "properties": {
+          "molecular_weight": 309.25,
+          "logP": 1.94,
+          "tpsa": 88.65,
+          "hbd": 0,
+          "hba": 7,
+          "rotatable_bonds": 5,
+          "rings": 3,
+          "qed": 0.6192,
+          "lipinski_violations": 0,
+          "bbb_likelihood": "HIGH"
+        },
+        "predictions": {},
+        "druglikeness_score": 0.6192,
+        "bbb_penetration": "HIGH"
+      },
+      {
+        "drug": "PBTZ169",
+        "smiles": "O=C1CSC2=CC(=CC(=C2N1C3CCCCC3)C(F)(F)F)[N+](=O)[O-]",
+        "type": "small_molecule",
+        "description": "DprE1 inhibitor",
+        "properties": {
+          "molecular_weight": 360.36,
+          "logP": 4.39,
+          "tpsa": 63.45,
+          "hbd": 0,
+          "hba": 4,
+          "rotatable_bonds": 2,
+          "rings": 3,
+          "qed": 0.5797,
+          "lipinski_violations": 0,
+          "bbb_likelihood": "HIGH"
+        },
+        "predictions": {},
+        "druglikeness_score": 0.5797,
+        "bbb_penetration": "HIGH"
+      },
+      {
+        "drug": "Bedaquiline",
+        "smiles": "C1CCC(CC1)C(C2=CC3=CC=CC=C3C=C2OC)C(C4=CC=C(C=C4)Br)O",
+        "type": "small_molecule",
+        "description": "ATP synthase inhibitor",
+        "properties": {
+          "molecular_weight": 439.39,
+          "logP": 7.01,
+          "tpsa": 29.46,
+          "hbd": 1,
+          "hba": 2,
+          "rotatable_bonds": 5,
+          "rings": 4,
+          "qed": 0.4635,
+          "lipinski_violations": 1,
+          "bbb_likelihood": "HIGH"
+        },
+        "predictions": {},
+        "druglikeness_score": 0.4635,
+        "bbb_penetration": "HIGH"
+      },
+      {
+        "drug": "Telacebec",
+        "smiles": "CC1=CC2=C(C=C1)N=C(N2CC3=NN=C(O3)C4=CC=CC=C4)CC(CC5=CC(=C(C=C5)F)F)O",
+        "type": "small_molecule",
+        "description": "QcrB inhibitor",
+        "properties": {
+          "molecular_weight": 460.48,
+          "logP": 4.87,
+          "tpsa": 76.97,
+          "hbd": 1,
+          "hba": 6,
+          "rotatable_bonds": 7,
+          "rings": 5,
+          "qed": 0.3751,
+          "lipinski_violations": 0,
+          "bbb_likelihood": "LOW"
+        },
+        "predictions": {},
+        "druglikeness_score": 0.3751,
+        "bbb_penetration": "LOW"
+      },
+      {
+        "drug": "Isoniazid",
+        "smiles": "C1=CN=CC(=C1)C(=O)NN",
+        "type": "small_molecule",
+        "description": "First-line, resistance via KatG mutation",
+        "properties": {
+          "molecular_weight": 137.14,
+          "logP": -0.31,
+          "tpsa": 68.01,
+          "hbd": 2,
+          "hba": 3,
+          "rotatable_bonds": 1,
+          "rings": 1,
+          "qed": 0.3166,
+          "lipinski_violations": 0,
+          "bbb_likelihood": "LOW"
+        },
+        "predictions": {},
+        "druglikeness_score": 0.3166,
+        "bbb_penetration": "LOW"
+      },
+      {
+        "drug": "Delamanid",
+        "smiles": "CC1=CC(=CC(=C1OCC2CCC(O2)C3=CC=C(C=C3)[N+](=O)[O-])OC)OC4=CC=C(C=C4)N5C=CN=C5",
+        "type": "small_molecule",
+        "description": "Nitroimidazole",
+        "properties": {
+          "molecular_weight": 501.54,
+          "logP": 6.19,
+          "tpsa": 97.88,
+          "hbd": 0,
+          "hba": 8,
+          "rotatable_bonds": 9,
+          "rings": 5,
+          "qed": 0.1992,
+          "lipinski_violations": 2,
+          "bbb_likelihood": "LOW"
+        },
+        "predictions": {},
+        "druglikeness_score": 0.1992,
+        "bbb_penetration": "LOW"
+      }
+    ],
+    "biologic_candidates": [
+      {
+        "drug": "Rifampicin",
+        "type": "biologic",
+        "description": "First-line, resistance via RpoB mutation",
+        "note": "Biologic/antibody - SMILES-based screening not applicable",
+        "properties": {},
+        "predictions": {}
+      }
+    ],
+    "top_candidate": "Sutezolid",
+    "bbb_penetrant": [
+      "SQ109",
+      "Pretomanid",
+      "PBTZ169",
+      "Bedaquiline"
+    ]
+  },
+  "pdac": {
+    "disease": "Pancreatic Ductal Adenocarcinoma (PDAC)",
+    "total_candidates": 8,
+    "small_molecules": 6,
+    "biologics": 2,
+    "ranked_candidates": [
+      {
+        "drug": "Niraparib",
+        "smiles": "C1CCC(C1)C(C2=CC3=CC=CC=C3C=C2)N4CCNCC4",
+        "type": "small_molecule",
+        "description": "PARP inhibitor",
+        "properties": {
+          "molecular_weight": 294.44,
+          "logP": 3.98,
+          "tpsa": 15.27,
+          "hbd": 1,
+          "hba": 2,
+          "rotatable_bonds": 3,
+          "rings": 4,
+          "qed": 0.921,
+          "lipinski_violations": 0,
+          "bbb_likelihood": "HIGH"
+        },
+        "predictions": {},
+        "druglikeness_score": 0.921,
+        "bbb_penetration": "HIGH"
+      },
+      {
+        "drug": "Olaparib",
+        "smiles": "C1CC1C(=O)N2CCN(CC2)C(=O)C3=CC4=CC=CC=C4NC3=O",
+        "type": "small_molecule",
+        "description": "PARP inhibitor",
+        "properties": {
+          "molecular_weight": 325.37,
+          "logP": 1.22,
+          "tpsa": 73.48,
+          "hbd": 1,
+          "hba": 3,
+          "rotatable_bonds": 2,
+          "rings": 4,
+          "qed": 0.9022,
+          "lipinski_violations": 0,
+          "bbb_likelihood": "HIGH"
+        },
+        "predictions": {},
+        "druglikeness_score": 0.9022,
+        "bbb_penetration": "HIGH"
+      },
+      {
+        "drug": "Gemcitabine",
+        "smiles": "C1=CN(C(=O)N=C1N)C2CC(C(O2)CO)(F)F",
+        "type": "small_molecule",
+        "description": "Nucleoside analog, backbone of therapy",
+        "properties": {
+          "molecular_weight": 247.2,
+          "logP": -0.26,
+          "tpsa": 90.37,
+          "hbd": 2,
+          "hba": 6,
+          "rotatable_bonds": 2,
+          "rings": 2,
+          "qed": 0.7511,
+          "lipinski_violations": 0,
+          "bbb_likelihood": "LOW"
+        },
+        "predictions": {},
+        "druglikeness_score": 0.7511,
+        "bbb_penetration": "LOW"
+      },
+      {
+        "drug": "Sotorasib",
+        "smiles": "C=CC(=O)N1CCC(CC1)N2C(=NC(=C2C3=CC(=CC=C3)F)Cl)N4CCC(CC4)O",
+        "type": "small_molecule",
+        "description": "KRAS G12C inhibitor (Amgen)",
+        "properties": {
+          "molecular_weight": 432.93,
+          "logP": 3.65,
+          "tpsa": 61.6,
+          "hbd": 1,
+          "hba": 5,
+          "rotatable_bonds": 4,
+          "rings": 4,
+          "qed": 0.7489,
+          "lipinski_violations": 0,
+          "bbb_likelihood": "HIGH"
+        },
+        "predictions": {},
+        "druglikeness_score": 0.7489,
+        "bbb_penetration": "HIGH"
+      },
+      {
+        "drug": "Erlotinib",
+        "smiles": "C1=CC2=C(C=C1OCCOC)C(=NC=N2)NC3=CC(=CC=C3)C#C",
+        "type": "small_molecule",
+        "description": "EGFR inhibitor",
+        "properties": {
+          "molecular_weight": 319.36,
+          "logP": 3.38,
+          "tpsa": 56.27,
+          "hbd": 1,
+          "hba": 5,
+          "rotatable_bonds": 6,
+          "rings": 3,
+          "qed": 0.5574,
+          "lipinski_violations": 0,
+          "bbb_likelihood": "HIGH"
+        },
+        "predictions": {},
+        "druglikeness_score": 0.5574,
+        "bbb_penetration": "HIGH"
+      },
+      {
+        "drug": "Losartan",
+        "smiles": "CCCCC1=NC(=C(N1CC2=CC=C(C=C2)C3=CC=CC=C3C4=NNN=N4)CO)Cl",
+        "type": "small_molecule",
+        "description": "Angiotensin II blocker, reduces fibrosis",
+        "properties": {
+          "molecular_weight": 422.92,
+          "logP": 4.27,
+          "tpsa": 92.51,
+          "hbd": 2,
+          "hba": 6,
+          "rotatable_bonds": 8,
+          "rings": 4,
+          "qed": 0.4421,
+          "lipinski_violations": 0,
+          "bbb_likelihood": "LOW"
+        },
+        "predictions": {},
+        "druglikeness_score": 0.4421,
+        "bbb_penetration": "LOW"
+      }
+    ],
+    "biologic_candidates": [
+      {
+        "drug": "Adagrasib",
+        "type": "biologic",
+        "description": "KRAS G12C inhibitor (Mirati)",
+        "note": "Biologic/antibody - SMILES-based screening not applicable",
+        "properties": {},
+        "predictions": {}
+      },
+      {
+        "drug": "MRTX1133",
+        "type": "biologic",
+        "description": "KRAS G12D inhibitor (first-in-class)",
+        "note": "Biologic/antibody - SMILES-based screening not applicable",
+        "properties": {},
+        "predictions": {}
+      }
+    ],
+    "top_candidate": "Niraparib",
+    "bbb_penetrant": [
+      "Niraparib",
+      "Olaparib",
+      "Sotorasib",
+      "Erlotinib"
+    ]
+  },
+  "als": {
+    "disease": "Amyotrophic Lateral Sclerosis (ALS)",
+    "total_candidates": 7,
+    "small_molecules": 5,
+    "biologics": 2,
+    "ranked_candidates": [
+      {
+        "drug": "Riluzole",
+        "smiles": "C1=CC2=C(C=C1OC(F)(F)F)SC(=N2)N",
+        "type": "small_molecule",
+        "description": "Glutamate antagonist, only ~3mo benefit",
+        "properties": {
+          "molecular_weight": 234.2,
+          "logP": 2.78,
+          "tpsa": 48.14,
+          "hbd": 1,
+          "hba": 4,
+          "rotatable_bonds": 1,
+          "rings": 2,
+          "qed": 0.8248,
+          "lipinski_violations": 0,
+          "bbb_likelihood": "HIGH"
+        },
+        "predictions": {},
+        "druglikeness_score": 0.8248,
+        "bbb_penetration": "HIGH"
+      },
+      {
+        "drug": "Verdiperstat",
+        "smiles": "C1CC(=O)NC(=O)C1NC2=CC3=CC=CC=C3C=C2",
+        "type": "small_molecule",
+        "description": "MPO inhibitor",
+        "properties": {
+          "molecular_weight": 254.29,
+          "logP": 2.06,
+          "tpsa": 58.2,
+          "hbd": 2,
+          "hba": 3,
+          "rotatable_bonds": 2,
+          "rings": 3,
+          "qed": 0.8064,
+          "lipinski_violations": 0,
+          "bbb_likelihood": "HIGH"
+        },
+        "predictions": {},
+        "druglikeness_score": 0.8064,
+        "bbb_penetration": "HIGH"
+      },
+      {
+        "drug": "Ibudilast",
+        "smiles": "CC(C)N1C2=CC=CC=C2C(=C1C(=O)C3CC3)CC(C)C",
+        "type": "small_molecule",
+        "description": "PDE inhibitor, neuroprotective",
+        "properties": {
+          "molecular_weight": 283.41,
+          "logP": 5.01,
+          "tpsa": 22.0,
+          "hbd": 0,
+          "hba": 2,
+          "rotatable_bonds": 5,
+          "rings": 3,
+          "qed": 0.7066,
+          "lipinski_violations": 1,
+          "bbb_likelihood": "HIGH"
+        },
+        "predictions": {},
+        "druglikeness_score": 0.7066,
+        "bbb_penetration": "HIGH"
+      },
+      {
+        "drug": "Edaravone",
+        "smiles": "CC1=NN(C(=O)C1)C2=CC=CC=C2",
+        "type": "small_molecule",
+        "description": "Free radical scavenger",
+        "properties": {
+          "molecular_weight": 174.2,
+          "logP": 1.8,
+          "tpsa": 32.67,
+          "hbd": 0,
+          "hba": 2,
+          "rotatable_bonds": 1,
+          "rings": 2,
+          "qed": 0.6385,
+          "lipinski_violations": 0,
+          "bbb_likelihood": "HIGH"
+        },
+        "predictions": {},
+        "druglikeness_score": 0.6385,
+        "bbb_penetration": "HIGH"
+      },
+      {
+        "drug": "Masitinib",
+        "smiles": "CC1=CC(=CC=C1)NC(=O)C2=CC=C(S2)NC3=NC(=CS3)C4=CC=C(C=C4)CN5CCN(CC5)C",
+        "type": "small_molecule",
+        "description": "Tyrosine kinase inhibitor",
+        "properties": {
+          "molecular_weight": 503.7,
+          "logP": 5.92,
+          "tpsa": 60.5,
+          "hbd": 2,
+          "hba": 7,
+          "rotatable_bonds": 7,
+          "rings": 5,
+          "qed": 0.3277,
+          "lipinski_violations": 2,
+          "bbb_likelihood": "LOW"
+        },
+        "predictions": {},
+        "druglikeness_score": 0.3277,
+        "bbb_penetration": "LOW"
+      }
+    ],
+    "biologic_candidates": [
+      {
+        "drug": "Tofersen",
+        "type": "biologic",
+        "description": "SOD1 ASO (antisense oligonucleotide)",
+        "note": "Biologic/antibody - SMILES-based screening not applicable",
+        "properties": {},
+        "predictions": {}
+      },
+      {
+        "drug": "Methylcobalamin",
+        "type": "biologic",
+        "description": "Ultra-high dose vitamin B12",
+        "note": "Biologic/antibody - SMILES-based screening not applicable",
+        "properties": {},
+        "predictions": {}
+      }
+    ],
+    "top_candidate": "Riluzole",
+    "bbb_penetrant": [
+      "Riluzole",
+      "Verdiperstat",
+      "Ibudilast",
+      "Edaravone"
+    ]
+  },
+  "ipf": {
+    "disease": "Idiopathic Pulmonary Fibrosis (IPF)",
+    "total_candidates": 6,
+    "small_molecules": 3,
+    "biologics": 3,
+    "ranked_candidates": [
+      {
+        "drug": "Pirfenidone",
+        "smiles": "CC1=CN=CC(=C1)OC2=CC(=CC=C2)C",
+        "type": "small_molecule",
+        "description": "Anti-fibrotic, anti-inflammatory",
+        "properties": {
+          "molecular_weight": 199.25,
+          "logP": 3.49,
+          "tpsa": 22.12,
+          "hbd": 0,
+          "hba": 2,
+          "rotatable_bonds": 2,
+          "rings": 2,
+          "qed": 0.7382,
+          "lipinski_violations": 0,
+          "bbb_likelihood": "HIGH"
+        },
+        "predictions": {},
+        "druglikeness_score": 0.7382,
+        "bbb_penetration": "HIGH"
+      },
+      {
+        "drug": "Nintedanib",
+        "smiles": "COC(=O)C1=CC2=C(C=C1)C(=C(N2)C3=CC=CC=C3)CC(=O)N(C)C4=CC=C(C=C4)N(C)C(=O)CN5CCN(C5=O)C",
+        "type": "small_molecule",
+        "description": "Triple kinase inhibitor",
+        "properties": {
+          "molecular_weight": 567.65,
+          "logP": 4.16,
+          "tpsa": 106.26,
+          "hbd": 1,
+          "hba": 5,
+          "rotatable_bonds": 8,
+          "rings": 5,
+          "qed": 0.3221,
+          "lipinski_violations": 1,
+          "bbb_likelihood": "LOW"
+        },
+        "predictions": {},
+        "druglikeness_score": 0.3221,
+        "bbb_penetration": "LOW"
+      },
+      {
+        "drug": "Saracatinib",
+        "smiles": "CN1C=C(C2=CC=C(C=C2)OC3=C(C=CC4=C3C=CN=C4NC5=CC(=C(C=C5)Cl)OCC6CCNCC6)OC)C(=N1)C",
+        "type": "small_molecule",
+        "description": "Src kinase inhibitor",
+        "properties": {
+          "molecular_weight": 584.12,
+          "logP": 7.52,
+          "tpsa": 82.46,
+          "hbd": 2,
+          "hba": 8,
+          "rotatable_bonds": 9,
+          "rings": 6,
+          "qed": 0.1856,
+          "lipinski_violations": 2,
+          "bbb_likelihood": "LOW"
+        },
+        "predictions": {},
+        "druglikeness_score": 0.1856,
+        "bbb_penetration": "LOW"
+      }
+    ],
+    "biologic_candidates": [
+      {
+        "drug": "Pamrevlumab",
+        "type": "biologic",
+        "description": "Anti-CTGF monoclonal antibody",
+        "note": "Biologic/antibody - SMILES-based screening not applicable",
+        "properties": {},
+        "predictions": {}
+      },
+      {
+        "drug": "BI_1015550",
+        "type": "biologic",
+        "description": "PDE4B inhibitor selective",
+        "note": "Biologic/antibody - SMILES-based screening not applicable",
+        "properties": {},
+        "predictions": {}
+      },
+      {
+        "drug": "Bexotegrast",
+        "type": "biologic",
+        "description": "alphaVbeta6/alpha Vbeta1 integrin inhibitor",
+        "note": "Biologic/antibody - SMILES-based screening not applicable",
+        "properties": {},
+        "predictions": {}
+      }
+    ],
+    "top_candidate": "Pirfenidone",
+    "bbb_penetrant": [
+      "Pirfenidone"
+    ]
+  },
+  "tnbc": {
+    "disease": "Triple-Negative Breast Cancer (TNBC)",
+    "total_candidates": 8,
+    "small_molecules": 3,
+    "biologics": 5,
+    "ranked_candidates": [
+      {
+        "drug": "Olaparib",
+        "smiles": "C1CC1C(=O)N2CCN(CC2)C(=O)C3=CC4=CC=CC=C4NC3=O",
+        "type": "small_molecule",
+        "description": "PARP inhibitor for BRCA+",
+        "properties": {
+          "molecular_weight": 325.37,
+          "logP": 1.22,
+          "tpsa": 73.48,
+          "hbd": 1,
+          "hba": 3,
+          "rotatable_bonds": 2,
+          "rings": 4,
+          "qed": 0.9022,
+          "lipinski_violations": 0,
+          "bbb_likelihood": "HIGH"
+        },
+        "predictions": {},
+        "druglikeness_score": 0.9022,
+        "bbb_penetration": "HIGH"
+      },
+      {
+        "drug": "Talazoparib",
+        "smiles": "C1C(C1C2=CC3=C(C=C2)C(=O)NC3=O)C4=CC=C(C=C4)C5=NN=C(O5)N",
+        "type": "small_molecule",
+        "description": "Most potent PARP inhibitor",
+        "properties": {
+          "molecular_weight": 346.35,
+          "logP": 2.47,
+          "tpsa": 111.11,
+          "hbd": 2,
+          "hba": 6,
+          "rotatable_bonds": 3,
+          "rings": 5,
+          "qed": 0.7049,
+          "lipinski_violations": 0,
+          "bbb_likelihood": "LOW"
+        },
+        "predictions": {},
+        "druglikeness_score": 0.7049,
+        "bbb_penetration": "LOW"
+      },
+      {
+        "drug": "Capivasertib",
+        "smiles": "C1CC(C1)(C(=O)NC2=CC=C3C(=C2)C=CN3)N4CC(NC4=O)C5=CC=CC=C5",
+        "type": "small_molecule",
+        "description": "AKT inhibitor",
+        "properties": {
+          "molecular_weight": 374.44,
+          "logP": 3.8,
+          "tpsa": 77.23,
+          "hbd": 3,
+          "hba": 2,
+          "rotatable_bonds": 4,
+          "rings": 5,
+          "qed": 0.6496,
+          "lipinski_violations": 0,
+          "bbb_likelihood": "HIGH"
+        },
+        "predictions": {},
+        "druglikeness_score": 0.6496,
+        "bbb_penetration": "HIGH"
+      }
+    ],
+    "biologic_candidates": [
+      {
+        "drug": "Pembrolizumab",
+        "type": "biologic",
+        "description": "Anti-PD-1 checkpoint inhibitor",
+        "note": "Biologic/antibody - SMILES-based screening not applicable",
+        "properties": {},
+        "predictions": {}
+      },
+      {
+        "drug": "Sacituzumab_govitecan",
+        "type": "biologic",
+        "description": "Anti-Trop-2 ADC",
+        "note": "Biologic/antibody - SMILES-based screening not applicable",
+        "properties": {},
+        "predictions": {}
+      },
+      {
+        "drug": "Atezolizumab",
+        "type": "biologic",
+        "description": "Anti-PD-L1",
+        "note": "Biologic/antibody - SMILES-based screening not applicable",
+        "properties": {},
+        "predictions": {}
+      },
+      {
+        "drug": "Ipatasertib",
+        "type": "biologic",
+        "description": "AKT inhibitor",
+        "note": "Biologic/antibody - SMILES-based screening not applicable",
+        "properties": {},
+        "predictions": {}
+      },
+      {
+        "drug": "Datopotamab_deruxtecan",
+        "type": "biologic",
+        "description": "Anti-Trop-2 ADC next-gen",
+        "note": "Biologic/antibody - SMILES-based screening not applicable",
+        "properties": {},
+        "predictions": {}
+      }
+    ],
+    "top_candidate": "Olaparib",
+    "bbb_penetrant": [
+      "Olaparib",
+      "Capivasertib"
+    ]
+  },
+  "alzheimers": {
+    "disease": "Alzheimer's Disease",
+    "total_candidates": 8,
+    "small_molecules": 3,
+    "biologics": 5,
+    "ranked_candidates": [
+      {
+        "drug": "Simufilam",
+        "smiles": "C1=CC=C(C=C1)CC(C(=O)NC2=CC=CC=C2)NC(=O)C3=CC=C(C=C3)F",
+        "type": "small_molecule",
+        "description": "Filamin A inhibitor",
+        "properties": {
+          "molecular_weight": 362.4,
+          "logP": 3.81,
+          "tpsa": 58.2,
+          "hbd": 2,
+          "hba": 2,
+          "rotatable_bonds": 6,
+          "rings": 3,
+          "qed": 0.7006,
+          "lipinski_violations": 0,
+          "bbb_likelihood": "HIGH"
+        },
+        "predictions": {},
+        "druglikeness_score": 0.7006,
+        "bbb_penetration": "HIGH"
+      },
+      {
+        "drug": "Valiltramiprosate",
+        "smiles": "CS(=O)(=O)CCCC(C(=O)O)N",
+        "type": "small_molecule",
+        "description": "Anti-amyloid small molecule (ALZ-801)",
+        "properties": {
+          "molecular_weight": 195.24,
+          "logP": -0.78,
+          "tpsa": 97.46,
+          "hbd": 2,
+          "hba": 4,
+          "rotatable_bonds": 5,
+          "rings": 0,
+          "qed": 0.5996,
+          "lipinski_violations": 0,
+          "bbb_likelihood": "LOW"
+        },
+        "predictions": {},
+        "druglikeness_score": 0.5996,
+        "bbb_penetration": "LOW"
+      },
+      {
+        "drug": "Masitinib",
+        "smiles": "CC1=CC(=CC=C1)NC(=O)C2=CC=C(S2)NC3=NC(=CS3)C4=CC=C(C=C4)CN5CCN(CC5)C",
+        "type": "small_molecule",
+        "description": "Tyrosine kinase inhibitor",
+        "properties": {
+          "molecular_weight": 503.7,
+          "logP": 5.92,
+          "tpsa": 60.5,
+          "hbd": 2,
+          "hba": 7,
+          "rotatable_bonds": 7,
+          "rings": 5,
+          "qed": 0.3277,
+          "lipinski_violations": 2,
+          "bbb_likelihood": "LOW"
+        },
+        "predictions": {},
+        "druglikeness_score": 0.3277,
+        "bbb_penetration": "LOW"
+      }
+    ],
+    "biologic_candidates": [
+      {
+        "drug": "Lecanemab",
+        "type": "biologic",
+        "description": "Anti-amyloid protofibril antibody",
+        "note": "Biologic/antibody - SMILES-based screening not applicable",
+        "properties": {},
+        "predictions": {}
+      },
+      {
+        "drug": "Donanemab",
+        "type": "biologic",
+        "description": "Anti-amyloid plaque antibody",
+        "note": "Biologic/antibody - SMILES-based screening not applicable",
+        "properties": {},
+        "predictions": {}
+      },
+      {
+        "drug": "Buntanetap",
+        "type": "biologic",
+        "description": "APP/Tau translation inhibitor",
+        "note": "Biologic/antibody - SMILES-based screening not applicable",
+        "properties": {},
+        "predictions": {}
+      },
+      {
+        "drug": "Semaglutide",
+        "type": "biologic",
+        "description": "GLP-1 agonist (repurposing)",
+        "note": "Biologic/antibody - SMILES-based screening not applicable",
+        "properties": {},
+        "predictions": {}
+      },
+      {
+        "drug": "NE3107",
+        "type": "biologic",
+        "description": "ERK/NF-kB inhibitor",
+        "note": "Biologic/antibody - SMILES-based screening not applicable",
+        "properties": {},
+        "predictions": {}
+      }
+    ],
+    "top_candidate": "Simufilam",
+    "bbb_penetrant": [
+      "Simufilam"
+    ]
+  }
+}

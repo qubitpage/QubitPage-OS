@@ -1,0 +1,25 @@
+{
+  "medgemma_lora": {
+    "train_loss": [
+      2.5536,
+      1.9693,
+      1.4256
+    ],
+    "status": "completed",
+    "lora_dir": "/root/models/medgemma_lora"
+  },
+  "txgemma_admet": {
+    "drugs_screened": 23,
+    "status": "completed"
+  },
+  "weights": {
+    "chexnet_weights.pth": 27.2,
+    "path_foundation_weights.pth": 94.0,
+    "cxr_foundation.pth": 29.1,
+    "path_foundation.pth": 328.9,
+    "derm_foundation.pth": 18.1,
+    "brain_mri.pth": 94.0,
+    "medgemma_lora": 77.3
+  },
+  "timestamp": "2026-02-20T07:56:01.669238"
+}

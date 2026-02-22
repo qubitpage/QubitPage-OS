@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>{{ os_name }} — Documentation</title>
+<link rel="stylesheet" href="/static/css/quantum-os.css">
+<style>
+  body { overflow: auto; }
+  .docs-shell { display: flex; min-height: 100vh; }
+  .docs-nav-bar {
+    width: 260px; padding: 24px 16px; flex-shrink: 0;
+    background: var(--bg-secondary);
+    border-right: 1px solid var(--border);
+    overflow-y: auto; position: sticky; top: 0; height: 100vh;
+  }
+  .docs-nav-bar h1 {
+    font-size: 18px; margin-bottom: 4px;
+    background: linear-gradient(135deg, var(--accent), var(--accent-purple));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .docs-nav-bar .version { color: var(--text-dim); font-size: 12px; margin-bottom: 24px; }
+  .docs-nav-bar .nav-group { margin-bottom: 20px; }
+  .docs-nav-bar .nav-group-title {
+    font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px;
+    color: var(--text-dim); margin-bottom: 8px; padding: 0 8px;
+  }
+  .docs-nav-bar .nav-item {
+    display: block; padding: 8px 12px; border-radius: 6px;
+    color: var(--text-secondary); text-decoration: none;
+    font-size: 13px; transition: all .15s; cursor: pointer;
+  }
+  .docs-nav-bar .nav-item:hover { background: rgba(0,212,255,.06); color: var(--text-primary); }
+  .docs-nav-bar .nav-item.active { background: rgba(0,212,255,.1); color: var(--accent); }
+  .docs-main {
+    flex: 1; padding: 40px 60px; max-width: 900px;
+    line-height: 1.8;
+  }
+  .docs-main h1 { font-size: 32px; margin-bottom: 8px; color: var(--accent); }
+  .docs-main h2 { font-size: 22px; margin: 32px 0 12px; color: var(--accent-green); border-bottom: 1px solid var(--border); padding-bottom: 8px; }
+  .docs-main h3 { font-size: 17px; margin: 24px 0 8px; color: var(--accent-purple); }
+  .docs-main p { color: var(--text-secondary); margin-bottom: 14px; }
+  .docs-main code {
+    background: var(--bg-primary); padding: 2px 6px; border-radius: 4px;
+    font-family: var(--font-mono); font-size: 13px; color: var(--accent-green);
+  }
+  .docs-main pre {
+    background: var(--bg-primary); padding: 20px; border-radius: 8px;
+    border: 1px solid var(--border); margin: 16px 0;
+    font-family: var(--font-mono); font-size: 13px; line-height: 1.6;
+    overflow-x: auto; color: var(--accent-green);
+  }
+  .docs-main ul, .docs-main ol { padding-left: 20px; margin-bottom: 14px; color: var(--text-secondary); }
+  .docs-main li { margin-bottom: 6px; }
+  .docs-main table { width: 100%; border-collapse: collapse; margin: 16px 0; }
+  .docs-main th, .docs-main td { padding: 10px 14px; text-align: left; border-bottom: 1px solid var(--border); }
+  .docs-main th { font-size: 11px; text-transform: uppercase; color: var(--text-dim); letter-spacing: 1px; }
+  .docs-main .note {
+    background: rgba(0,212,255,.06); border-left: 3px solid var(--accent);
+    padding: 12px 16px; border-radius: 0 6px 6px 0; margin: 16px 0;
+    color: var(--text-secondary); font-size: 13px;
+  }
+  .docs-main .warning {
+    background: rgba(255,140,0,.06); border-left: 3px solid var(--accent-orange);
+    padding: 12px 16px; border-radius: 0 6px 6px 0; margin: 16px 0;
+  }
+  .api-card {
+    background: var(--bg-surface); border: 1px solid var(--border);
+    border-radius: 8px; padding: 16px; margin-bottom: 16px;
+  }
+  .api-card .method {
+    display: inline-block; padding: 2px 10px; border-radius: 4px;
+    font-family: var(--font-mono); font-size: 12px; font-weight: 700;
+    margin-right: 8px;
+  }
+  .api-card .method.get { background: rgba(0,212,255,.15); color: var(--accent); }
+  .api-card .method.post { background: rgba(0,255,170,.15); color: var(--accent-green); }
+  .api-card .path { font-family: var(--font-mono); font-size: 14px; }
+  .api-card .desc { color: var(--text-dim); font-size: 13px; margin-top: 4px; }
+  .section { display: none; }
+  .section.active { display: block; }
+  .back-btn {
+    display: inline-block; margin-bottom: 24px; padding: 8px 16px;
+    background: var(--bg-surface); border: 1px solid var(--border);
+    border-radius: 6px; color: var(--accent); text-decoration: none;
+    font-size: 13px; transition: all .15s;
+  }
+  .back-btn:hover { border-color: var(--accent); }
+  @media (max-width: 768px) {
+    .docs-shell { flex-direction: column; }
+    .docs-nav-bar { width: 100%; height: auto; position: relative; }
+    .docs-main { padding: 24px; }
+  }
+</style>
+</head>
+<body>
+<div class="docs-shell">
+  <nav class="docs-nav-bar">
+    <h1>QubitPage® Docs</h1>
+    <div class="version">v{{ os_version }}</div>
+
+    <div class="nav-group">
+      <div class="nav-group-title">Getting Started</div>
+      <a class="nav-item active" data-section="overview">Overview</a>
+      <a class="nav-item" data-section="quickstart">Quick Start</a>
+      <a class="nav-item" data-section="architecture">Architecture</a>
+    </div>
+    <div class="nav-group">
+      <div class="nav-group-title">Languages</div>
+      <a class="nav-item" data-section="qplang">QPlang Reference</a>
+      <a class="nav-item" data-section="qbp">QBP Markup</a>
+    </div>
+    <div class="nav-group">
+      <div class="nav-group-title">Quantum</div>
+      <a class="nav-item" data-section="qec">Error Correction</a>
+      <a class="nav-item" data-section="decoders">Decoders</a>
+      <a class="nav-item" data-section="hardware">Hardware</a>
+    </div>
+    <div class="nav-group">
+      <div class="nav-group-title">OS Features</div>
+      <a class="nav-item" data-section="game">Quantum Game</a>
+      <a class="nav-item" data-section="crypto">Crypto Tools</a>
+      <a class="nav-item" data-section="aria">ARIA AI</a>
+    </div>
+    <div class="nav-group">
+      <div class="nav-group-title">API</div>
+      <a class="nav-item" data-section="api">REST API</a>
+      <a class="nav-item" data-section="websocket">WebSocket</a>
+    </div>
+  </nav>
+
+  <main class="docs-main">
+
+    <!-- Overview -->
+    <div class="section active" id="sec-overview">
+      <h1>QubitPage® Quantum OS</h1>
+      <p>The world's first web-based quantum operating system, creating a seamless bridge between quantum hardware, artificial intelligence, and human operators.</p>
+
+      <h2>What is QubitPage OS?</h2>
+      <p>QubitPage OS is a complete quantum computing platform that runs in your browser. It provides:</p>
+      <ul>
+        <li><strong>Quantum Circuit Lab</strong> — Write, compile, and simulate quantum circuits using QPlang</li>
+        <li><strong>Quantum Oracle Game</strong> — The world's first quantum prediction game</li>
+        <li><strong>Quantum Crypto Tools</strong> — Encryption, QRNG, BB84 key distribution</li>
+        <li><strong>ARIA AI Assistant</strong> — AI-powered quantum computing guide (Groq + Gemini)</li>
+        <li><strong>Full Desktop Environment</strong> — Windows, taskbar, apps, themes</li>
+      </ul>
+
+      <h2>The Quantum Bridge</h2>
+      <pre>
+┌─────────────┐    ┌───────────────┐    ┌──────────┐    ┌────────────┐
+│   Quantum   │───▶│   QUBIOS      │───▶│   AI     │───▶│   Human    │
+│  Hardware   │    │   Kernel      │    │  Agent   │    │  Interface │
+│             │    │               │    │          │    │            │
+│ IBM 127-156q│    │ QPlang + QEC  │    │ Groq     │    │ QBP → HTML │
+│ Stim sim    │    │ Decoders      │    │ Gemini   │    │ Desktop OS │
+│ AWS Braket  │    │ Refresh Loop  │    │ ARIA     │    │ No-code UI │
+└─────────────┘    └───────────────┘    └──────────┘    └────────────┘</pre>
+
+      <h2>Technology Stack</h2>
+      <table>
+        <tr><th>Layer</th><th>Technology</th></tr>
+        <tr><td>Quantum Hardware</td><td>IBM Quantum (127-156 qubits), Stim simulator, AWS Braket</td></tr>
+        <tr><td>Quantum Language</td><td>QPlang (.qpgl) — low-level circuit language with native QEC</td></tr>
+        <tr><td>Web Language</td><td>QBP (.qbp) — quantum markup → HTML/CSS/JS</td></tr>
+        <tr><td>AI</td><td>Groq (LLaMA 3.3-70B), Google Gemini 2.0 Flash</td></tr>
+        <tr><td>Backend</td><td>Python, Flask, SocketIO</td></tr>
+        <tr><td>Error Correction</td><td>Steane [[7,1,3]], Surface codes d=3/5/7, auto-escalation</td></tr>
+      </table>
+    </div>
+
+    <!-- Quick Start -->
+    <div class="section" id="sec-quickstart">
+      <h1>Quick Start</h1>
+      <h2>1. Open Circuit Lab</h2>
+      <p>Double-click the <strong>Circuit Lab</strong> icon on the desktop, or use the Start Menu.</p>
+
+      <h2>2. Write Your First Circuit</h2>
+      <pre>
+# Bell State — quantum entanglement
+qreg q[2]
+creg c[2]
+
+H q[0]
+CNOT q[0], q[1]
+
+measure q -> c</pre>
+
+      <h2>3. Run the Simulation</h2>
+      <p>Click <strong>▶ Run</strong> to simulate on the Stim engine. You'll see results like:</p>
+      <pre>
+|00⟩  ████████████ 50.1%
+|11⟩  ████████████ 49.9%</pre>
+
+      <h2>4. Try the Terminal</h2>
+      <p>Open the <strong>Terminal</strong> and try these commands:</p>
+      <pre>
+simulate bell          # Run a Bell state
+simulate ghz           # Run a GHZ state
+simulate grover        # Run Grover's search
+backends               # List IBM Quantum backends
+qrng 256               # Generate quantum random numbers
+hash Hello World       # Post-quantum hash
+aria What is a qubit?  # Ask the AI</pre>
+
+      <h2>5. Play the Quantum Game</h2>
+      <p>Open <strong>Quantum Oracle</strong> and test your quantum intuition by predicting measurement outcomes!</p>
+    </div>
+
+    <!-- Architecture -->
+    <div class="section" id="sec-architecture">
+      <h1>System Architecture</h1>
+
+      <h2>Overview</h2>
+      <p>QubitPage OS consists of layered modules, each serving a specific role in the quantum computing stack.</p>
+
+      <h3>Kernel (quantum_kernel.py)</h3>
+      <p>The kernel wraps QPlang, Stim, and IBM Quantum into a unified API. It handles:</p>
+      <ul>
+        <li>QPlang compilation (source → QASM + Stim)</li>
+        <li>Stim circuit simulation (Bell, GHZ, Grover, custom)</li>
+        <li>IBM Quantum hardware execution</li>
+        <li>Quantum game round generation</li>
+      </ul>
+
+      <h3>AI Agent (ai_agent.py)</h3>
+      <p>ARIA uses a priority-chain of AI providers:</p>
+      <ol>
+        <li><strong>Groq SDK</strong> — LLaMA 3.3-70B (fastest)</li>
+        <li><strong>Gemini SDK</strong> — Gemini 2.0 Flash (fallback)</li>
+        <li><strong>Groq REST</strong> — Direct HTTP API (last resort)</li>
+      </ol>
+
+      <h3>QPlang Compiler</h3>
+      <p>The QPlang pipeline:</p>
+      <pre>
+Source (.qpgl) → Lexer → Parser → AST → Type Checker → Compiler → QASM + Stim</pre>
+
+      <h3>QBP Transpiler</h3>
+      <p>The QBP pipeline:</p>
+      <pre>
+Source (.qbp) → QBP Lexer → QBP Parser → Document Tree → HTML Transpiler → HTML/CSS/JS</pre>
+
+      <h2>Error Correction Hierarchy</h2>
+      <pre>
+                    Auto-Escalation
+                         │
+  [[4,2,2]] → [[7,1,3]] → Surface d=3 → d=5 → d=7
+  Detection    Steane        17q          49q    97q
+  2 logical    1 logical    1 logical   1 logical
+  4 physical   7 physical   physical    physical</pre>
+    </div>
+
+    <!-- QPlang Reference -->
+    <div class="section" id="sec-qplang">
+      <h1>QPlang Language Reference</h1>
+      <p>QPlang is a quantum programming language with <strong>native error correction</strong>, designed for the QubitPage OS ecosystem.</p>
+
+      <h2>Registers</h2>
+      <pre>
+qreg q[7]     # 7-qubit quantum register
+creg c[7]     # 7-bit classical register</pre>
+
+      <h2>Gates</h2>
+      <table>
+        <tr><th>Gate</th><th>Syntax</th><th>Description</th></tr>
+        <tr><td>Hadamard</td><td><code>H q[0]</code></td><td>Creates superposition</td></tr>
+        <tr><td>Pauli-X</td><td><code>X q[1]</code></td><td>Bit flip (NOT)</td></tr>
+        <tr><td>Pauli-Y</td><td><code>Y q[0]</code></td><td>Y rotation</td></tr>
+        <tr><td>Pauli-Z</td><td><code>Z q[0]</code></td><td>Phase flip</td></tr>
+        <tr><td>Phase</td><td><code>S q[0]</code></td><td>π/2 phase</td></tr>
+        <tr><td>T gate</td><td><code>T q[0]</code></td><td>π/4 phase</td></tr>
+        <tr><td>CNOT</td><td><code>CNOT q[0], q[1]</code></td><td>Controlled-NOT</td></tr>
+        <tr><td>CZ</td><td><code>CZ q[0], q[1]</code></td><td>Controlled-Z</td></tr>
+        <tr><td>SWAP</td><td><code>SWAP q[0], q[1]</code></td><td>Swap qubits</td></tr>
+        <tr><td>Toffoli</td><td><code>CCX q[0], q[1], q[2]</code></td><td>Controlled-controlled-X</td></tr>
+      </table>
+
+      <h2>Measurement</h2>
+      <pre>
+measure q -> c          # Measure all qubits
+measure q[0] -> c[0]    # Measure single qubit</pre>
+
+      <h2>Error Correction Directives</h2>
+      <pre>
+steane q           # Encode with Steane [[7,1,3]]
+refresh q          # Run error correction cycle
+escalate q to d=3  # Escalate to surface code d=3
+teleport q[0] -> q[7]  # Quantum teleportation</pre>
+
+      <h2>Control Flow</h2>
+      <pre>
+if c[0] == 1:
+    X q[1]
+
+for i in range(10):
+    refresh q</pre>
+
+      <h2>Functions</h2>
+      <pre>
+def bell_pair(q0, q1):
+    H q0
+    CNOT q0, q1
+
+# Standard library
+bell_pair(q[0], q[1])
+ghz_state(q, 3)
+qft(q, 4)</pre>
+    </div>
+
+    <!-- QBP -->
+    <div class="section" id="sec-qbp">
+      <h1>QBP Markup Language</h1>
+      <p>QBP (.qbp) is a high-level quantum markup language that transpiles to HTML/CSS/JS. Think of it as "HTML for quantum apps."</p>
+
+      <h2>Example</h2>
+      <pre>
+@page "Quantum Demo"
+@theme quantum-dark
+
+&lt;qapp&gt;
+  &lt;qlayout type="sidebar"&gt;
+    &lt;qsidebar&gt;
+      &lt;qmenu&gt;
+        &lt;qlink href="/circuit"&gt;Circuit Lab&lt;/qlink&gt;
+        &lt;qlink href="/game"&gt;Game&lt;/qlink&gt;
+      &lt;/qmenu&gt;
+    &lt;/qsidebar&gt;
+    &lt;qcontent&gt;
+      &lt;qcircuit id="demo"&gt;
+        H q[0]
+        CNOT q[0], q[1]
+      &lt;/qcircuit&gt;
+      &lt;qresult circuit="demo"/&gt;
+    &lt;/qcontent&gt;
+  &lt;/qlayout&gt;
+&lt;/qapp&gt;</pre>
+
+      <h2>All 38 Tags</h2>
+      <table>
+        <tr><th>Tag</th><th>HTML Output</th><th>Purpose</th></tr>
+        <tr><td><code>&lt;qapp&gt;</code></td><td>div.qbp-app</td><td>Application root</td></tr>
+        <tr><td><code>&lt;qpage&gt;</code></td><td>div.qbp-page</td><td>Page container</td></tr>
+        <tr><td><code>&lt;qcircuit&gt;</code></td><td>div.qbp-circuit</td><td>Quantum circuit editor</td></tr>
+        <tr><td><code>&lt;qresult&gt;</code></td><td>div.qbp-result</td><td>Result display</td></tr>
+        <tr><td><code>&lt;qlayout&gt;</code></td><td>div.qbp-layout</td><td>Layout container</td></tr>
+        <tr><td><code>&lt;qbutton&gt;</code></td><td>button.qbp-button</td><td>Action button</td></tr>
+        <tr><td><code>&lt;qinput&gt;</code></td><td>input.qbp-input</td><td>Text input</td></tr>
+        <tr><td><code>&lt;qcard&gt;</code></td><td>div.qbp-card</td><td>Content card</td></tr>
+        <tr><td><code>&lt;qgame&gt;</code></td><td>div.qbp-game</td><td>Game container</td></tr>
+        <tr><td><code>&lt;qai&gt;</code></td><td>div.qbp-ai</td><td>AI widget</td></tr>
+      </table>
+    </div>
+
+    <!-- QEC -->
+    <div class="section" id="sec-qec">
+      <h1>Quantum Error Correction</h1>
+
+      <h2>Steane Code [[7,1,3]]</h2>
+      <p>The core error correction unit. Encodes 1 logical qubit into 7 physical qubits, correcting any single-qubit error.</p>
+      <pre>
+Parity check matrix H:
+  X-stabilizers: S1 = IIIXXXX, S2 = IXXIIXX, S3 = XIXIXIX
+  Z-stabilizers: S4 = IIIZZZZ, S5 = IZZIIZZ, S6 = ZIZIZIZ
+
+Syndrome → Error mapping (O(1) lookup):
+  000 → No error
+  001 → Error on qubit 0
+  010 → Error on qubit 1
+  011 → Error on qubit 3  ...etc</pre>
+
+      <h2>Auto-Escalation</h2>
+      <p>QPlang monitors error rates and automatically escalates protection:</p>
+      <table>
+        <tr><th>Level</th><th>Code</th><th>Physical Qubits</th><th>Threshold</th></tr>
+        <tr><td>0</td><td>[[4,2,2]]</td><td>4</td><td>&lt; 0.1% error</td></tr>
+        <tr><td>1</td><td>[[7,1,3]] Steane</td><td>7</td><td>Default</td></tr>
+        <tr><td>2</td><td>Surface d=3</td><td>17</td><td>&gt; 1% error</td></tr>
+        <tr><td>3</td><td>Surface d=5</td><td>49</td><td>&gt; 2% error</td></tr>
+        <tr><td>4</td><td>Surface d=7</td><td>97</td><td>&gt; 5% error</td></tr>
+      </table>
+
+      <h2>Decoders</h2>
+      <ul>
+        <li><strong>Hamming Lookup</strong> — O(1) table for Steane code (7 syndromes)</li>
+        <li><strong>MWPM</strong> — Minimum Weight Perfect Matching via PyMatching</li>
+        <li><strong>Collision Clustering</strong> — Union-Find, FPGA-ready</li>
+        <li><strong>Neural Decoder</strong> — CNN, ONNX exportable for edge deployment</li>
+      </ul>
+    </div>
+
+    <!-- Decoders -->
+    <div class="section" id="sec-decoders">
+      <h1>Decoder Reference</h1>
+      <h2>Hamming Lookup (decoder_steane.py)</h2>
+      <p>O(1) decoder for the Steane code. Maps 3-bit syndromes to correction operators via a pre-computed table.</p>
+      <pre>SYNDROME_TABLE = {
+    (0,0,0): None,          # No error
+    (0,0,1): PauliOp("X", 0),  # q0
+    (0,1,0): PauliOp("X", 1),  # q1
+    (0,1,1): PauliOp("X", 3),  # q3
+    ...
+}</pre>
+
+      <h2>MWPM (decoder_mwpm.py)</h2>
+      <p>Uses PyMatching with Stim's detector error model for optimal surface code decoding.</p>
+
+      <h2>Collision Clustering (decoder_cc.py)</h2>
+      <p>Software implementation of Union-Find for FPGA deployment. Processes syndrome clusters in near-linear time.</p>
+
+      <h2>Neural Decoder (decoder_neural.py)</h2>
+      <p>CNN-based decoder trained on Stim-generated syndrome data. Exportable to ONNX for hardware acceleration.</p>
+    </div>
+
+    <!-- Hardware -->
+    <div class="section" id="sec-hardware">
+      <h1>Quantum Hardware</h1>
+      <h2>IBM Quantum</h2>
+      <table>
+        <tr><th>Backend</th><th>Qubits</th><th>Topology</th></tr>
+        <tr><td>ibm_brisbane</td><td>127</td><td>Heavy-hex</td></tr>
+        <tr><td>ibm_torino</td><td>133</td><td>Heavy-hex</td></tr>
+        <tr><td>ibm_sherbrooke</td><td>127</td><td>Heavy-hex</td></tr>
+        <tr><td>ibm_fez</td><td>156</td><td>Heavy-hex</td></tr>
+        <tr><td>ibm_marrakech</td><td>156</td><td>Heavy-hex</td></tr>
+      </table>
+
+      <h2>Stim Simulator</h2>
+      <p>Google's Stim provides ultra-fast stabilizer circuit simulation for testing and development.</p>
+
+      <h2>AWS Braket</h2>
+      <p>Additional hardware access via Amazon Braket (IonQ, Rigetti, IQM).</p>
+    </div>
+
+    <!-- Game -->
+    <div class="section" id="sec-game">
+      <h1>Quantum Oracle Game</h1>
+      <p>The world's first quantum prediction game. Test your understanding of quantum mechanics!</p>
+
+      <h2>How to Play</h2>
+      <ol>
+        <li>The Oracle prepares a quantum state using real quantum gates</li>
+        <li>You receive a hint about the quantum state</li>
+        <li>Predict the most probable measurement outcome</li>
+        <li>Score points based on difficulty level</li>
+      </ol>
+
+      <h2>Levels</h2>
+      <table>
+        <tr><th>Level</th><th>Challenge</th><th>Points</th></tr>
+        <tr><td>1</td><td>Single qubit: |0⟩ or |+⟩</td><td>10</td></tr>
+        <tr><td>2</td><td>Bell pairs: ⟩Φ+⟩ or |Ψ+⟩</td><td>20</td></tr>
+        <tr><td>3</td><td>GHZ states: 3-qubit entanglement</td><td>30</td></tr>
+        <tr><td>4</td><td>Random 4-qubit circuits</td><td>40</td></tr>
+        <tr><td>5</td><td>Mystery 5-qubit circuits</td><td>50</td></tr>
+      </table>
+    </div>
+
+    <!-- Crypto -->
+    <div class="section" id="sec-crypto">
+      <h1>Quantum Crypto Tools</h1>
+
+      <h2>Quantum Encryption (OTP)</h2>
+      <p>Uses CSPRNG for one-time pad key generation, providing information-theoretic security.</p>
+
+      <h2>BB84 Protocol</h2>
+      <p>Simulates the BB84 quantum key distribution protocol:</p>
+      <ol>
+        <li>Alice generates random bits and random bases (Z or X)</li>
+        <li>Alice prepares qubits and sends them to Bob</li>
+        <li>Bob measures with random bases</li>
+        <li>Alice and Bob compare bases publicly</li>
+        <li>Matching bases → shared secret key</li>
+      </ol>
+
+      <h2>QRNG</h2>
+      <p>Quantum Random Number Generator using Stim simulation. Generates truly random bits from quantum superposition via Hadamard gates.</p>
+
+      <h2>Post-Quantum Hash</h2>
+      <p>SHA3-256 (Keccak) — resistant to Grover's algorithm with 128-bit post-quantum security.</p>
+    </div>
+
+    <!-- ARIA -->
+    <div class="section" id="sec-aria">
+      <h1>ARIA AI Assistant</h1>
+      <p>ARIA (Artificial Research & Intelligence Agent) is your quantum computing guide, powered by state-of-the-art AI.</p>
+
+      <h2>Capabilities</h2>
+      <ul>
+        <li>Explain quantum computing concepts in simple language</li>
+        <li>Help write QPlang programs</li>
+        <li>Guide quantum experiments</li>
+        <li>Explain error correction and algorithms</li>
+        <li>Assist with cryptography and research</li>
+      </ul>
+
+      <h2>AI Backend</h2>
+      <table>
+        <tr><th>Priority</th><th>Provider</th><th>Model</th></tr>
+        <tr><td>1 (Primary)</td><td>Groq</td><td>LLaMA 3.3-70B</td></tr>
+        <tr><td>2 (Fallback)</td><td>Google</td><td>Gemini 2.0 Flash</td></tr>
+        <tr><td>3 (Last resort)</td><td>Groq REST</td><td>LLaMA 3.3-70B</td></tr>
+      </table>
+    </div>
+
+    <!-- API -->
+    <div class="section" id="sec-api">
+      <h1>REST API Reference</h1>
+
+      <h2>System</h2>
+      <div class="api-card">
+        <span class="method get">GET</span>
+        <span class="path">/api/system/info</span>
+        <div class="desc">Returns OS version, library availability, and system status.</div>
+      </div>
+      <div class="api-card">
+        <span class="method get">GET</span>
+        <span class="path">/api/system/backends</span>
+        <div class="desc">Lists available IBM Quantum backends with qubit counts.</div>
+      </div>
+
+      <h2>QPlang</h2>
+      <div class="api-card">
+        <span class="method post">POST</span>
+        <span class="path">/api/qplang/compile</span>
+        <div class="desc">Compile QPlang source → QASM + Stim. Body: <code>{"source": "..."}</code></div>
+      </div>
+      <div class="api-card">
+        <span class="method post">POST</span>
+        <span class="path">/api/qplang/tokenize</span>
+        <div class="desc">Tokenize QPlang source for syntax highlighting.</div>
+      </div>
+
+      <h2>Quantum Simulation</h2>
+      <div class="api-card">
+        <span class="method post">POST</span>
+        <span class="path">/api/quantum/simulate</span>
+        <div class="desc">Run circuit on Stim. Body: <code>{"type": "bell", "params": {"shots": 1024}}</code></div>
+      </div>
+      <div class="api-card">
+        <span class="method post">POST</span>
+        <span class="path">/api/quantum/execute</span>
+        <div class="desc">Execute on IBM hardware. Body: <code>{"qasm": "...", "backend": "ibm_brisbane", "shots": 1024}</code></div>
+      </div>
+
+      <h2>AI</h2>
+      <div class="api-card">
+        <span class="method post">POST</span>
+        <span class="path">/api/aria/chat</span>
+        <div class="desc">Chat with ARIA. Body: <code>{"message": "...", "history": []}</code></div>
+      </div>
+
+      <h2>Game</h2>
+      <div class="api-card">
+        <span class="method post">POST</span>
+        <span class="path">/api/game/round</span>
+        <div class="desc">Get game round. Body: <code>{"difficulty": 1}</code></div>
+      </div>
+
+      <h2>Crypto</h2>
+      <div class="api-card">
+        <span class="method post">POST</span>
+        <span class="path">/api/crypto/encrypt</span>
+        <div class="desc">Quantum OTP encrypt. Body: <code>{"text": "..."}</code></div>
+      </div>
+      <div class="api-card">
+        <span class="method post">POST</span>
+        <span class="path">/api/crypto/decrypt</span>
+        <div class="desc">Quantum OTP decrypt. Body: <code>{"ciphertext_hex": "...", "key_hex": "..."}</code></div>
+      </div>
+      <div class="api-card">
+        <span class="method post">POST</span>
+        <span class="path">/api/crypto/hash</span>
+        <div class="desc">SHA3-256 hash. Body: <code>{"text": "..."}</code></div>
+      </div>
+      <div class="api-card">
+        <span class="method post">POST</span>
+        <span class="path">/api/crypto/qrng</span>
+        <div class="desc">QRNG. Body: <code>{"bits": 256}</code></div>
+      </div>
+      <div class="api-card">
+        <span class="method post">POST</span>
+        <span class="path">/api/crypto/bb84</span>
+        <div class="desc">BB84 demo. Body: <code>{"key_length": 16}</code></div>
+      </div>
+    </div>
+
+    <!-- WebSocket -->
+    <div class="section" id="sec-websocket">
+      <h1>WebSocket API</h1>
+      <p>Connect via Socket.IO for real-time interaction.</p>
+
+      <h2>Events (Client → Server)</h2>
+      <table>
+        <tr><th>Event</th><th>Data</th><th>Description</th></tr>
+        <tr><td><code>run_circuit</code></td><td><code>{"type": "bell", "params": {}}</code></td><td>Run circuit in real-time</td></tr>
+        <tr><td><code>aria_message</code></td><td><code>{"message": "...", "history": []}</code></td><td>Send ARIA message</td></tr>
+      </table>
+
+      <h2>Events (Server → Client)</h2>
+      <table>
+        <tr><th>Event</th><th>Data</th><th>Description</th></tr>
+        <tr><td><code>system_message</code></td><td><code>{"type": "boot", "message": "..."}</code></td><td>System notification</td></tr>
+        <tr><td><code>circuit_status</code></td><td><code>{"status": "running"}</code></td><td>Circuit execution status</td></tr>
+        <tr><td><code>circuit_result</code></td><td><code>{"success": true, "data": {...}}</code></td><td>Circuit result</td></tr>
+        <tr><td><code>aria_typing</code></td><td><code>{"typing": true}</code></td><td>AI typing indicator</td></tr>
+        <tr><td><code>aria_response</code></td><td><code>{"success": true, "message": "..."}</code></td><td>AI response</td></tr>
+      </table>
+    </div>
+
+  </main>
+</div>
+
+<script>
+document.querySelectorAll('.nav-item').forEach(item => {
+  item.addEventListener('click', () => {
+    document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    item.classList.add('active');
+    const sec = document.getElementById('sec-' + item.dataset.section);
+    if (sec) sec.classList.add('active');
+    window.scrollTo(0, 0);
+  });
+});
+</script>
+</body>
+</html>

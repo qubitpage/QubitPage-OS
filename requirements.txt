@@ -1,0 +1,13 @@
+flask>=3.0
+flask-cors>=4.0
+flask-socketio>=5.3
+requests>=2.31
+numpy>=1.26
+stim>=1.13
+pymatching>=2.0
+qiskit>=1.0
+qiskit-ibm-runtime>=0.20
+groq>=0.4
+google-generativeai>=0.4
+cryptography>=42.0
+gunicorn>=21.0

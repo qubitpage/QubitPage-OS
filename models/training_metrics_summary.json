@@ -1,0 +1,20 @@
+{
+  "timestamp": "2026-02-20T07:32:57.023263",
+  "models": {
+    "cxr_foundation": {
+      "status": "not_trained"
+    },
+    "path_foundation": {
+      "status": "not_trained"
+    },
+    "derm_foundation": {
+      "status": "not_trained"
+    },
+    "brain_mri": {
+      "status": "not_trained"
+    },
+    "medgemma_lora": {
+      "status": "not_trained"
+    }
+  }
+}

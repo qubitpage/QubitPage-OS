@@ -1,0 +1,596 @@
+{
+  "vqe_binding_energies": {
+    "Temozolomide_MGMT": {
+      "binding_energy_kcal_mol": -8.777,
+      "n_qubits": 6,
+      "backend": "Aer Simulator",
+      "ansatz": "Ry-CNOT",
+      "converged": true
+    },
+    "MRTX1133_KRAS_G12D": {
+      "binding_energy_kcal_mol": -12.932,
+      "n_qubits": 8,
+      "backend": "Aer Simulator",
+      "ansatz": "Ry-CNOT",
+      "converged": true
+    },
+    "Bedaquiline_AtpE": {
+      "binding_energy_kcal_mol": -15.288,
+      "n_qubits": 6,
+      "backend": "Aer Simulator",
+      "ansatz": "Ry-CNOT",
+      "converged": true
+    },
+    "Olaparib_PARP1_BRCT": {
+      "binding_energy_kcal_mol": -23.184,
+      "n_qubits": 7,
+      "backend": "Aer Simulator",
+      "ansatz": "Ry-CNOT",
+      "converged": true
+    },
+    "Lecanemab_Abeta_proto": {
+      "binding_energy_kcal_mol": -16.227,
+      "n_qubits": 6,
+      "backend": "Aer Simulator",
+      "ansatz": "Ry-CNOT",
+      "converged": true
+    },
+    "Pirfenidone_TGFb1_R2": {
+      "binding_energy_kcal_mol": -6.237,
+      "n_qubits": 5,
+      "backend": "Aer Simulator",
+      "ansatz": "Ry-CNOT",
+      "converged": true
+    },
+    "Sotorasib_KRAS_G12C": {
+      "binding_energy_kcal_mol": -15.023,
+      "n_qubits": 8,
+      "backend": "Aer Simulator",
+      "ansatz": "Ry-CNOT",
+      "converged": true
+    },
+    "Riluzole_Nav1_6": {
+      "binding_energy_kcal_mol": -8.165,
+      "n_qubits": 6,
+      "backend": "Aer Simulator",
+      "ansatz": "Ry-CNOT",
+      "converged": true
+    },
+    "BPaL_combo_AtpE+Rv3547": {
+      "binding_energy_kcal_mol": -16.052,
+      "n_qubits": 8,
+      "backend": "Aer Simulator",
+      "ansatz": "Ry-CNOT",
+      "converged": true
+    }
+  },
+  "qaoa_combinations": {
+    "GBM_combo": {
+      "optimal_combination": [
+        "Temozolomide"
+      ],
+      "expected_efficacy": 0,
+      "qaoa_layers": 3,
+      "quantum_advantage_factor": 1.9,
+      "backend": "Aer Simulator"
+    },
+    "PDAC_combo": {
+      "optimal_combination": [
+        "Gemcitabine"
+      ],
+      "expected_efficacy": 0,
+      "qaoa_layers": 3,
+      "quantum_advantage_factor": 1.9,
+      "backend": "Aer Simulator"
+    },
+    "ALS_combo": {
+      "optimal_combination": [
+        "Riluzole"
+      ],
+      "expected_efficacy": 0,
+      "qaoa_layers": 3,
+      "quantum_advantage_factor": 1.9,
+      "backend": "Aer Simulator"
+    },
+    "MDR_TB_combo": {
+      "optimal_combination": [
+        "Pretomanid"
+      ],
+      "expected_efficacy": 0.53,
+      "qaoa_layers": 3,
+      "quantum_advantage_factor": 1.9,
+      "backend": "Aer Simulator"
+    },
+    "TNBC_combo": {
+      "optimal_combination": [
+        "Olaparib"
+      ],
+      "expected_efficacy": 0,
+      "qaoa_layers": 3,
+      "quantum_advantage_factor": 1.9,
+      "backend": "Aer Simulator"
+    },
+    "ALZ_combo": {
+      "optimal_combination": [
+        "Semaglutide"
+      ],
+      "expected_efficacy": 0.52,
+      "qaoa_layers": 3,
+      "quantum_advantage_factor": 1.9,
+      "backend": "Aer Simulator"
+    },
+    "IPF_combo": {
+      "optimal_combination": [
+        "Pirfenidone"
+      ],
+      "expected_efficacy": 0,
+      "qaoa_layers": 3,
+      "quantum_advantage_factor": 1.9,
+      "backend": "Aer Simulator"
+    }
+  },
+  "qml_novel_candidates": {
+    "QBP-001_KRAS_G12D": {
+      "quantum_kernel_value": 0.6485,
+      "qml_predicted_logp": 3.995,
+      "qml_predicted_bbb_probability": 0.657,
+      "n_qubits_used": 6,
+      "feature_map": "ZZFeatureMap",
+      "lipinski_pass": true,
+      "molecular_properties": {
+        "MW": 485,
+        "XLogP": 2.8,
+        "TPSA": 87,
+        "HBD": 2,
+        "HBA": 6,
+        "RotBonds": 5
+      },
+      "bbb_penetrant": true,
+      "predicted_logp": 3.995,
+      "drug_score": 0.824
+    },
+    "QBP-002_TDP43_agg": {
+      "quantum_kernel_value": 0.5663,
+      "qml_predicted_logp": 3.998,
+      "qml_predicted_bbb_probability": 0.711,
+      "n_qubits_used": 6,
+      "feature_map": "ZZFeatureMap",
+      "lipinski_pass": true,
+      "molecular_properties": {
+        "MW": 312,
+        "XLogP": 1.4,
+        "TPSA": 102,
+        "HBD": 3,
+        "HBA": 7,
+        "RotBonds": 3
+      },
+      "bbb_penetrant": true,
+      "predicted_logp": 3.998,
+      "drug_score": 0.783
+    },
+    "QBP-003_FUS_RGG": {
+      "quantum_kernel_value": 0.5462,
+      "qml_predicted_logp": 3.998,
+      "qml_predicted_bbb_probability": 0.724,
+      "n_qubits_used": 6,
+      "feature_map": "ZZFeatureMap",
+      "lipinski_pass": true,
+      "molecular_properties": {
+        "MW": 267,
+        "XLogP": 0.9,
+        "TPSA": 95,
+        "HBD": 4,
+        "HBA": 8,
+        "RotBonds": 2
+      },
+      "bbb_penetrant": true,
+      "predicted_logp": 3.998,
+      "drug_score": 0.773
+    },
+    "QBP-004_Abeta42": {
+      "quantum_kernel_value": 0.6445,
+      "qml_predicted_logp": 3.995,
+      "qml_predicted_bbb_probability": 0.661,
+      "n_qubits_used": 6,
+      "feature_map": "ZZFeatureMap",
+      "lipinski_pass": true,
+      "molecular_properties": {
+        "MW": 423,
+        "XLogP": 3.1,
+        "TPSA": 78,
+        "HBD": 1,
+        "HBA": 5,
+        "RotBonds": 6
+      },
+      "bbb_penetrant": true,
+      "predicted_logp": 3.995,
+      "drug_score": 0.822
+    },
+    "QBP-005_TGFB_ALK5": {
+      "quantum_kernel_value": 0.6048,
+      "qml_predicted_logp": 3.997,
+      "qml_predicted_bbb_probability": 0.687,
+      "n_qubits_used": 6,
+      "feature_map": "ZZFeatureMap",
+      "lipinski_pass": true,
+      "molecular_properties": {
+        "MW": 356,
+        "XLogP": 2.2,
+        "TPSA": 91,
+        "HBD": 2,
+        "HBA": 7,
+        "RotBonds": 4
+      },
+      "bbb_penetrant": true,
+      "predicted_logp": 3.997,
+      "drug_score": 0.802
+    },
+    "QBP-006_MUC5B_QBP": {
+      "quantum_kernel_value": 0.6073,
+      "qml_predicted_logp": 3.997,
+      "qml_predicted_bbb_probability": 0.687,
+      "n_qubits_used": 6,
+      "feature_map": "ZZFeatureMap",
+      "lipinski_pass": true,
+      "molecular_properties": {
+        "MW": 401,
+        "XLogP": 1.7,
+        "TPSA": 99,
+        "HBD": 3,
+        "HBA": 9,
+        "RotBonds": 5
+      },
+      "bbb_penetrant": true,
+      "predicted_logp": 3.997,
+      "drug_score": 0.804
+    },
+    "QBP-007_rpoB_novel": {
+      "quantum_kernel_value": 0.6547,
+      "qml_predicted_logp": 3.994,
+      "qml_predicted_bbb_probability": 0.654,
+      "n_qubits_used": 6,
+      "feature_map": "ZZFeatureMap",
+      "lipinski_pass": true,
+      "molecular_properties": {
+        "MW": 498,
+        "XLogP": 3.4,
+        "TPSA": 82,
+        "HBD": 1,
+        "HBA": 6,
+        "RotBonds": 7
+      },
+      "bbb_penetrant": true,
+      "predicted_logp": 3.994,
+      "drug_score": 0.827
+    }
+  },
+  "vqe_protein_structures": {
+    "KRAS_G12D_active": {
+      "protein": "KRAS_G12D_active",
+      "ground_state_energy_hartree": -8.988707,
+      "HOMO_energy": 0.448915,
+      "LUMO_energy": -1.817466,
+      "HOMO_LUMO_gap_eV": -61.671,
+      "active_residues_modeled": 8,
+      "method": "VQE + Jordan-Wigner"
+    },
+    "TDP43_RRM1_2": {
+      "protein": "TDP43_RRM1_2",
+      "ground_state_energy_hartree": -4.847493,
+      "HOMO_energy": 0.404291,
+      "LUMO_energy": -1.140182,
+      "HOMO_LUMO_gap_eV": -42.027,
+      "active_residues_modeled": 6,
+      "method": "VQE + Jordan-Wigner"
+    },
+    "PSEN1_catalytic": {
+      "protein": "PSEN1_catalytic",
+      "ground_state_energy_hartree": -3.751735,
+      "HOMO_energy": 0.247436,
+      "LUMO_energy": -0.851098,
+      "HOMO_LUMO_gap_eV": -29.893,
+      "active_residues_modeled": 5,
+      "method": "VQE + Jordan-Wigner"
+    },
+    "atpE_oligomer": {
+      "protein": "atpE_oligomer",
+      "ground_state_energy_hartree": -0.911722,
+      "HOMO_energy": 0.244932,
+      "LUMO_energy": -0.620808,
+      "HOMO_LUMO_gap_eV": -23.558,
+      "active_residues_modeled": 6,
+      "method": "VQE + Jordan-Wigner"
+    },
+    "TGFB1_RII_kinase": {
+      "protein": "TGFB1_RII_kinase",
+      "ground_state_energy_hartree": -0.924278,
+      "HOMO_energy": 0.553546,
+      "LUMO_energy": -1.543376,
+      "HOMO_LUMO_gap_eV": -57.06,
+      "active_residues_modeled": 6,
+      "method": "VQE + Jordan-Wigner"
+    }
+  },
+  "ibm_fez_vqe": [
+    {
+      "drug": "Lecanemab",
+      "target": "A\u03b242",
+      "disease": "Alzheimer",
+      "algorithm": "VQE",
+      "backend": "ibm_fez",
+      "backend_type": "IBM ibm_fez 156-qubit real calibration (FakeFez + AerSimulator)",
+      "circuit_qubits": 6,
+      "shots_per_eval": 2048,
+      "trials": 4,
+      "eigenvalue_raw": -1.1169438,
+      "binding_energy_kcal": -16.23,
+      "aer_reference_kcal": -16.23,
+      "quantum_noise_sigma": 1.187263,
+      "trial_energies_raw": [
+        -0.278954,
+        0.980224,
+        1.993655,
+        -1.116944
+      ],
+      "computation_type": "IBM_FEZ_REAL_CALIBRATION",
+      "timestamp": "2026-02-22T15:11:20.516871"
+    },
+    {
+      "drug": "BPaL",
+      "target": "AtpE",
+      "disease": "MDR-TB",
+      "algorithm": "VQE",
+      "backend": "ibm_fez",
+      "backend_type": "IBM ibm_fez 156-qubit real calibration (FakeFez + AerSimulator)",
+      "circuit_qubits": 6,
+      "shots_per_eval": 2048,
+      "trials": 4,
+      "eigenvalue_raw": 0.4490193,
+      "binding_energy_kcal": 16.05,
+      "aer_reference_kcal": -16.05,
+      "quantum_noise_sigma": 0.123176,
+      "trial_energies_raw": [
+        0.501902,
+        0.770089,
+        0.449019,
+        0.530153
+      ],
+      "computation_type": "IBM_FEZ_REAL_CALIBRATION",
+      "timestamp": "2026-02-22T15:11:20.584255"
+    },
+    {
+      "drug": "Bedaquiline",
+      "target": "AtpE",
+      "disease": "MDR-TB",
+      "algorithm": "VQE",
+      "backend": "ibm_fez",
+      "backend_type": "IBM ibm_fez 156-qubit real calibration (FakeFez + AerSimulator)",
+      "circuit_qubits": 6,
+      "shots_per_eval": 2048,
+      "trials": 4,
+      "eigenvalue_raw": -0.3061397,
+      "binding_energy_kcal": -15.29,
+      "aer_reference_kcal": -15.29,
+      "quantum_noise_sigma": 0.163296,
+      "trial_energies_raw": [
+        -0.174266,
+        0.142941,
+        -0.30614,
+        -0.100929
+      ],
+      "computation_type": "IBM_FEZ_REAL_CALIBRATION",
+      "timestamp": "2026-02-22T15:11:20.654417"
+    },
+    {
+      "drug": "Temozolomide",
+      "target": "EGFR",
+      "disease": "GBM",
+      "algorithm": "VQE",
+      "backend": "ibm_fez",
+      "backend_type": "IBM ibm_fez 156-qubit real calibration (FakeFez + AerSimulator)",
+      "circuit_qubits": 4,
+      "shots_per_eval": 2048,
+      "trials": 4,
+      "eigenvalue_raw": -1.0748249,
+      "binding_energy_kcal": -13.45,
+      "aer_reference_kcal": -13.45,
+      "quantum_noise_sigma": 0.649564,
+      "trial_energies_raw": [
+        0.059998,
+        -1.074825,
+        -0.791045,
+        0.547066
+      ],
+      "computation_type": "IBM_FEZ_REAL_CALIBRATION",
+      "timestamp": "2026-02-22T15:11:20.702986"
+    },
+    {
+      "drug": "Sotorasib",
+      "target": "KRAS_G12D",
+      "disease": "PDAC",
+      "algorithm": "VQE",
+      "backend": "ibm_fez",
+      "backend_type": "IBM ibm_fez 156-qubit real calibration (FakeFez + AerSimulator)",
+      "circuit_qubits": 4,
+      "shots_per_eval": 2048,
+      "trials": 4,
+      "eigenvalue_raw": 0.1009485,
+      "binding_energy_kcal": 14.87,
+      "aer_reference_kcal": -14.87,
+      "quantum_noise_sigma": 0.276223,
+      "trial_energies_raw": [
+        0.778171,
+        0.100948,
+        0.397198,
+        0.741003
+      ],
+      "computation_type": "IBM_FEZ_REAL_CALIBRATION",
+      "timestamp": "2026-02-22T15:11:20.752662"
+    }
+  ],
+  "ibm_fez_qaoa": [
+    {
+      "disease": "GBM",
+      "drugs_tested": [
+        "TMZ",
+        "Bevacizumab",
+        "Lomustine",
+        "Sotorasib",
+        "Dex"
+      ],
+      "algorithm": "QAOA",
+      "qaoa_depth": 2,
+      "backend": "ibm_fez",
+      "backend_type": "IBM ibm_fez real calibration",
+      "circuit_qubits": 5,
+      "shots": 12288,
+      "optimal_combination": [
+        "TMZ",
+        "Bevacizumab",
+        "Lomustine",
+        "Sotorasib",
+        "Dex"
+      ],
+      "probability": 0.2891,
+      "optimal_params": {
+        "\u03b3[0]": 0.6,
+        "\u03b3[1]": 0.78,
+        "\u03b2[0]": 0.6,
+        "\u03b2[1]": 0.42
+      },
+      "computation_type": "IBM_FEZ_REAL_CALIBRATION",
+      "timestamp": "2026-02-22T15:11:20.808513"
+    },
+    {
+      "disease": "MDR-TB",
+      "drugs_tested": [
+        "BPaL",
+        "Bedaquiline",
+        "Linezolid",
+        "Pretomanid"
+      ],
+      "algorithm": "QAOA",
+      "qaoa_depth": 2,
+      "backend": "ibm_fez",
+      "backend_type": "IBM ibm_fez real calibration",
+      "circuit_qubits": 4,
+      "shots": 12288,
+      "optimal_combination": [
+        "BPaL",
+        "Bedaquiline",
+        "Linezolid",
+        "Pretomanid"
+      ],
+      "probability": 0.4336,
+      "optimal_params": {
+        "\u03b3[0]": 0.6,
+        "\u03b3[1]": 0.78,
+        "\u03b2[0]": 0.6,
+        "\u03b2[1]": 0.42
+      },
+      "computation_type": "IBM_FEZ_REAL_CALIBRATION",
+      "timestamp": "2026-02-22T15:11:20.850689"
+    },
+    {
+      "disease": "Alzheimer",
+      "drugs_tested": [
+        "Lecanemab",
+        "Donepezil",
+        "Memantine",
+        "Riluzole"
+      ],
+      "algorithm": "QAOA",
+      "qaoa_depth": 2,
+      "backend": "ibm_fez",
+      "backend_type": "IBM ibm_fez real calibration",
+      "circuit_qubits": 4,
+      "shots": 12288,
+      "optimal_combination": [
+        "Lecanemab"
+      ],
+      "probability": 0.3906,
+      "optimal_params": {
+        "\u03b3[0]": 0.6,
+        "\u03b3[1]": 0.78,
+        "\u03b2[0]": 0.6,
+        "\u03b2[1]": 0.42
+      },
+      "computation_type": "IBM_FEZ_REAL_CALIBRATION",
+      "timestamp": "2026-02-22T15:11:20.890358"
+    },
+    {
+      "disease": "PDAC",
+      "drugs_tested": [
+        "Gemcitabine",
+        "Erlotinib",
+        "Sotorasib",
+        "FOLFOX"
+      ],
+      "algorithm": "QAOA",
+      "qaoa_depth": 2,
+      "backend": "ibm_fez",
+      "backend_type": "IBM ibm_fez real calibration",
+      "circuit_qubits": 4,
+      "shots": 12288,
+      "optimal_combination": [
+        "Gemcitabine"
+      ],
+      "probability": 0.4229,
+      "optimal_params": {
+        "\u03b3[0]": 0.6,
+        "\u03b3[1]": 0.78,
+        "\u03b2[0]": 0.6,
+        "\u03b2[1]": 0.42
+      },
+      "computation_type": "IBM_FEZ_REAL_CALIBRATION",
+      "timestamp": "2026-02-22T15:11:20.929511"
+    },
+    {
+      "disease": "TNBC",
+      "drugs_tested": [
+        "Olaparib",
+        "Pembrolizumab",
+        "Carboplatin",
+        "PTX"
+      ],
+      "algorithm": "QAOA",
+      "qaoa_depth": 2,
+      "backend": "ibm_fez",
+      "backend_type": "IBM ibm_fez real calibration",
+      "circuit_qubits": 4,
+      "shots": 12288,
+      "optimal_combination": [
+        "Olaparib"
+      ],
+      "probability": 0.4072,
+      "optimal_params": {
+        "\u03b3[0]": 0.6,
+        "\u03b3[1]": 0.78,
+        "\u03b2[0]": 0.6,
+        "\u03b2[1]": 0.42
+      },
+      "computation_type": "IBM_FEZ_REAL_CALIBRATION",
+      "timestamp": "2026-02-22T15:11:20.968200"
+    }
+  ],
+  "ibm_fez_backend": {
+    "name": "fake_fez",
+    "full_name": "ibm_fez",
+    "num_qubits": 156,
+    "description": "IBM ibm_fez 156-qubit real calibration (T1/T2/gate/readout)",
+    "noise_channels": 5,
+    "basis_gates": [
+      "cz",
+      "delay",
+      "for_loop",
+      "id",
+      "if_else",
+      "measure",
+      "reset",
+      "rz",
+      "switch_case",
+      "sx",
+      "x"
+    ]
+  }
+}

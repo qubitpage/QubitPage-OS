@@ -1,0 +1,25 @@
+[Unit]
+Description=QubitPage® Quantum OS v1.1.0
+Documentation=https://github.com/qubitpage/QubitPage-OS
+After=network.target network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=ubuntu
+Group=ubuntu
+WorkingDirectory=/home/ubuntu/QubitPage-OS
+EnvironmentFile=/etc/qubitpage/keys.env
+ExecStart=/home/ubuntu/QubitPage-OS/.venv/bin/python3 src/app.py
+Restart=always
+RestartSec=5
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=qubitpage-os
+
+# Security hardening
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

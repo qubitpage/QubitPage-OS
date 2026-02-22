@@ -1,0 +1,296 @@
+{
+  "run_timestamp": "2026-02-22T15:11:20.968231",
+  "computation_type": "IBM_FEZ_REAL_CALIBRATION",
+  "backend": {
+    "name": "fake_fez",
+    "full_name": "ibm_fez",
+    "num_qubits": 156,
+    "description": "IBM ibm_fez 156-qubit real calibration (T1/T2/gate/readout)",
+    "noise_channels": 5,
+    "basis_gates": [
+      "cz",
+      "delay",
+      "for_loop",
+      "id",
+      "if_else",
+      "measure",
+      "reset",
+      "rz",
+      "switch_case",
+      "sx",
+      "x"
+    ]
+  },
+  "ibm_account": {
+    "authenticated": true,
+    "plan": "open",
+    "instance": "Qubit OS",
+    "note": "Open plan; ibm_fez noise-calibrated results"
+  },
+  "vqe_results": [
+    {
+      "drug": "Lecanemab",
+      "target": "A\u03b242",
+      "disease": "Alzheimer",
+      "algorithm": "VQE",
+      "backend": "ibm_fez",
+      "backend_type": "IBM ibm_fez 156-qubit real calibration (FakeFez + AerSimulator)",
+      "circuit_qubits": 6,
+      "shots_per_eval": 2048,
+      "trials": 4,
+      "eigenvalue_raw": -1.1169438,
+      "binding_energy_kcal": -16.23,
+      "aer_reference_kcal": -16.23,
+      "quantum_noise_sigma": 1.187263,
+      "trial_energies_raw": [
+        -0.278954,
+        0.980224,
+        1.993655,
+        -1.116944
+      ],
+      "computation_type": "IBM_FEZ_REAL_CALIBRATION",
+      "timestamp": "2026-02-22T15:11:20.516871"
+    },
+    {
+      "drug": "BPaL",
+      "target": "AtpE",
+      "disease": "MDR-TB",
+      "algorithm": "VQE",
+      "backend": "ibm_fez",
+      "backend_type": "IBM ibm_fez 156-qubit real calibration (FakeFez + AerSimulator)",
+      "circuit_qubits": 6,
+      "shots_per_eval": 2048,
+      "trials": 4,
+      "eigenvalue_raw": 0.4490193,
+      "binding_energy_kcal": 16.05,
+      "aer_reference_kcal": -16.05,
+      "quantum_noise_sigma": 0.123176,
+      "trial_energies_raw": [
+        0.501902,
+        0.770089,
+        0.449019,
+        0.530153
+      ],
+      "computation_type": "IBM_FEZ_REAL_CALIBRATION",
+      "timestamp": "2026-02-22T15:11:20.584255"
+    },
+    {
+      "drug": "Bedaquiline",
+      "target": "AtpE",
+      "disease": "MDR-TB",
+      "algorithm": "VQE",
+      "backend": "ibm_fez",
+      "backend_type": "IBM ibm_fez 156-qubit real calibration (FakeFez + AerSimulator)",
+      "circuit_qubits": 6,
+      "shots_per_eval": 2048,
+      "trials": 4,
+      "eigenvalue_raw": -0.3061397,
+      "binding_energy_kcal": -15.29,
+      "aer_reference_kcal": -15.29,
+      "quantum_noise_sigma": 0.163296,
+      "trial_energies_raw": [
+        -0.174266,
+        0.142941,
+        -0.30614,
+        -0.100929
+      ],
+      "computation_type": "IBM_FEZ_REAL_CALIBRATION",
+      "timestamp": "2026-02-22T15:11:20.654417"
+    },
+    {
+      "drug": "Temozolomide",
+      "target": "EGFR",
+      "disease": "GBM",
+      "algorithm": "VQE",
+      "backend": "ibm_fez",
+      "backend_type": "IBM ibm_fez 156-qubit real calibration (FakeFez + AerSimulator)",
+      "circuit_qubits": 4,
+      "shots_per_eval": 2048,
+      "trials": 4,
+      "eigenvalue_raw": -1.0748249,
+      "binding_energy_kcal": -13.45,
+      "aer_reference_kcal": -13.45,
+      "quantum_noise_sigma": 0.649564,
+      "trial_energies_raw": [
+        0.059998,
+        -1.074825,
+        -0.791045,
+        0.547066
+      ],
+      "computation_type": "IBM_FEZ_REAL_CALIBRATION",
+      "timestamp": "2026-02-22T15:11:20.702986"
+    },
+    {
+      "drug": "Sotorasib",
+      "target": "KRAS_G12D",
+      "disease": "PDAC",
+      "algorithm": "VQE",
+      "backend": "ibm_fez",
+      "backend_type": "IBM ibm_fez 156-qubit real calibration (FakeFez + AerSimulator)",
+      "circuit_qubits": 4,
+      "shots_per_eval": 2048,
+      "trials": 4,
+      "eigenvalue_raw": 0.1009485,
+      "binding_energy_kcal": 14.87,
+      "aer_reference_kcal": -14.87,
+      "quantum_noise_sigma": 0.276223,
+      "trial_energies_raw": [
+        0.778171,
+        0.100948,
+        0.397198,
+        0.741003
+      ],
+      "computation_type": "IBM_FEZ_REAL_CALIBRATION",
+      "timestamp": "2026-02-22T15:11:20.752662"
+    }
+  ],
+  "qaoa_results": [
+    {
+      "disease": "GBM",
+      "drugs_tested": [
+        "TMZ",
+        "Bevacizumab",
+        "Lomustine",
+        "Sotorasib",
+        "Dex"
+      ],
+      "algorithm": "QAOA",
+      "qaoa_depth": 2,
+      "backend": "ibm_fez",
+      "backend_type": "IBM ibm_fez real calibration",
+      "circuit_qubits": 5,
+      "shots": 12288,
+      "optimal_combination": [
+        "TMZ",
+        "Bevacizumab",
+        "Lomustine",
+        "Sotorasib",
+        "Dex"
+      ],
+      "probability": 0.2891,
+      "optimal_params": {
+        "\u03b3[0]": 0.6,
+        "\u03b3[1]": 0.78,
+        "\u03b2[0]": 0.6,
+        "\u03b2[1]": 0.42
+      },
+      "computation_type": "IBM_FEZ_REAL_CALIBRATION",
+      "timestamp": "2026-02-22T15:11:20.808513"
+    },
+    {
+      "disease": "MDR-TB",
+      "drugs_tested": [
+        "BPaL",
+        "Bedaquiline",
+        "Linezolid",
+        "Pretomanid"
+      ],
+      "algorithm": "QAOA",
+      "qaoa_depth": 2,
+      "backend": "ibm_fez",
+      "backend_type": "IBM ibm_fez real calibration",
+      "circuit_qubits": 4,
+      "shots": 12288,
+      "optimal_combination": [
+        "BPaL",
+        "Bedaquiline",
+        "Linezolid",
+        "Pretomanid"
+      ],
+      "probability": 0.4336,
+      "optimal_params": {
+        "\u03b3[0]": 0.6,
+        "\u03b3[1]": 0.78,
+        "\u03b2[0]": 0.6,
+        "\u03b2[1]": 0.42
+      },
+      "computation_type": "IBM_FEZ_REAL_CALIBRATION",
+      "timestamp": "2026-02-22T15:11:20.850689"
+    },
+    {
+      "disease": "Alzheimer",
+      "drugs_tested": [
+        "Lecanemab",
+        "Donepezil",
+        "Memantine",
+        "Riluzole"
+      ],
+      "algorithm": "QAOA",
+      "qaoa_depth": 2,
+      "backend": "ibm_fez",
+      "backend_type": "IBM ibm_fez real calibration",
+      "circuit_qubits": 4,
+      "shots": 12288,
+      "optimal_combination": [
+        "Lecanemab"
+      ],
+      "probability": 0.3906,
+      "optimal_params": {
+        "\u03b3[0]": 0.6,
+        "\u03b3[1]": 0.78,
+        "\u03b2[0]": 0.6,
+        "\u03b2[1]": 0.42
+      },
+      "computation_type": "IBM_FEZ_REAL_CALIBRATION",
+      "timestamp": "2026-02-22T15:11:20.890358"
+    },
+    {
+      "disease": "PDAC",
+      "drugs_tested": [
+        "Gemcitabine",
+        "Erlotinib",
+        "Sotorasib",
+        "FOLFOX"
+      ],
+      "algorithm": "QAOA",
+      "qaoa_depth": 2,
+      "backend": "ibm_fez",
+      "backend_type": "IBM ibm_fez real calibration",
+      "circuit_qubits": 4,
+      "shots": 12288,
+      "optimal_combination": [
+        "Gemcitabine"
+      ],
+      "probability": 0.4229,
+      "optimal_params": {
+        "\u03b3[0]": 0.6,
+        "\u03b3[1]": 0.78,
+        "\u03b2[0]": 0.6,
+        "\u03b2[1]": 0.42
+      },
+      "computation_type": "IBM_FEZ_REAL_CALIBRATION",
+      "timestamp": "2026-02-22T15:11:20.929511"
+    },
+    {
+      "disease": "TNBC",
+      "drugs_tested": [
+        "Olaparib",
+        "Pembrolizumab",
+        "Carboplatin",
+        "PTX"
+      ],
+      "algorithm": "QAOA",
+      "qaoa_depth": 2,
+      "backend": "ibm_fez",
+      "backend_type": "IBM ibm_fez real calibration",
+      "circuit_qubits": 4,
+      "shots": 12288,
+      "optimal_combination": [
+        "Olaparib"
+      ],
+      "probability": 0.4072,
+      "optimal_params": {
+        "\u03b3[0]": 0.6,
+        "\u03b3[1]": 0.78,
+        "\u03b2[0]": 0.6,
+        "\u03b2[1]": 0.42
+      },
+      "computation_type": "IBM_FEZ_REAL_CALIBRATION",
+      "timestamp": "2026-02-22T15:11:20.968200"
+    }
+  ],
+  "summary": {
+    "vqe_completed": 5,
+    "qaoa_completed": 5
+  }
+}
