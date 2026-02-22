@@ -5,6 +5,7 @@
 <img src="https://img.shields.io/badge/Python-3.10%2B-blue?style=for-the-badge&logo=python" />
 <img src="https://img.shields.io/badge/IBM%20Quantum-Connected-purple?style=for-the-badge" />
 <img src="https://img.shields.io/badge/MedGemma-Integrated-red?style=for-the-badge" />
+<img src="https://img.shields.io/badge/Responsive-Mobile%20%7C%20Tablet%20%7C%20Desktop-orange?style=for-the-badge&logo=googlechrome&logoColor=white" />
 <img src="https://img.shields.io/badge/License-MIT-green?style=for-the-badge" />
 
 # QubitPage® Quantum OS
@@ -21,7 +22,7 @@
 
 ![QubitPage® OS — Main Interface](docs/screenshot-main.png)
 
-> *QubitPage® OS desktop — A full web-based quantum OS with IBM Quantum integration, AI drug discovery, real medical research tools, and a MedGemma disease diagnosis assistant running in the browser.*
+> *QubitPage® OS desktop — A full web-based quantum OS with IBM Quantum integration, AI drug discovery, real medical research tools, and a MedGemma disease diagnosis assistant running in the browser. Fully responsive across desktop, tablet, and mobile — with draggable desktop icons and touch support.*
 
 ---
 
@@ -39,7 +40,7 @@
 
 QubitPage® OS is a complete **browser-based quantum operating system** that provides:
 
-- **Desktop environment** — A full windowed OS in the browser with taskbar, app launcher, and multi-window support
+- **Desktop environment** — A full windowed OS in the browser with taskbar, app launcher, multi-window support, **draggable desktop icons** (mouse & touch), and **fully responsive layout** (mobile, tablet, desktop)
 - **Quantum Circuit Lab** — Write and run QLang circuits on **real IBM Quantum hardware** or local simulators
 - **AI Drug Discovery** — Quantum-enhanced molecular simulation for diseases without cures (GBM, TB, Alzheimer's, ALS, IPF)
 - **MedGemma AI** — Google's medical AI for disease diagnosis, ADMET prediction, and treatment analysis
