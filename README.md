@@ -10,6 +10,12 @@
 <img src="https://img.shields.io/badge/Responsive-Mobile%20%7C%20Tablet%20%7C%20Desktop-orange?style=for-the-badge&logo=googlechrome&logoColor=white" />
 <img src="https://img.shields.io/badge/License-MIT-green?style=for-the-badge" />
 
+<div align="center">
+
+[![lablab.ai 1st Place](https://img.shields.io/badge/🥇_1ST_PLACE-lablab.ai_AI_Meets_Robotics_2026-FFD700?style=for-the-badge&labelColor=1a1a2e)](https://lablab.ai/ai-hackathons/launch-fund-ai-meets-robotics)
+
+</div>
+
 # QubitPage® Quantum OS
 
 ### *The world's first browser-based Quantum Operating System for AI-powered medical drug discovery*
