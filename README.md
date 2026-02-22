@@ -1,5 +1,7 @@
 <div align="center">
 
+<img src="docs/logo.png" alt="QubitPage®" width="340" />
+
 <img src="https://img.shields.io/badge/QubitPage®-Quantum%20OS-00d4ff?style=for-the-badge&logo=atom&logoColor=white" />
 <img src="https://img.shields.io/badge/Version-1.1.0-brightgreen?style=for-the-badge" />
 <img src="https://img.shields.io/badge/Python-3.10%2B-blue?style=for-the-badge&logo=python" />
@@ -311,7 +313,7 @@ We are looking for **medical scientists, oncologists, immunologists, virologists
 ## 📬 Contact & Contributing
 
 - **Platform:** [qubitpage.com](https://qubitpage.com)
-- **Research:** [research@qubitpage.com](mailto:research@qubitpage.com)
+- **Contact:** [contact@qubitpage.com](mailto:contact@qubitpage.com)
 - **Issues:** [GitHub Issues](https://github.com/qubitpage/QubitPage-OS/issues)
 - **Org:** [github.com/qubitpage](https://github.com/qubitpage)
 
