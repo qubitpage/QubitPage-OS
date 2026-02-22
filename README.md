@@ -327,3 +327,25 @@ Copyright © 2026 Qubitpage LIMITED. All rights reserved.
 QubitPage® is a registered trademark of Qubitpage LIMITED.
 
 </div>
+
+
+---
+
+## ❤️ Support the Research
+
+**QubitPage® OS is 100% free and open-source.** If you find this project valuable, you can help us accelerate quantum drug discovery research.
+
+Our R&D requires significant GPU computing power. We gratefully accept:
+
+| Type | Details |
+|------|---------|
+| 🖥️ **GPU Credits** | Cloud GPU credits (AWS, GCP, Lambda Labs, RunPod, CoreWeave, etc.) |
+| 💰 **Donations** | Any amount helps fund quantum computing research and development |
+| 🔧 **Physical GPUs** | We accept physical GPU donations (RTX 3090, RTX 4090, A100, H100, etc.) |
+
+Every contribution — whether it's cloud credits, a monetary donation, or even a physical GPU — directly powers the quantum simulations that search for new drug candidates against diseases like Glioblastoma, ALS, Alzheimer's, and IPF.
+
+**📧 Contact:** [contact@qubitpage.com](mailto:contact@qubitpage.com?subject=QubitPage%20OS%20-%20Support%20%26%20Donation)
+
+**🌐 Website:** [qubitpage.com/products/qubitpage-os](https://qubitpage.com/products/qubitpage-os)
+
