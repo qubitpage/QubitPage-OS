@@ -19,7 +19,7 @@
 
 ## 📸 Platform Screenshot
 
-![QubitPage® OS — Main Interface](https://raw.githubusercontent.com/qubitpage/QubitPage-OS/main/docs/screenshot-main.png)
+![QubitPage® OS — Main Interface](docs/screenshot-main.png)
 
 > *QubitPage® OS desktop — A full web-based quantum OS with IBM Quantum integration, AI drug discovery, real medical research tools, and a MedGemma disease diagnosis assistant running in the browser.*
 
@@ -241,6 +241,72 @@ QubitPage-OS/
 
 ---
 
+---
+
+## 🌍 Why QubitPage® OS Could Change the World
+
+> *"The next breakthrough in medicine will not come from a hospital. It will come from a quantum computer."*
+
+We are building the **first quantum operating system** designed specifically to find cures for diseases that have resisted all conventional approaches. Here's why this matters:
+
+### The Problem
+- **Glioblastoma (GBM):** Median survival = 15 months. Zero cures in 50 years.
+- **ALS (Lou Gehrig's):** 100% fatal. 5-year survival = 10%.
+- **IPF (Lung Fibrosis):** Median survival = 3–5 years. No reversal possible.
+- **Alzheimer's:** 55 million patients. All Phase 3 trials have failed.
+- **Drug discovery:** Takes 12–15 years and $2–3 BILLION per drug — most fail.
+
+### The QubitPage® Solution
+QubitPage® OS runs on **a single computer with a GPU** (RTX 3090 or better) and:
+
+| Feature | What It Means |
+|---------|--------------|
+| **Quantum VQE simulation** | Simulates molecular binding sites that classical computers can't model accurately |
+| **MedGemma AI diagnosis** | Provides medical-grade diagnostic assistance even in remote areas with no specialist |
+| **ADMET prediction** | Predicts drug toxicity, absorption, and metabolism before any lab test — saving years |
+| **IBM Quantum integration** | Validates results on real 156-qubit quantum hardware (IBM Fez) |
+| **13 novel drug candidates** | Already discovered via quantum screening (QBP-001 through QBP-013) |
+| **Remote deployment** | One GPU server = full quantum drug discovery lab. No $100M facility needed. |
+
+### The Vision: Medicine Without Borders
+Imagine a **rural clinic in Romania, Ghana, or rural India** with:
+- One computer (RTX 3090)
+- Internet connection
+- A doctor
+
+Running QubitPage® OS, that doctor can:
+1. **Diagnose** using MedGemma AI trained on millions of cases
+2. **Search** quantum drug databases for personalized treatments
+3. **Simulate** molecular interactions for the patient's specific genetic profile
+4. **Contribute** anonymized research data that improves the global model
+
+**This is the future we are building. And we need your help.**
+
+---
+
+## 🔬 Are You a Medical Researcher or Scientist?
+
+We are looking for **medical scientists, oncologists, immunologists, virologists, and computational biologists** who want to contribute to the most ambitious open quantum medicine project in history.
+
+### What We Offer
+- **Free access** to the full QubitPage® OS platform (no credit card needed)
+- Access to **IBM Quantum real hardware** for your research
+- Your discoveries published under your name in the `models/scientific_discoveries.json`
+- Collaboration with the Qubitpage® research team
+- First access to new drugs and treatments your own research helps discover
+
+### How to Join
+
+📧 **Email:** [contact@qubitpage.com](mailto:contact@qubitpage.com)  
+🌐 **Platform:** [qubitpage.com](https://qubitpage.com)  
+🐙 **GitHub Org:** [github.com/qubitpage](https://github.com/qubitpage)
+
+**Subject line:** `[RESEARCHER] Your name / Specialty / Institution`
+
+> *We especially welcome researchers from areas with limited access to expensive lab facilities. If you have the knowledge and a computer, QubitPage® OS gives you the quantum lab.*
+
+---
+
 ## 📬 Contact & Contributing
 
 - **Platform:** [qubitpage.com](https://qubitpage.com)
@@ -254,7 +320,7 @@ QubitPage-OS/
 
 **QubitPage®** — *Quantum computing for medicine, starting now.*
 
-Copyright © 2026 Qubitpage SRL. All rights reserved.  
-QubitPage® is a registered trademark of Qubitpage SRL.
+Copyright © 2026 Qubitpage LIMITED. All rights reserved.  
+QubitPage® is a registered trademark of Qubitpage LIMITED.
 
 </div>
