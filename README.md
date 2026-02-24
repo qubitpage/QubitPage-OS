@@ -124,6 +124,7 @@ Full setup guide: [INSTALL.md](INSTALL.md)
 | **Discovery Reports** | 📊 | 13 novel drug candidates with QBP-### IDs |
 | **Med Files** | 📁 | Patient data + lab report processing |
 | **Docs** | 📚 | Full platform documentation |
+| **QuantumDerm** | 🔬 | AI-powered skin lesion analysis + drug screening (MedGemma 4B + Derm Foundation) |
 | **Settings** | ⚙ | User preferences, API keys, backend config |
 
 ---
@@ -132,6 +133,9 @@ Full setup guide: [INSTALL.md](INSTALL.md)
 
 ### Medical AI
 - **[MedGemma 4B](https://huggingface.co/google/medgemma-4b-it)** — Google's medical-domain instruction-tuned model for diagnosis reasoning, disease classification, and ADMET prediction
+- **[Derm Foundation](https://huggingface.co/google/derm-foundation)** — EfficientNet-B0 dermatology classifier (99.73% val accuracy) used by QuantumDerm
+- **[CXR Foundation](https://huggingface.co/google/cxr-foundation)** — Chest X-ray DenseNet-121 (100% val accuracy)
+- **[Path Foundation](https://huggingface.co/google/path-foundation)** — ViT-B/16 pathology foundation model (100% val accuracy)
 - **[Gemini 2.0 Flash](https://ai.google.dev)** — Powers ARIA assistant for research synthesis and drug target analysis
 - **[TxGemma](https://huggingface.co/google/txgemma-27b-predict)** — Therapeutic property prediction for drug screening
 
@@ -165,6 +169,30 @@ Full results: [`models/scientific_discoveries.json`](models/scientific_discoveri
 - **99.80% Bell state fidelity** (ibm_fez, Feb 2026)
 - **5× qubit lifespan extension** via QuBIOS Transit Ring
 - Real calibration data: [`models/ibm_real_results.json`](models/ibm_real_results.json)
+
+---
+
+## 📦 Trained Models (GPU-Trained on RTX 3090 Ti)
+
+All models were trained on an **NVIDIA RTX 3090 Ti (24 GB VRAM)** and are available for download from the [**v1.1.0-models release**](https://github.com/qubitpage/QubitPage-OS/releases/tag/v1.1.0-models).
+
+| # | Archive | Size | Source Model | Training Details |
+|---|---------|------|-------------|------------------|
+| 07 | [macro_news_drug_results.zip](https://github.com/qubitpage/QubitPage-OS/releases/download/v1.1.0-models/07_macro_news_drug_results.zip) | 45 MB | Custom DRL | Crypto/macro news sentiment + drug screening results |
+| 08 | [medgemma_lora_adapter.zip](https://github.com/qubitpage/QubitPage-OS/releases/download/v1.1.0-models/08_medgemma_lora_adapter.zip) | 34 MB | [MedGemma 4B](https://huggingface.co/google/medgemma-4b-it) | LoRA fine-tune r=16, α=32, loss 1.4256 |
+| 09 | [cxr_foundation_model.zip](https://github.com/qubitpage/QubitPage-OS/releases/download/v1.1.0-models/09_cxr_foundation_model.zip) | 50 MB | [CXR Foundation](https://huggingface.co/google/cxr-foundation) | DenseNet-121, 100% val accuracy |
+| 10 | [path_foundation_model.zip](https://github.com/qubitpage/QubitPage-OS/releases/download/v1.1.0-models/10_path_foundation_model.zip) | 606 MB | [Path Foundation](https://huggingface.co/google/path-foundation) | ViT-B/16, 100% val accuracy |
+| 11 | [brain_mri_model.zip](https://github.com/qubitpage/QubitPage-OS/releases/download/v1.1.0-models/11_brain_mri_model.zip) | 167 MB | Custom ResNet-50 | Brain tumor MRI classifier |
+| 12 | [derm_foundation_model.zip](https://github.com/qubitpage/QubitPage-OS/releases/download/v1.1.0-models/12_derm_foundation_model.zip) | 15 MB | [Derm Foundation](https://huggingface.co/google/derm-foundation) | EfficientNet-B0, 99.73% accuracy |
+| 13 | [medical_training_data_scripts.zip](https://github.com/qubitpage/QubitPage-OS/releases/download/v1.1.0-models/13_medical_training_data_scripts.zip) | 1.4 MB | — | Training scripts, datasets, configs |
+
+> **Total: ~917 MB** across 7 archives. See [`trained_models/README.md`](trained_models/README.md) for full documentation, usage examples, and loading instructions.
+
+### HuggingFace Source Models
+- [google/medgemma-4b-it](https://huggingface.co/google/medgemma-4b-it) — Medical instruction-tuned foundation model
+- [google/cxr-foundation](https://huggingface.co/google/cxr-foundation) — Chest X-ray foundation model
+- [google/path-foundation](https://huggingface.co/google/path-foundation) — Pathology foundation model
+- [google/derm-foundation](https://huggingface.co/google/derm-foundation) — Dermatology foundation model
 
 ---
 
@@ -210,8 +238,12 @@ QubitPage-OS/
 │   ├── medfiles.js              ← Medical file processor
 │   ├── training-viewer.js       ← Training results viewer
 │   ├── reports.js               ← Discovery reports viewer
+│   ├── quantumderm.js           ← QuantumDerm skin lesion analysis
 │   ├── docs-app.js              ← In-app docs browser
 │   └── real_case_loader.js      ← Real patient case loader
+│
+├── trained_models/              ← Model documentation (archives in GitHub Releases)
+│   └── README.md                ← Model documentation & usage
 │
 ├── models/                      ← Research data & training results
 │   ├── README.md                ← Data dictionary
